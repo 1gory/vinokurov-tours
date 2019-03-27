@@ -1,5 +1,8 @@
 import React from 'react';
+import PageWrapper from './components/PageWrapper';
 
-export default () => (
-  <div />
+export const App = () => (
+  <PageWrapper>
+    <div>App</div>
+  </PageWrapper>
 );

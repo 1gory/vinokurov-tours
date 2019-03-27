@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'GothamPro';
+    src: url('../fonts/2/GothaProBol.eot');
+    src: url('../fonts/2/GothaProBol.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/2/GothaProBol.woff') format('woff'),
+    url('../fonts/2/GothaProBol.ttf') format('truetype'),
+    url('../fonts/2/GothaProBol.svg#pier_sansregular') format('svg');
+    font-weight: 900;
+    font-style: normal;
+}

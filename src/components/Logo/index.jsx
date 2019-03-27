@@ -5,7 +5,7 @@ const LogoWrap = styled.div`
   
 `;
 
-const Logo = styled.div`
+const LogoTitle = styled.div`
   font-family: 'GothamPro';
   font-weight: 900;
   font-size: 14px;
@@ -16,7 +16,7 @@ const Logo = styled.div`
 const Logo = () => {
   return (
     <LogoWrap>
-      <Logo>ТурагенствоДмитрия Винокурова</Logo>
+      <LogoTitle>ТурагенствоДмитрия Винокурова</LogoTitle>
     </LogoWrap>
   )
 }

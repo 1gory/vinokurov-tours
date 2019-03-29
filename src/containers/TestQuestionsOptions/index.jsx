@@ -4,6 +4,9 @@ import QuestionOption from '../../components/QuestionOption';
 import starthree from '../../img/icons/stars-3.svg';
 import starfour from '../../img/icons/stars-4.svg';
 import starfive from '../../img/icons/stars-5.svg';
+import starthreew from '../../img/icons/stars-3-white.svg';
+import starfourw from '../../img/icons/stars-4-white.svg';
+import starfivew from '../../img/icons/stars-5-white.svg';
 
 const TestQuestionsOptionsWrap = styled.div`
   width: 370px;
@@ -12,9 +15,24 @@ const TestQuestionsOptionsWrap = styled.div`
 const QuestionsCount = styled.p`
   font-family: 'opensans';
   font-size: 16px;
-  line-height: 32px;
+  line-height: 22px;
   color: #aeaeae;
   letter-spacing: normal;
+  margin-bottom: 8px;
+`;
+
+const QuestionsQuestion = styled.h3`
+  font-family: 'GothamPro';
+  font-weight: 900;
+  color: #474d57;
+  font-size: 28px;
+  line-height: 38.5px;
+  margin-top: 0px;
+  margin-bottom: 40px;
+`;
+
+const QuestionsItemWrap = styled.div`
+  display: ${props => (props.visible ? 'block' : 'none')};
 `;
 
 const QuestionsForm = styled.form`
@@ -23,12 +41,14 @@ const QuestionsForm = styled.form`
 
 const QuestionsItem = (props) => {
 
-  const { number, questionsLength, question, options } = props;
+  const { number, questionsLength, question, optionsTemplate, visible } = props;
 
   return (
-    <QuestionsItem>
+    <QuestionsItemWrap visible={visible} >
       <QuestionsCount>Вопрос {number}/{questionsLength}</QuestionsCount>
-    </QuestionsItem>
+      <QuestionsQuestion>{question}</QuestionsQuestion>
+      {optionsTemplate}
+    </QuestionsItemWrap>
   )
 }
 
@@ -43,17 +63,17 @@ class TestQuestionsOptions extends Component {
           question: 'Что для вас отдых в Тайланде?',
           options: [
             {
-              title: 'Знакомство с местной культурой и живописные пейзажи',
+              content: 'Знакомство с местной культурой и живописные пейзажи',
               value: 'Знакомство с местной культурой и живописные пейзажи',
               type: 'text',
             },
             {
-              title: 'Райский пляж недалеко от отеля',
+              content: 'Райский пляж недалеко от отеля',
               value: 'Райский пляж недалеко от отеля',
               type: 'text',
             },
             {
-              title: 'Экзотические фрукты и морепродукты',
+              content: 'Экзотические фрукты и морепродукты',
               value: 'Экзотические фрукты и морепродукты',
               type: 'text',
             },
@@ -63,17 +83,20 @@ class TestQuestionsOptions extends Component {
           question: 'Отели какого уровня предпочитаете?',
           options: [
             {
-              title: starthree,
+              content: starthree,
+              hoverContent: starthreew,
               value: 3,
               type: 'img',
             },
             {
-              title: starfour,
+              content: starfour,
+              hoverContent: starfourw,
               value: 4,
               type: 'img',
             },
             {
-              title: starfive,
+              content: starfive,
+              hoverContent: starfivew,
               value: 5,
               type: 'img',
             },
@@ -83,17 +106,17 @@ class TestQuestionsOptions extends Component {
           question: 'Сколько будет длиться ваш отдых?',
           options: [
             {
-              title: '1 неделя',
+              content: '1 неделя',
               value: 1,
               type: 'text',
             },
             {
-              title: '2 недели',
+              content: '2 недели',
               value: 2,
               type: 'text',
             },
             {
-              title: '3 недели',
+              content: '3 недели',
               value: 3,
               type: 'text',
             },
@@ -105,36 +128,66 @@ class TestQuestionsOptions extends Component {
         },
       ],
     }
+
+  }
+
+  handleGoNextQuestion = () => {
+    let { numberOfActiveQuestion } = this.state;
+    numberOfActiveQuestion += 1;
+    this.setState({ numberOfActiveQuestion });
   }
 
   render () {
-    const { questionsData } = this.state;
+    const { container: {
+      addAnswer,
+    } } = this.props;
+    const { numberOfActiveQuestion, questionsData } = this.state;
     const questionsDataLength = questionsData.length;
     let questionsItemTemplate = [];
+
     console.log(questionsDataLength);
+
     questionsItemTemplate = questionsData.map((currentItem, index) => {
       const question = currentItem.question;
       const options = currentItem.options;
+      let numberOfQuestion = index + 1;
       let questionsOptionsTemplate = [];
+      let visible = false;
+
       console.log(options);
       console.log(options.length);
-      questionsOptionsTemplate = options.map(curItem => (
-        <QuestionOption
-          key={curItem.title}
-          type={curItem.type}
-          title={curItem.title}
-          value={curItem.value}
-        />
-      ));
+      questionsOptionsTemplate = options.map(curItem => {
+        return (
+          <QuestionOption
+            key={curItem.content}
+            type={curItem.type}
+            question={question}
+            content={curItem.content}
+            hoverContent={curItem.hoverContent}
+            value={curItem.value}
+            handleOptionClick={addAnswer}
+            handleGoNextQuestion={this.handleGoNextQuestion}
+            numberOfQuestion={numberOfQuestion}
+          />
+        );
+      });
+
+      if (numberOfActiveQuestion === index) {
+        visible = true;
+      }
 
       return (
-        <QuestionsItem key={question} number={index} questionsLength={questionsDataLength} question={question}>
-          {questionsOptionsTemplate}
-          </QuestionsItem>
+        <QuestionsItem
+          key={question}
+          number={numberOfQuestion}
+          questionsLength={questionsDataLength}
+          question={question}
+          optionsTemplate={questionsOptionsTemplate}
+          visible={visible}
+        />
       );
     });
-    // const { type, title, value, imgSrc, handleOptionClick, handleOptionHover } = props;
-    console.log(questionsItemTemplate);
+
     return (
       <TestQuestionsOptionsWrap>
         <QuestionsForm>

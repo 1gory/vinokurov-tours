@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import QuestionOption from '../../components/QuestionOption';
+import Input from '../../containers/Input';
 import starthree from '../../img/icons/stars-3.svg';
 import starfour from '../../img/icons/stars-4.svg';
 import starfive from '../../img/icons/stars-5.svg';
 import starthreew from '../../img/icons/stars-3-white.svg';
 import starfourw from '../../img/icons/stars-4-white.svg';
 import starfivew from '../../img/icons/stars-5-white.svg';
+import backlink from '../../img/icons/back-link.svg';
 
 const TestQuestionsOptionsWrap = styled.div`
   width: 370px;
@@ -33,6 +35,24 @@ const QuestionsQuestion = styled.h3`
 
 const QuestionsItemWrap = styled.div`
   display: ${props => (props.visible ? 'block' : 'none')};
+  margin-bottom: 40px;
+`;
+
+const TestQuestionsBack = styled.div`
+  background-image: url(${backlink});
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
+  background-position: 0px 0px;
+  height: 24px;
+  padding-left: 32px;
+  font-family: 'opensans';
+  font-size: 16px;
+  line-height: 24px;
+  color: #474d57;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.7;
+  }
 `;
 
 const QuestionsForm = styled.form`
@@ -137,6 +157,16 @@ class TestQuestionsOptions extends Component {
     this.setState({ numberOfActiveQuestion });
   }
 
+  handleGoBack = () => {
+    let { numberOfActiveQuestion } = this.state;
+
+    if (numberOfActiveQuestion === 0) {
+      return false;
+    } else {
+      this.setState({ numberOfActiveQuestion: numberOfActiveQuestion -= 1 })
+    }
+  }
+
   render () {
     const { container: {
       addAnswer,
@@ -144,6 +174,7 @@ class TestQuestionsOptions extends Component {
     const { numberOfActiveQuestion, questionsData } = this.state;
     const questionsDataLength = questionsData.length;
     let questionsItemTemplate = [];
+    let visibleGoBack = numberOfActiveQuestion === 0 ? false : true;
 
     console.log(questionsDataLength);
 
@@ -192,7 +223,11 @@ class TestQuestionsOptions extends Component {
       <TestQuestionsOptionsWrap>
         <QuestionsForm>
           {questionsItemTemplate}
+          {
+            visibleGoBack ? (<TestQuestionsBack onClick={this.handleGoBack}>Назад</TestQuestionsBack>) : ''
+          }
         </QuestionsForm>
+        <Input />
       </TestQuestionsOptionsWrap>
     )
   }

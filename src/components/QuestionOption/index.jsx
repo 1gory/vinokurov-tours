@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const QestionOptionItem = styled.div`
-  width: 100%;
+  width: auto;
   padding: 16px 24px;
   font-size: 16px;
   line-height: 22px;

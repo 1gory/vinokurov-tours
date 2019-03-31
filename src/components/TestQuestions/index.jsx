@@ -13,6 +13,8 @@ const TestQuestionsTitle = styled.h3`
   line-height: 35.6px;
   color: #343434;
   letter-spacing: normal;
+  margin-bottom: 35px;
+  width: 470px;
 `;
 
 const TestQuestions = (props) => {

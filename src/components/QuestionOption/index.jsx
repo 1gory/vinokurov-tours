@@ -45,8 +45,8 @@ const QuestionOption = (props) => {
   // const handleHover = () => {
   //   handleOptionHover(imgSrc);
   // }
-  console.log(content);
-  console.log(hoverContent);
+  // console.log(content);
+  // console.log(hoverContent);
   return (
     <QestionOptionItem
       onClick={handleClick}

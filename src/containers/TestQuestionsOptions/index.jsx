@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import QuestionOption from '../../components/QuestionOption';
 import Input from '../../containers/Input';
+import TestQuestionsForm from '../TestQuestionsForm';
 import starthree from '../../img/icons/stars-3.svg';
 import starfour from '../../img/icons/stars-4.svg';
 import starfive from '../../img/icons/stars-5.svg';
@@ -9,8 +10,10 @@ import starthreew from '../../img/icons/stars-3-white.svg';
 import starfourw from '../../img/icons/stars-4-white.svg';
 import starfivew from '../../img/icons/stars-5-white.svg';
 import backlink from '../../img/icons/back-link.svg';
+import calender from '../../img/icons/calendar.svg';
 
 const TestQuestionsOptionsWrap = styled.div`
+  display: inline-block;
   width: 370px;
 `;
 
@@ -39,6 +42,7 @@ const QuestionsItemWrap = styled.div`
 `;
 
 const TestQuestionsBack = styled.div`
+  display: inline-block;
   background-image: url(${backlink});
   background-repeat: no-repeat;
   background-size: 24px 24px;
@@ -55,17 +59,16 @@ const TestQuestionsBack = styled.div`
   }
 `;
 
-const QuestionsForm = styled.form`
-  
-`;
-
 const QuestionsItem = (props) => {
-
   const { number, questionsLength, question, optionsTemplate, visible } = props;
-
+  /* Если вопрос последний, отображаем форму завершения опроса */
   return (
     <QuestionsItemWrap visible={visible} >
-      <QuestionsCount>Вопрос {number}/{questionsLength}</QuestionsCount>
+      <QuestionsCount>
+        {
+          number === questionsLength ? ('Завершение опроса') : (`Вопрос ${number}/${questionsLength - 1}`)
+        }
+        </QuestionsCount>
       <QuestionsQuestion>{question}</QuestionsQuestion>
       {optionsTemplate}
     </QuestionsItemWrap>
@@ -146,6 +149,10 @@ class TestQuestionsOptions extends Component {
           question: 'С какого числа планируете начинать',
           options: [],
         },
+        {
+          question: 'Отправьте данные по опросу нам',
+          options: [],
+        },
       ],
     }
 
@@ -170,14 +177,17 @@ class TestQuestionsOptions extends Component {
   render () {
     const { container: {
       addAnswer,
+      addFormData,
     } } = this.props;
     const { numberOfActiveQuestion, questionsData } = this.state;
     const questionsDataLength = questionsData.length;
+    let lastQuestion = numberOfActiveQuestion === questionsDataLength - 1;
     let questionsItemTemplate = [];
     let visibleGoBack = numberOfActiveQuestion === 0 ? false : true;
-
+    console.log(numberOfActiveQuestion);
     console.log(questionsDataLength);
-
+    console.log("last" + lastQuestion);
+    /* Формирование шаблона Вопроса */
     questionsItemTemplate = questionsData.map((currentItem, index) => {
       const question = currentItem.question;
       const options = currentItem.options;
@@ -185,8 +195,7 @@ class TestQuestionsOptions extends Component {
       let questionsOptionsTemplate = [];
       let visible = false;
 
-      console.log(options);
-      console.log(options.length);
+      /* Формирование шаблона Опций Вопроса */
       questionsOptionsTemplate = options.map(curItem => {
         return (
           <QuestionOption
@@ -198,13 +207,35 @@ class TestQuestionsOptions extends Component {
             value={curItem.value}
             handleOptionClick={addAnswer}
             handleGoNextQuestion={this.handleGoNextQuestion}
-            numberOfQuestion={numberOfQuestion}
+            numberOfQuestion={numberOfActiveQuestion}
           />
         );
       });
 
       if (numberOfActiveQuestion === index) {
         visible = true;
+      }
+
+      /* Если это 4-й вопрос, кладем туда Input с DatePicker */
+      if (numberOfQuestion === 4) {
+        /* Обертка для функции записывания в стейт ответа с дефолтными аргументами, из инпута приходит только дата */
+        const addAnswerWithArguments = (value) => {
+          const inputQuestion = question;
+          const number = numberOfActiveQuestion;
+          const description = 'Выбранная дата';
+          /* Когда выбирается дата, происходит переход на следующий слайд */
+          this.handleGoNextQuestion();
+          return addAnswer(inputQuestion, number, value, description);
+        }
+
+        questionsOptionsTemplate.push(
+          <Input
+            type={'datepicker'}
+            hasIcon={true}
+            icon={calender}
+            inputHandler={addAnswerWithArguments}
+          />
+        )
       }
 
       return (
@@ -221,13 +252,17 @@ class TestQuestionsOptions extends Component {
 
     return (
       <TestQuestionsOptionsWrap>
-        <QuestionsForm>
-          {questionsItemTemplate}
-          {
-            visibleGoBack ? (<TestQuestionsBack onClick={this.handleGoBack}>Назад</TestQuestionsBack>) : ''
-          }
-        </QuestionsForm>
-        <Input />
+        {questionsItemTemplate}
+        {
+          lastQuestion ? (
+            <TestQuestionsForm submitHandler={addFormData} />
+          ) : (
+            ''
+          )
+        }
+        {
+          visibleGoBack ? (<TestQuestionsBack onClick={this.handleGoBack}>Назад</TestQuestionsBack>) : ''
+        }
       </TestQuestionsOptionsWrap>
     )
   }

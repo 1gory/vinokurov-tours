@@ -1,13 +1,27 @@
 @font-face {
     font-family: 'GothamPro';
-    src: url('../fonts/GothamPro-Bold.eot');
-    src: url('../fonts/GothamPro-Bold.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/GothamPro-Bold.woff') format('woff'),
-    url('../fonts/GothamPro-Bold.ttf') format('truetype'),
-    url('../fonts/GothamPro-Bold.svg#pier_sansregular') format('svg');
+    src: url('../fonts/gp/GothamPro-Bold.eot');
+    src: url('../fonts/gp/GothamPro-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/gp/GothamPro-Bold.woff') format('woff2'),
+    url('../fonts/gp/GothamPro-Bold.woff') format('woff'),
+    url('../fonts/gp/GothamPro-Bold.ttf') format('truetype'),
+    url('../fonts/gp/GothamPro-Bold.svg#pier_sansregular') format('svg');
     font-weight: 900;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'GothamPro';
+    src: url('../fonts/GothamPro-Medium.eot');
+    src: url('../fonts/GothamPro-Medium.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/GothamPro-Medium.woff') format('woff2'),
+    url('../fonts/GothamPro-Medium.woff') format('woff'),
+    url('../fonts/GothamPro-Medium.ttf') format('truetype'),
+    url('../fonts/GothamPro-Medium.svg#pier_sansregular') format('svg');
+    font-weight: 500;
+    font-style: normal;
+}
+
 
 @font-face {
     font-family: 'poppins';

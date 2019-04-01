@@ -11,6 +11,11 @@ import starfourw from '../../img/icons/stars-4-white.svg';
 import starfivew from '../../img/icons/stars-5-white.svg';
 import backlink from '../../img/icons/back-link.svg';
 import calender from '../../img/icons/calendar.svg';
+import test1 from '../../img/1.jpg';
+import test2 from '../../img/2.jpg';
+import test3 from '../../img/3.jpg';
+import test4 from '../../img/4.jpg';
+import test5 from '../../img/5.jpg';
 
 const TestQuestionsOptionsWrap = styled.div`
   display: inline-block;
@@ -89,16 +94,19 @@ class TestQuestionsOptions extends Component {
               content: 'Знакомство с местной культурой и живописные пейзажи',
               value: 'Знакомство с местной культурой и живописные пейзажи',
               type: 'text',
+              imgSrc: test1,
             },
             {
               content: 'Райский пляж недалеко от отеля',
               value: 'Райский пляж недалеко от отеля',
               type: 'text',
+              imgSrc: test2,
             },
             {
               content: 'Экзотические фрукты и морепродукты',
               value: 'Экзотические фрукты и морепродукты',
               type: 'text',
+              imgSrc: test3,
             },
           ]
         },
@@ -175,15 +183,30 @@ class TestQuestionsOptions extends Component {
   }
 
   render () {
-    const { container: {
-      addAnswer,
-      addFormData,
-    } } = this.props;
+    const {
+      container: {
+        addAnswer,
+        addFormData,
+        state: {
+          testQuestionsCollected,
+        },
+      },
+      imageContainer: {
+        setImage,
+      },
+    } = this.props;
+
     const { numberOfActiveQuestion, questionsData } = this.state;
     const questionsDataLength = questionsData.length;
     let lastQuestion = numberOfActiveQuestion === questionsDataLength - 1;
     let questionsItemTemplate = [];
     let visibleGoBack = numberOfActiveQuestion === 0 ? false : true;
+
+    /* Если все ответы получены, скрываем кнопку возврата назад */
+    if (testQuestionsCollected) {
+      visibleGoBack = false;
+    }
+
     console.log(numberOfActiveQuestion);
     console.log(questionsDataLength);
     console.log("last" + lastQuestion);
@@ -205,9 +228,11 @@ class TestQuestionsOptions extends Component {
             content={curItem.content}
             hoverContent={curItem.hoverContent}
             value={curItem.value}
+            numberOfQuestion={numberOfActiveQuestion}
+            imgSrc={curItem.imgSrc}
             handleOptionClick={addAnswer}
             handleGoNextQuestion={this.handleGoNextQuestion}
-            numberOfQuestion={numberOfActiveQuestion}
+            handleOptionHover={setImage}
           />
         );
       });

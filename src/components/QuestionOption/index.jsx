@@ -36,21 +36,20 @@ const QuestionOptionImg = styled.div`
 `;
 
 const QuestionOption = (props) => {
-  const { type, question, content, hoverContent, value, numberOfQuestion, handleOptionClick, handleGoNextQuestion, handleOptionHover } = props;
+  const { type, question, content, hoverContent, value, numberOfQuestion, handleOptionClick, handleGoNextQuestion, handleOptionHover, imgSrc } = props;
   const handleClick = () => {
     handleOptionClick(question, numberOfQuestion, value, content);
     handleGoNextQuestion();
   }
-  //
-  // const handleHover = () => {
-  //   handleOptionHover(imgSrc);
-  // }
-  // console.log(content);
-  // console.log(hoverContent);
+
+  const handleMouseEnter = () => {
+    handleOptionHover(imgSrc);
+  }
+
   return (
     <QestionOptionItem
       onClick={handleClick}
-      // onHover={handleHover}
+      onMouseEnter={handleMouseEnter}
       hoverContent={hoverContent}
     >
       {

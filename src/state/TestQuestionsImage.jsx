@@ -7,7 +7,6 @@ class TestQuestionsImageContainer extends Container {
   };
 
   setImage = (src) => {
-    console.log('option hovered');
     this.setState({ imgSrc: src });
   }
 }

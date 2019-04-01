@@ -4,11 +4,11 @@ import DatePicker from 'react-date-picker';
 import MaskedInput from 'react-text-mask';
 import dropdown from '../../img/icons/dropdown-arow.svg';
 
-const InputWrapOutter = styled.div`
+const OutterWrap = styled.div`
   margin-bottom: 16px;
 `;
 
-const InputWrap = styled.div`
+const Wrap = styled.div`
   position: relative;
   width: 370px;
   height: 56px;
@@ -92,7 +92,7 @@ const InputWrap = styled.div`
   }
 `;
 
-const InputDecoration = styled.div`
+const IconBlock = styled.div`
   position: absolute;
   width: 54px;
   height: 56px;
@@ -147,7 +147,7 @@ const DatePickerHideInitialDate = styled.div`
   background-color: #ffffff;
 `;
 
-const InputIconImg = styled.img`
+const Icon = styled.img`
   display: inline-block;
   width: 24px;
   height: 24px;
@@ -161,7 +161,7 @@ const ErrorMessage = styled.div`
   color: #ed1b24;
 `;
 
-class Input extends Component {
+export default class Input extends Component {
   constructor(props) {
     super(props);
 
@@ -223,8 +223,6 @@ class Input extends Component {
     const number = input.value;
     const regExpr = /\d+/g;
     const editedNumber = number.match(regExpr).join('');
-
-    console.log(number.length);
 
     if (editedNumber.length === 11) {
       inputHandler(number);
@@ -358,20 +356,20 @@ class Input extends Component {
     }
 
     return (
-      <InputWrapOutter>
-        <InputWrap ref={this.inputWrap}>
+      <OutterWrap>
+        <Wrap ref={this.inputWrap}>
           {
             hasIcon ? (
-              <InputDecoration>
-                <InputIconImg src={icon} />
-              </InputDecoration>
+              <IconBlock>
+                <Icon src={icon} />
+              </IconBlock>
             ) : (
               ''
             )
           }
 
           {inputType}
-        </InputWrap>
+        </Wrap>
         {
           isErrorMessageVisible ? (
             <ErrorMessage>Введите номер полностью</ErrorMessage>
@@ -379,9 +377,7 @@ class Input extends Component {
             ''
           )
         }
-      </InputWrapOutter>
+      </OutterWrap>
     );
   }
 }
-
-export default Input;

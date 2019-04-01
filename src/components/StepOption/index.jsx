@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const QestionOptionItem = styled.div`
+const Option = styled.div`
   width: auto;
   padding: 16px 24px;
   font-size: 16px;
@@ -24,7 +24,7 @@ const QestionOptionItem = styled.div`
   }
 `;
 
-const QuestionOptionImg = styled.div`
+const Img = styled.div`
   display: block;
   margin: auto;
   height: 24px;
@@ -35,19 +35,18 @@ const QuestionOptionImg = styled.div`
   background-position: center;
 `;
 
-const QuestionOption = (props) => {
-  const {
-    type,
-    question,
-    content,
-    hoverContent,
-    value,
-    numberOfQuestion,
-    handleOptionClick,
-    handleGoNextQuestion,
-    handleOptionHover,
-    imgSrc,
-  } = props;
+export default ({
+  type,
+  question,
+  content,
+  hoverContent,
+  value,
+  numberOfQuestion,
+  handleOptionClick,
+  handleGoNextQuestion,
+  handleOptionHover,
+  imgSrc,
+}) => {
   const handleClick = () => {
     handleOptionClick(question, numberOfQuestion, value, content);
     handleGoNextQuestion();
@@ -58,16 +57,14 @@ const QuestionOption = (props) => {
   };
 
   return (
-    <QestionOptionItem
+    <Option
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       hoverContent={hoverContent}
     >
       {
-        type === 'text' ? (content) : (<QuestionOptionImg content={content} />)
+        type === 'text' ? (content) : (<Img content={content} />)
       }
-    </QestionOptionItem>
+    </Option>
   );
 };
-
-export default QuestionOption;

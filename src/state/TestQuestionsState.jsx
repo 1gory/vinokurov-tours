@@ -15,8 +15,6 @@ class TestQuestionsContainer extends Container {
     newObj.value = value;
     newObj.description = description;
     newTestQuestionData[number] = newObj;
-    console.log(newObj);
-    console.log(newTestQuestionData);
     this.setState({ testQuestionsData: newTestQuestionData });
   }
 
@@ -30,7 +28,7 @@ class TestQuestionsContainer extends Container {
     const testQuestionsDataLength = testQuestionsData.length;
     const newTestQuestionData = JSON.parse(JSON.stringify(testQuestionsData));
     newTestQuestionData[testQuestionsDataLength] = formObj;
-    console.log(newTestQuestionData);
+
     this.setState({
       testQuestionsData: newTestQuestionData,
       testQuestionsCollected: true,
@@ -41,10 +39,6 @@ class TestQuestionsContainer extends Container {
     const { testQuestionsData } = this.state;
     const testQuestionsDataLength = testQuestionsData.length;
     const formData = testQuestionsData[testQuestionsDataLength - 1];
-    // const formDataPhoneCollectred =
-
-    // if (formData.phone)
-
   }
 }
 

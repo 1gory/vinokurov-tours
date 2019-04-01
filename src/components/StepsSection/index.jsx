@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { Subscribe } from 'unstated';
 import SquarePicture from '../SquarePicture';
-import TestQuestionsOptions from '../../containers/TestQuestionsOptions';
+import TestQuestionsOptions from '../../containers/StepsOptions';
 import TestQuestionsContainer from '../../state/TestQuestionsState';
 import TestQuestionsImageContainer from '../../state/TestQuestionsImage';
 
-const TestQuestionsWrap = styled.div`
+const TestQuestions = styled.div`
   padding-top: 113px;
   width: 100%;
   display: flex;
@@ -17,7 +17,7 @@ const TestQuestionsWrap = styled.div`
   align-items: flex-start;
 `;
 
-const TestQuestionsTitle = styled.h3`
+const Title = styled.h3`
   font-family: 'GothamPro';
   font-weight: 900;
   font-style: normal;
@@ -29,35 +29,35 @@ const TestQuestionsTitle = styled.h3`
   width: 470px;
 `;
 
-const TestQuestionsLeftColumn = styled.div`
+const LeftColumn = styled.div`
   display: inline-block;
   width: 470px;
 `;
 
-const TestQuestionsRightColumn = styled.div`
+const RightColumn = styled.div`
   display: inline-block;
   width: 670px;
   position: relative;
   right: -31px;
 `;
 
-const TestQuestions = () => (
-  <TestQuestionsWrap>
-    <TestQuestionsLeftColumn>
-      <TestQuestionsTitle>
+export default () => (
+  <TestQuestions>
+    <LeftColumn>
+      <Title>
         Пройдите небольшой тест-опрос
         <br />
         и мы предложим тур,
         <br />
         подобранный специально для вас
-      </TestQuestionsTitle>
+      </Title>
       <Subscribe to={[TestQuestionsContainer, TestQuestionsImageContainer]}>
         {(container, imageContainer) => (
           <TestQuestionsOptions container={container} imageContainer={imageContainer} />
         )}
       </Subscribe>
-    </TestQuestionsLeftColumn>
-    <TestQuestionsRightColumn>
+    </LeftColumn>
+    <RightColumn>
       <Subscribe to={[TestQuestionsImageContainer]}>
         {(container) => {
           const {
@@ -69,8 +69,6 @@ const TestQuestions = () => (
           return (<SquarePicture width={670} height={633} img={imgSrc} />);
         }}
       </Subscribe>
-    </TestQuestionsRightColumn>
-  </TestQuestionsWrap>
+    </RightColumn>
+  </TestQuestions>
 );
-
-export default TestQuestions;

@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const ButtonElem = styled.button`
   display: block;
   height: 48px;
-  width: ${(props) => (props.width)}px;
+  width: ${props => (props.width)}px;
   background-color: #ed1b24;
   text-align: center;
   border-radius: 3px;
@@ -22,12 +22,6 @@ const ButtonElem = styled.button`
   }
 `;
 
-const Button = (props) => {
-  const { text, width, handleClick } = props;
-
-  return (
-    <ButtonElem width={width} onClick={handleClick}>{text}</ButtonElem>
-  )
-}
-
-export default Button;
+export default ({ text, width, handleClick }) => (
+  <ButtonElem width={width} onClick={handleClick}>{text}</ButtonElem>
+);

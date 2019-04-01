@@ -7,11 +7,7 @@ import phoneImg from '../../img/icons/phone.svg';
 import mailImg from '../../img/icons/mail.svg';
 import accept from '../../img/icons/accept.svg';
 
-const TestQuestionsFormElem = styled.form`
-
-`;
-
-const QuestionsDisclaimer = styled.div`
+const Disclaimer = styled.div`
   font-family: 'opensans';
   font-size: 12px;
   line-height: 16.5px;
@@ -20,7 +16,7 @@ const QuestionsDisclaimer = styled.div`
   letter-spacing: normal;
 `;
 
-const QuestionsCircle = styled.div`
+const Circle = styled.div`
   width: 130px;
   height: 130px;
   background-color: #ed1b24;
@@ -32,7 +28,7 @@ const QuestionsCircle = styled.div`
   margin-bottom: 24px;
 `;
 
-const QuestionThanks = styled.p`
+const Thanks = styled.p`
   font-family: 'GothamPro';
   font-weight: 900;
   font-size: 28px;
@@ -41,7 +37,7 @@ const QuestionThanks = styled.p`
   margin-bottom: 46px;
 `;
 
-class TestQuestionsForm extends Component {
+class StepsForm extends Component {
   constructor(props) {
     super(props);
 
@@ -130,29 +126,29 @@ class TestQuestionsForm extends Component {
     ));
 
     return (
-      <TestQuestionsFormElem>
+      <form>
         {
           dataSended ? (
             <>
-              <QuestionsCircle />
-              <QuestionThanks>Спасибо, что вы выбрали нас!</QuestionThanks>
+              <Circle />
+              <Thanks>Спасибо, что вы выбрали нас!</Thanks>
               <Button width={204} text="перейти на" />
             </>
           ) : (
             <>
               {inputsTemplate}
-              <QuestionsDisclaimer>
+              <Disclaimer>
                 Нажимая на кнопку "ОТПРАВИТЬ",
                 вы даете согласие на обработку
                 своих персональных данных.
-              </QuestionsDisclaimer>
+              </Disclaimer>
               <Button width={170} text="отправить" handleClick={this.validateUserData} />
             </>
           )
         }
-      </TestQuestionsFormElem>
+      </form>
     );
   }
 }
 
-export default TestQuestionsForm;
+export default StepsForm;

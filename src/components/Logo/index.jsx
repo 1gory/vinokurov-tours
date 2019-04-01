@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import airplane from '../../img/icons/baseline-airplanemode_active-24px.svg';
+import airplane from '../../img/icons/airplane.svg';
 
-const LogoWrap = styled.div`
+const Logo = styled.div`
   position: relative;
   padding-left: 35px;
 `;
 
-const LogoImg = styled.img`
+const Img = styled.img`
   position: absolute;
   width: 32px;
   height: 32px;
@@ -16,7 +16,7 @@ const LogoImg = styled.img`
   display: inline-block;
 `;
 
-const LogoTitle = styled.div`
+const Title = styled.div`
   font-family: 'GothamPro';
   font-weight: 900;
   font-size: 14px;
@@ -27,13 +27,9 @@ const LogoTitle = styled.div`
   letter-spacing: normal;
 `;
 
-const Logo = () => {
-  return (
-    <LogoWrap>
-      <LogoImg src={airplane} />
-      <LogoTitle>ТурагенствоДмитрия Винокурова</LogoTitle>
-    </LogoWrap>
-  )
-}
-
-export default Logo;
+export default () => (
+  <Logo>
+    <Img src={airplane} />
+    <Title>ТурагенствоДмитрия Винокурова</Title>
+  </Logo>
+);

@@ -14,8 +14,6 @@ import calender from '../../img/icons/calendar.svg';
 import test1 from '../../img/1.jpg';
 import test2 from '../../img/2.jpg';
 import test3 from '../../img/3.jpg';
-import test4 from '../../img/4.jpg';
-import test5 from '../../img/5.jpg';
 
 const TestQuestionsOptionsWrap = styled.div`
   display: inline-block;
@@ -65,20 +63,26 @@ const TestQuestionsBack = styled.div`
 `;
 
 const QuestionsItem = (props) => {
-  const { number, questionsLength, question, optionsTemplate, visible } = props;
+  const {
+    number,
+    questionsLength,
+    question,
+    optionsTemplate,
+    visible,
+  } = props;
   /* Если вопрос последний, отображаем форму завершения опроса */
   return (
-    <QuestionsItemWrap visible={visible} >
+    <QuestionsItemWrap visible={visible}>
       <QuestionsCount>
         {
           number === questionsLength ? ('Завершение опроса') : (`Вопрос ${number}/${questionsLength - 1}`)
         }
-        </QuestionsCount>
+      </QuestionsCount>
       <QuestionsQuestion>{question}</QuestionsQuestion>
       {optionsTemplate}
     </QuestionsItemWrap>
-  )
-}
+  );
+};
 
 class TestQuestionsOptions extends Component {
   constructor(props) {
@@ -108,7 +112,7 @@ class TestQuestionsOptions extends Component {
               type: 'text',
               imgSrc: test3,
             },
-          ]
+          ],
         },
         {
           question: 'Отели какого уровня предпочитаете?',
@@ -131,7 +135,7 @@ class TestQuestionsOptions extends Component {
               value: 5,
               type: 'img',
             },
-          ]
+          ],
         },
         {
           question: 'Сколько будет длиться ваш отдых?',
@@ -151,7 +155,7 @@ class TestQuestionsOptions extends Component {
               value: 3,
               type: 'text',
             },
-          ]
+          ],
         },
         {
           question: 'С какого числа планируете начинать',
@@ -162,8 +166,7 @@ class TestQuestionsOptions extends Component {
           options: [],
         },
       ],
-    }
-
+    };
   }
 
   handleGoNextQuestion = () => {
@@ -175,14 +178,15 @@ class TestQuestionsOptions extends Component {
   handleGoBack = () => {
     let { numberOfActiveQuestion } = this.state;
 
-    if (numberOfActiveQuestion === 0) {
-      return false;
+    if (numberOfActiveQuestion !== 0) {
+      this.setState({ numberOfActiveQuestion: numberOfActiveQuestion -= 1 });
     } else {
-      this.setState({ numberOfActiveQuestion: numberOfActiveQuestion -= 1 })
+      return false;
     }
+    return true;
   }
 
-  render () {
+  render() {
     const {
       container: {
         addAnswer,
@@ -198,44 +202,38 @@ class TestQuestionsOptions extends Component {
 
     const { numberOfActiveQuestion, questionsData } = this.state;
     const questionsDataLength = questionsData.length;
-    let lastQuestion = numberOfActiveQuestion === questionsDataLength - 1;
+    const lastQuestion = numberOfActiveQuestion === questionsDataLength - 1;
     let questionsItemTemplate = [];
-    let visibleGoBack = numberOfActiveQuestion === 0 ? false : true;
+    let visibleGoBack = numberOfActiveQuestion !== 0;
 
     /* Если все ответы получены, скрываем кнопку возврата назад */
     if (testQuestionsCollected) {
       visibleGoBack = false;
     }
 
-    console.log(numberOfActiveQuestion);
-    console.log(questionsDataLength);
-    console.log("last" + lastQuestion);
     /* Формирование шаблона Вопроса */
     questionsItemTemplate = questionsData.map((currentItem, index) => {
-      const question = currentItem.question;
-      const options = currentItem.options;
-      let numberOfQuestion = index + 1;
+      const { question, options } = currentItem;
+      const numberOfQuestion = index + 1;
       let questionsOptionsTemplate = [];
       let visible = false;
 
       /* Формирование шаблона Опций Вопроса */
-      questionsOptionsTemplate = options.map(curItem => {
-        return (
-          <QuestionOption
-            key={curItem.content}
-            type={curItem.type}
-            question={question}
-            content={curItem.content}
-            hoverContent={curItem.hoverContent}
-            value={curItem.value}
-            numberOfQuestion={numberOfActiveQuestion}
-            imgSrc={curItem.imgSrc}
-            handleOptionClick={addAnswer}
-            handleGoNextQuestion={this.handleGoNextQuestion}
-            handleOptionHover={setImage}
-          />
-        );
-      });
+      questionsOptionsTemplate = options.map(curItem => (
+        <QuestionOption
+          key={curItem.content}
+          type={curItem.type}
+          question={question}
+          content={curItem.content}
+          hoverContent={curItem.hoverContent}
+          value={curItem.value}
+          numberOfQuestion={numberOfActiveQuestion}
+          imgSrc={curItem.imgSrc || test1}
+          handleOptionClick={addAnswer}
+          handleGoNextQuestion={this.handleGoNextQuestion}
+          handleOptionHover={setImage}
+        />
+      ));
 
       if (numberOfActiveQuestion === index) {
         visible = true;
@@ -243,7 +241,9 @@ class TestQuestionsOptions extends Component {
 
       /* Если это 4-й вопрос, кладем туда Input с DatePicker */
       if (numberOfQuestion === 4) {
-        /* Обертка для функции записывания в стейт ответа с дефолтными аргументами, из инпута приходит только дата */
+        /* Обертка для функции записывания
+        в стейт ответа с дефолтными аргументами,
+        из инпута приходит только дата */
         const addAnswerWithArguments = (value) => {
           const inputQuestion = question;
           const number = numberOfActiveQuestion;
@@ -251,16 +251,16 @@ class TestQuestionsOptions extends Component {
           /* Когда выбирается дата, происходит переход на следующий слайд */
           this.handleGoNextQuestion();
           return addAnswer(inputQuestion, number, value, description);
-        }
+        };
 
         questionsOptionsTemplate.push(
           <Input
-            type={'datepicker'}
-            hasIcon={true}
+            type="datepicker"
+            hasIcon
             icon={calender}
             inputHandler={addAnswerWithArguments}
-          />
-        )
+          />,
+        );
       }
 
       return (
@@ -289,7 +289,7 @@ class TestQuestionsOptions extends Component {
           visibleGoBack ? (<TestQuestionsBack onClick={this.handleGoBack}>Назад</TestQuestionsBack>) : ''
         }
       </TestQuestionsOptionsWrap>
-    )
+    );
   }
 }
 

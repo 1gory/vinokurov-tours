@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import SquarePicture  from '../SquarePicture';
-import TestQuestionsOptions  from '../../containers/TestQuestionsOptions';
-import TestQuestionsContainer  from '../../state/TestQuestionsState';
-import TestQuestionsImageContainer  from '../../state/TestQuestionsImage';
 import { Subscribe } from 'unstated';
+import SquarePicture from '../SquarePicture';
+import TestQuestionsOptions from '../../containers/TestQuestionsOptions';
+import TestQuestionsContainer from '../../state/TestQuestionsState';
+import TestQuestionsImageContainer from '../../state/TestQuestionsImage';
 
 const TestQuestionsWrap = styled.div`
   padding-top: 113px;
@@ -41,33 +41,36 @@ const TestQuestionsRightColumn = styled.div`
   right: -31px;
 `;
 
-const TestQuestions = (props) => {
+const TestQuestions = () => (
+  <TestQuestionsWrap>
+    <TestQuestionsLeftColumn>
+      <TestQuestionsTitle>
+        Пройдите небольшой тест-опрос
+        <br />
+        и мы предложим тур,
+        <br />
+        подобранный специально для вас
+      </TestQuestionsTitle>
+      <Subscribe to={[TestQuestionsContainer, TestQuestionsImageContainer]}>
+        {(container, imageContainer) => (
+          <TestQuestionsOptions container={container} imageContainer={imageContainer} />
+        )}
+      </Subscribe>
+    </TestQuestionsLeftColumn>
+    <TestQuestionsRightColumn>
+      <Subscribe to={[TestQuestionsImageContainer]}>
+        {(container) => {
+          const {
+            state: {
+              imgSrc,
+            },
+          } = container;
 
-  return (
-    <TestQuestionsWrap>
-      <TestQuestionsLeftColumn>
-        <TestQuestionsTitle>Пройдите небольшой тест-опрос<br/>и мы предложим тур,<br/>подобранный специально для вас</TestQuestionsTitle>
-        <Subscribe to={[TestQuestionsContainer, TestQuestionsImageContainer]}>
-          {(container, imageContainer) => (
-            <TestQuestionsOptions container={container} imageContainer={imageContainer} />
-          )}
-        </Subscribe>
-      </TestQuestionsLeftColumn>
-      <TestQuestionsRightColumn>
-        <Subscribe to={[TestQuestionsImageContainer]}>
-          {container => {
-            const {
-              state: {
-                imgSrc,
-              },
-            } = container;
-
-            return (<SquarePicture width={670} height={633} img={imgSrc}/>);
-          }}
-        </Subscribe>
-      </TestQuestionsRightColumn>
-    </TestQuestionsWrap>
-  )
-}
+          return (<SquarePicture width={670} height={633} img={imgSrc} />);
+        }}
+      </Subscribe>
+    </TestQuestionsRightColumn>
+  </TestQuestionsWrap>
+);
 
 export default TestQuestions;

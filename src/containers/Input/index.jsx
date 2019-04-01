@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import DatePicker from 'react-date-picker';
-import dropdown from '../../img/icons/dropdown-arow.svg';
 import MaskedInput from 'react-text-mask';
+import dropdown from '../../img/icons/dropdown-arow.svg';
 
 const InputWrapOutter = styled.div`
   margin-bottom: 16px;
@@ -171,7 +171,7 @@ class Input extends Component {
       inputData: '',
       inputDataInvalid: false,
       inputFocused: false,
-    }
+    };
 
     this.inputWrap = React.createRef();
   }
@@ -180,7 +180,7 @@ class Input extends Component {
     const { inputHandler } = this.props;
     const { isDateChanged } = this.state;
     const InputWrapClassName = this.inputWrap.current.className;
-    let newDate = date;
+    const newDate = date;
     if (!isDateChanged) {
       this.inputWrap.current.className = `${InputWrapClassName} input-wrap_choose-date-hidden`;
     }
@@ -194,7 +194,7 @@ class Input extends Component {
   }
 
   handleToggleDatePicker = () => {
-    let InputWrapClassName = this.inputWrap.current.className;
+    const InputWrapClassName = this.inputWrap.current.className;
     if (InputWrapClassName.indexOf('input-wrap_focused') === -1) {
       this.inputWrap.current.className = `${InputWrapClassName} input-wrap_focused`;
     } else {
@@ -204,7 +204,6 @@ class Input extends Component {
 
   handleNameChange = (e) => {
     const { inputHandler } = this.props;
-    const input = e.target;
     const name = e.target.value;
     const regExpr = new RegExp(/^[а-яА-Яa-zA-Z\s-ё]*$/);
     const isNameValid = regExpr.test(name);
@@ -233,14 +232,14 @@ class Input extends Component {
       this.setState({
         inputData: number,
         inputDataInvalid: false,
-      })
+      });
     } else {
       inputHandler('');
 
       this.setState({
         inputData: number,
         inputDataInvalid: true,
-      })
+      });
     }
   };
 
@@ -253,7 +252,7 @@ class Input extends Component {
 
     this.setState({
       inputData: mail,
-    })
+    });
   }
 
   handleInputFocus = () => {
@@ -262,7 +261,7 @@ class Input extends Component {
 
     this.setState({
       inputFocused: true,
-    })
+    });
   }
 
   handleInputBlur = () => {
@@ -271,16 +270,24 @@ class Input extends Component {
 
     this.setState({
       inputFocused: false,
-    })
+    });
   }
 
   render() {
-    const { icon, hasIcon, type, placeholder, inputHandler, error } = this.props;
-    const { inputData, inputDataInvalid, inputFocused } = this.state;
+    const {
+      icon,
+      hasIcon,
+      type,
+      placeholder,
+      error,
+    } = this.props;
+    const {
+      inputData,
+      inputDataInvalid,
+      inputFocused,
+      date,
+    } = this.state;
     const isErrorMessageVisible = error || (inputDataInvalid && inputFocused);
-    console.log(error);
-    console.log(error || (inputDataInvalid && inputFocused));
-    console.log("Обновился компонент инпут");
 
     let inputType = null;
     switch (type) {
@@ -289,8 +296,8 @@ class Input extends Component {
           <div>
             <DatePicker
               onChange={this.handleChangeDate}
-              value={this.state.date}
-              minDate={this.state.date}
+              value={date}
+              minDate={date}
               clearIcon={null}
               calendarIcon={
                 <DatePickerIcon />
@@ -298,7 +305,7 @@ class Input extends Component {
               onCalendarOpen={this.handleToggleDatePicker}
               onCalendarClose={this.handleToggleDatePicker}
             />
-            <DatePickerHideInitialDate className='input-wrap__choose-date'>Выберите дату</DatePickerHideInitialDate>
+            <DatePickerHideInitialDate className="input-wrap__choose-date">Выберите дату</DatePickerHideInitialDate>
           </div>
         );
         break;
@@ -318,9 +325,9 @@ class Input extends Component {
           <MaskedInput
             mask={['+', '7', ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
             placeholder={placeholder}
-            guide={true}
+            guide
             onChange={this.handlePhoneChange}
-            keepCharPositions={true}
+            keepCharPositions
             value={inputData}
             render={(ref, props) => (
               <InputElem ref={ref} {...props} />
@@ -349,9 +356,9 @@ class Input extends Component {
           />
         );
     }
-    
+
     return (
-      <InputWrapOutter >
+      <InputWrapOutter>
         <InputWrap ref={this.inputWrap}>
           {
             hasIcon ? (
@@ -373,7 +380,7 @@ class Input extends Component {
           )
         }
       </InputWrapOutter>
-    )
+    );
   }
 }
 

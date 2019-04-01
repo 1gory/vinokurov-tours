@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const QestionOptionItem = styled.div`
@@ -20,7 +20,7 @@ const QestionOptionItem = styled.div`
     color: #ffffff;
   }
   &:hover div {
-    background-image: url(${(props) => (props.hoverContent)});
+    background-image: url(${props => (props.hoverContent)});
   }
 `;
 
@@ -29,22 +29,33 @@ const QuestionOptionImg = styled.div`
   margin: auto;
   height: 24px;
   width: auto;
-  background-image: url(${(props) => (props.content)});
+  background-image: url(${props => (props.content)});
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 `;
 
 const QuestionOption = (props) => {
-  const { type, question, content, hoverContent, value, numberOfQuestion, handleOptionClick, handleGoNextQuestion, handleOptionHover, imgSrc } = props;
+  const {
+    type,
+    question,
+    content,
+    hoverContent,
+    value,
+    numberOfQuestion,
+    handleOptionClick,
+    handleGoNextQuestion,
+    handleOptionHover,
+    imgSrc,
+  } = props;
   const handleClick = () => {
     handleOptionClick(question, numberOfQuestion, value, content);
     handleGoNextQuestion();
-  }
+  };
 
   const handleMouseEnter = () => {
     handleOptionHover(imgSrc);
-  }
+  };
 
   return (
     <QestionOptionItem
@@ -56,7 +67,7 @@ const QuestionOption = (props) => {
         type === 'text' ? (content) : (<QuestionOptionImg content={content} />)
       }
     </QestionOptionItem>
-  )
-}
+  );
+};
 
 export default QuestionOption;

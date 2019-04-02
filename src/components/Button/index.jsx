@@ -17,6 +17,7 @@ const ButtonElem = styled.button`
   text-transform: uppercase;
   border: 0px;
   margin-bottom: 25px;
+  transition: all 0.2s ease-in-out;
   &:hover {
     background-color: #c82027;
   }

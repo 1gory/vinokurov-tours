@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Subscribe } from 'unstated';
 import StepOption from '../../components/StepOption';
 import Input from '../Input';
-import TestQuestionsForm from '../StepsForm';
+import StepsForm from '../StepsForm';
 import stepsData from './stepsData';
 import StepItem from '../../components/StepItem';
 import backlink from '../../img/icons/back-link.svg';
 import calender from '../../img/icons/calendar.svg';
 import img1 from '../../img/1.jpg';
+import StepsImageContainer from '../../state/StepsImageState';
 
 const Wrap = styled.div`
   display: inline-block;
@@ -59,17 +61,19 @@ class TestQuestionsOptions extends Component {
     return true;
   }
 
+  goToFirstStep = (e) => {
+    e.preventDefault;
+    this.setState({ numberOfActiveStep: 0 });
+  }
+
   render() {
     const {
       container: {
         addAnswer,
         addFormData,
         state: {
-          testQuestionsCollected,
+          stepsCollected,
         },
-      },
-      imageContainer: {
-        setImage,
       },
     } = this.props;
 
@@ -80,7 +84,7 @@ class TestQuestionsOptions extends Component {
     let visibleGoBack = numberOfActiveStep !== 0;
 
     /* Если все ответы получены, скрываем кнопку возврата назад */
-    if (testQuestionsCollected) {
+    if (stepsCollected) {
       visibleGoBack = false;
     }
 
@@ -93,19 +97,29 @@ class TestQuestionsOptions extends Component {
 
       /* Формирование шаблона Опций Вопроса */
       questionsOptionsTemplate = options.map(curItem => (
-        <StepOption
-          key={curItem.content}
-          type={curItem.type}
-          question={question}
-          content={curItem.content}
-          hoverContent={curItem.hoverContent}
-          value={curItem.value}
-          numberOfQuestion={numberOfActiveStep}
-          imgSrc={curItem.imgSrc || img1}
-          handleOptionClick={addAnswer}
-          handleGoNextQuestion={this.handleGoNextQuestion}
-          handleOptionHover={setImage}
-        />
+        <Subscribe to={[StepsImageContainer]}>
+          {(imageContainer) => {
+            const {
+              setImage,
+            } = imageContainer;
+
+            return (
+              <StepOption
+                key={curItem.content}
+                type={curItem.type}
+                question={question}
+                content={curItem.content}
+                hoverContent={curItem.hoverContent}
+                value={curItem.value}
+                numberOfQuestion={numberOfActiveStep}
+                imgSrc={curItem.imgSrc || img1}
+                handleOptionClick={addAnswer}
+                handleGoNextQuestion={this.handleGoNextQuestion}
+                handleOptionHover={setImage}
+              />
+            );
+          }}
+        </Subscribe>
       ));
 
       if (numberOfActiveStep === index) {
@@ -153,7 +167,7 @@ class TestQuestionsOptions extends Component {
         {questionsItemTemplate}
         {
           lastQuestion ? (
-            <TestQuestionsForm submitHandler={addFormData} />
+            <StepsForm submitHandler={addFormData} goToFirstStepHandler={this.goToFirstStep} />
           ) : (
             ''
           )

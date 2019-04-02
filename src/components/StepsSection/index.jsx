@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import { Subscribe } from 'unstated';
 import SquarePicture from '../SquarePicture';
 import TestQuestionsOptions from '../../containers/StepsOptions';
-import TestQuestionsContainer from '../../state/TestQuestionsState';
-import TestQuestionsImageContainer from '../../state/TestQuestionsImage';
+import StepsContainer from '../../state/StepsState';
+import StepsImageContainer from "../../state/StepsImageState";
 
-const TestQuestions = styled.div`
+const StepsSection = styled.div`
   padding-top: 113px;
   width: 100%;
   display: flex;
@@ -42,7 +42,7 @@ const RightColumn = styled.div`
 `;
 
 export default () => (
-  <TestQuestions>
+  <StepsSection>
     <LeftColumn>
       <Title>
         Пройдите небольшой тест-опрос
@@ -51,14 +51,14 @@ export default () => (
         <br />
         подобранный специально для вас
       </Title>
-      <Subscribe to={[TestQuestionsContainer, TestQuestionsImageContainer]}>
-        {(container, imageContainer) => (
-          <TestQuestionsOptions container={container} imageContainer={imageContainer} />
+      <Subscribe to={[StepsContainer]}>
+        {(container) => (
+          <TestQuestionsOptions container={container} />
         )}
       </Subscribe>
     </LeftColumn>
     <RightColumn>
-      <Subscribe to={[TestQuestionsImageContainer]}>
+      <Subscribe to={[StepsImageContainer]}>
         {(container) => {
           const {
             state: {
@@ -70,5 +70,5 @@ export default () => (
         }}
       </Subscribe>
     </RightColumn>
-  </TestQuestions>
+  </StepsSection>
 );

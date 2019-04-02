@@ -111,6 +111,7 @@ class StepsForm extends Component {
   }
 
   render() {
+    const { goToFirstStepHandler } = this.props;
     const { inputsData, dataSended } = this.state;
     let inputsTemplate = [];
 
@@ -132,7 +133,7 @@ class StepsForm extends Component {
             <>
               <Circle />
               <Thanks>Спасибо, что вы выбрали нас!</Thanks>
-              <Button width={204} text="перейти на" />
+              <Button width={224} text="начать опрос заного" handleClick={goToFirstStepHandler} />
             </>
           ) : (
             <>

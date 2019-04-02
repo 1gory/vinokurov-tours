@@ -169,7 +169,6 @@ export default class Input extends Component {
       date: new Date(),
       isDateChanged: false,
       inputData: '',
-      inputDataInvalid: false,
       inputFocused: false,
     };
 
@@ -229,14 +228,12 @@ export default class Input extends Component {
 
       this.setState({
         inputData: number,
-        inputDataInvalid: false,
       });
     } else {
       inputHandler('');
 
       this.setState({
         inputData: number,
-        inputDataInvalid: true,
       });
     }
   };
@@ -281,11 +278,8 @@ export default class Input extends Component {
     } = this.props;
     const {
       inputData,
-      inputDataInvalid,
-      inputFocused,
       date,
     } = this.state;
-    const isErrorMessageVisible = error || (inputDataInvalid && inputFocused);
 
     let inputType = null;
     switch (type) {
@@ -371,7 +365,7 @@ export default class Input extends Component {
           {inputType}
         </Wrap>
         {
-          isErrorMessageVisible ? (
+          error ? (
             <ErrorMessage>Введите номер полностью</ErrorMessage>
           ) : (
             ''

@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'GothamPro';
+    src: url('../fonts/gp/GothamPro-Bold.eot');
+    src: url('../fonts/gp/GothamPro-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/gp/GothamPro-Bold.woff') format('woff2'),
+    url('../fonts/gp/GothamPro-Bold.woff') format('woff'),
+    url('../fonts/gp/GothamPro-Bold.ttf') format('truetype'),
+    url('../fonts/gp/GothamPro-Bold.svg#pier_sansregular') format('svg');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GothamPro';
+    src: url('../fonts/GothamPro-Medium.eot');
+    src: url('../fonts/GothamPro-Medium.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/GothamPro-Medium.woff') format('woff2'),
+    url('../fonts/GothamPro-Medium.woff') format('woff'),
+    url('../fonts/GothamPro-Medium.ttf') format('truetype'),
+    url('../fonts/GothamPro-Medium.svg#pier_sansregular') format('svg');
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'poppins';
+    src: url('../fonts/poppins/poppins-regular-webfont.eot');
+    src: url('../fonts/poppins/poppins-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/poppins/poppins-regular-webfont.woff2') format('woff2'),
+    url('../fonts/poppins/poppins-regular-webfont.woff') format('woff'),
+    url('../fonts/poppins/poppins-regular-webfont.ttf') format('truetype'),
+    url('../fonts/poppins/poppins-regular-webfont.svg#pier_sansbold') format('svg');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'opensans';
+    src: url('../fonts/opensans/opensans-webfont.eot');
+    src: url('../fonts/opensans/opensans-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/opensans/opensans-webfont.woff2') format('woff2'),
+    url('../fonts/opensans/opensans-webfont.woff') format('woff'),
+    url('../fonts/opensans/opensans-webfont.ttf') format('truetype'),
+    url('../fonts/opensans/opensans-webfont.svg#pier_sansbold') format('svg');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'opensans';
+    src: url('../fonts/opensans/opensanslight-webfont.eot');
+    src: url('../fonts/opensans/opensanslight-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/opensans/opensanslight-webfont.woff2') format('woff2'),
+    url('../fonts/opensans/opensanslight-webfont.woff') format('woff'),
+    url('../fonts/opensans/opensanslight-webfont.ttf') format('truetype'),
+    url('../fonts/opensans/opensanslight-webfont.svg#pier_sansbold') format('svg');
+    font-weight: 100;
+    font-style: normal;
+}

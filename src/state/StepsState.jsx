@@ -1,6 +1,6 @@
 import { Container } from 'unstated';
 
-class StepsContainer extends Container {
+export default class extends Container {
   state = {
     stepsData: [],
     stepsCollected: false,
@@ -9,12 +9,12 @@ class StepsContainer extends Container {
   addAnswer = (question, number, value, description) => {
     const { stepsData } = this.state;
     const newTestQuestionData = JSON.parse(JSON.stringify(stepsData));
-    const newObj = {};
-    newObj.question = question;
-    newObj.numberOfQuestion = number;
-    newObj.value = value;
-    newObj.description = description;
-    newTestQuestionData[number] = newObj;
+    const tempObj = {};
+    tempObj.question = question;
+    tempObj.numberOfQuestion = number;
+    tempObj.value = value;
+    tempObj.description = description;
+    newTestQuestionData[number] = tempObj;
     this.setState({ stepsData: newTestQuestionData });
   }
 
@@ -33,7 +33,7 @@ class StepsContainer extends Container {
       stepsData: newTestQuestionData,
       stepsCollected: true,
     });
+
+    return true;
   }
 }
-
-export default StepsContainer;

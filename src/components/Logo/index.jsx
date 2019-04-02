@@ -30,6 +30,6 @@ const Title = styled.div`
 export default () => (
   <Logo>
     <Img src={airplane} />
-    <Title>ТурагенствоДмитрия Винокурова</Title>
+    <Title>Турагенство Дмитрия Винокурова</Title>
   </Logo>
 );

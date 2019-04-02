@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Subscribe } from 'unstated';
-import StepOption from '../../components/StepOption';
+import QuizOption from '../../components/QuizOption';
 import Input from '../Input';
-import StepsForm from '../StepsForm';
+import QuizForm from '../QuizForm';
 import stepsData from './stepsData';
-import StepItem from '../../components/StepItem';
+import QuizStep from '../../components/QuizStep';
 import backlink from '../../img/icons/back-link.svg';
 import calender from '../../img/icons/calendar.svg';
 import img1 from '../../img/1.jpg';
@@ -16,8 +16,10 @@ const Wrap = styled.div`
   width: 370px;
 `;
 
-const GoBack = styled.div`
+const GoBack = styled.button`
   display: inline-block;
+  background: none;
+  border: 0px;
   background-image: url(${backlink});
   background-repeat: no-repeat;
   background-size: 24px 24px;
@@ -34,7 +36,7 @@ const GoBack = styled.div`
   }
 `;
 
-class TestQuestionsOptions extends Component {
+export default class extends Component {
   constructor(props) {
     super(props);
 
@@ -50,7 +52,8 @@ class TestQuestionsOptions extends Component {
     this.setState({ numberOfActiveStep });
   }
 
-  handleGoBack = () => {
+  handleGoBack = (e) => {
+    e.preventDefault();
     let { numberOfActiveStep } = this.state;
 
     if (numberOfActiveStep !== 0) {
@@ -62,7 +65,7 @@ class TestQuestionsOptions extends Component {
   }
 
   goToFirstStep = (e) => {
-    e.preventDefault;
+    e.preventDefault();
     this.setState({ numberOfActiveStep: 0 });
   }
 
@@ -79,17 +82,17 @@ class TestQuestionsOptions extends Component {
 
     const { numberOfActiveStep, data } = this.state;
     const stepsDataLength = data.length;
-    const lastQuestion = numberOfActiveStep === stepsDataLength - 1;
-    let questionsItemTemplate = [];
-    let visibleGoBack = numberOfActiveStep !== 0;
+    const isLastStep = numberOfActiveStep === stepsDataLength - 1;
+    let stepsTemplate = [];
+    let isVisibleGoBack = numberOfActiveStep !== 0;
 
-    /* Если все ответы получены, скрываем кнопку возврата назад */
-    if (stepsCollected) {
-      visibleGoBack = false;
+    /* Если все ответы получены и это последний слайд, скрываем кнопку возврата назад */
+    if (stepsCollected && isLastStep) {
+      isVisibleGoBack = false;
     }
 
     /* Формирование шаблона Вопроса */
-    questionsItemTemplate = data.map((currentItem, index) => {
+    stepsTemplate = data.map((currentItem, index) => {
       const { question, options } = currentItem;
       const numberOfQuestion = index + 1;
       let questionsOptionsTemplate = [];
@@ -104,7 +107,7 @@ class TestQuestionsOptions extends Component {
             } = imageContainer;
 
             return (
-              <StepOption
+              <QuizOption
                 key={curItem.content}
                 type={curItem.type}
                 question={question}
@@ -151,7 +154,7 @@ class TestQuestionsOptions extends Component {
       }
 
       return (
-        <StepItem
+        <QuizStep
           key={question}
           number={numberOfQuestion}
           questionsLength={stepsDataLength}
@@ -164,20 +167,18 @@ class TestQuestionsOptions extends Component {
 
     return (
       <Wrap>
-        {questionsItemTemplate}
+        {stepsTemplate}
         {
-          lastQuestion ? (
-            <StepsForm submitHandler={addFormData} goToFirstStepHandler={this.goToFirstStep} />
+          isLastStep ? (
+            <QuizForm submitHandler={addFormData} goToFirstStepHandler={this.goToFirstStep} />
           ) : (
             ''
           )
         }
         {
-          visibleGoBack ? (<GoBack onClick={this.handleGoBack}>Назад</GoBack>) : ''
+          isVisibleGoBack ? (<GoBack onClick={this.handleGoBack}>Назад</GoBack>) : ''
         }
       </Wrap>
     );
   }
 }
-
-export default TestQuestionsOptions;

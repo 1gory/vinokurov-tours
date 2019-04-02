@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { Subscribe } from 'unstated';
 import SquarePicture from '../SquarePicture';
-import TestQuestionsOptions from '../../containers/StepsOptions';
+import QuizOptions from '../../containers/QuizOptions';
 import StepsContainer from '../../state/StepsState';
-import StepsImageContainer from "../../state/StepsImageState";
+import StepsImageContainer from '../../state/StepsImageState';
 
 const StepsSection = styled.div`
   padding-top: 113px;
@@ -52,8 +52,8 @@ export default () => (
         подобранный специально для вас
       </Title>
       <Subscribe to={[StepsContainer]}>
-        {(container) => (
-          <TestQuestionsOptions container={container} />
+        {container => (
+          <QuizOptions container={container} />
         )}
       </Subscribe>
     </LeftColumn>

@@ -161,7 +161,7 @@ const ErrorMessage = styled.div`
   color: #ed1b24;
 `;
 
-export default class Input extends Component {
+export default class extends Component {
   constructor(props) {
     super(props);
 
@@ -169,7 +169,7 @@ export default class Input extends Component {
       date: new Date(),
       isDateChanged: false,
       inputData: '',
-      inputFocused: false,
+      isOpen: false,
     };
 
     this.inputWrap = React.createRef();
@@ -196,8 +196,10 @@ export default class Input extends Component {
     const InputWrapClassName = this.inputWrap.current.className;
     if (InputWrapClassName.indexOf('input-wrap_focused') === -1) {
       this.inputWrap.current.className = `${InputWrapClassName} input-wrap_focused`;
+      this.setState({ isOpen: true });
     } else {
       this.inputWrap.current.className = InputWrapClassName.replace('input-wrap_focused', '');
+      this.setState({ isOpen: false });
     }
   }
 
@@ -253,19 +255,15 @@ export default class Input extends Component {
   handleInputFocus = () => {
     const InputWrapClassName = this.inputWrap.current.className;
     this.inputWrap.current.className = `${InputWrapClassName} input-wrap_focused`;
-
-    this.setState({
-      inputFocused: true,
-    });
   }
 
   handleInputBlur = () => {
     const InputWrapClassName = this.inputWrap.current.className;
     this.inputWrap.current.className = InputWrapClassName.replace('input-wrap_focused', '');
+  }
 
-    this.setState({
-      inputFocused: false,
-    });
+  handleChooseDateClick = () => {
+    this.setState({ isOpen: true });
   }
 
   render() {
@@ -279,6 +277,7 @@ export default class Input extends Component {
     const {
       inputData,
       date,
+      isOpen,
     } = this.state;
 
     let inputType = null;
@@ -287,6 +286,7 @@ export default class Input extends Component {
         inputType = (
           <div>
             <DatePicker
+              isOpen={isOpen}
               onChange={this.handleChangeDate}
               value={date}
               minDate={date}
@@ -297,7 +297,7 @@ export default class Input extends Component {
               onCalendarOpen={this.handleToggleDatePicker}
               onCalendarClose={this.handleToggleDatePicker}
             />
-            <DatePickerHideInitialDate className="input-wrap__choose-date">Выберите дату</DatePickerHideInitialDate>
+            <DatePickerHideInitialDate className="input-wrap__choose-date" onClick={this.handleChooseDateClick}>Выберите дату</DatePickerHideInitialDate>
           </div>
         );
         break;

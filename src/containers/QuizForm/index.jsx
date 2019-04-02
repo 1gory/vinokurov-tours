@@ -37,7 +37,7 @@ const Thanks = styled.p`
   margin-bottom: 46px;
 `;
 
-class StepsForm extends Component {
+export default class extends Component {
   constructor(props) {
     super(props);
 
@@ -133,13 +133,13 @@ class StepsForm extends Component {
             <>
               <Circle />
               <Thanks>Спасибо, что вы выбрали нас!</Thanks>
-              <Button width={224} text="начать опрос заного" handleClick={goToFirstStepHandler} />
+              <Button width={224} text="начать опрос заново" handleClick={goToFirstStepHandler} />
             </>
           ) : (
             <>
               {inputsTemplate}
               <Disclaimer>
-                Нажимая на кнопку "ОТПРАВИТЬ",
+                Нажимая на кнопку «ОТПРАВИТЬ»,
                 вы даете согласие на обработку
                 своих персональных данных.
               </Disclaimer>
@@ -151,5 +151,3 @@ class StepsForm extends Component {
     );
   }
 }
-
-export default StepsForm;

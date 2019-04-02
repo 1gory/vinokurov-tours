@@ -1,7 +1,7 @@
 import { Container } from 'unstated';
 import img from '../img/1.jpg';
 
-class StepsImageContainer extends Container {
+export default class StepsImageContainer extends Container {
   state = {
     imgSrc: img,
   };
@@ -10,5 +10,3 @@ class StepsImageContainer extends Container {
     this.setState({ imgSrc: src });
   }
 }
-
-export default StepsImageContainer;

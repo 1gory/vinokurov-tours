@@ -66,7 +66,7 @@ export default () => (
             },
           } = container;
 
-          return (<SquarePicture width={670} height={633} img={imgSrc} />);
+          return (<SquarePicture width="670px" height="633px" img={imgSrc} />);
         }}
       </Subscribe>
     </RightColumn>

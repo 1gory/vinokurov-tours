@@ -2,19 +2,34 @@ import React from 'react';
 import styled from 'styled-components';
 import Logo from '../Logo';
 import Button from '../Button';
+import SquarePicture from '../SquarePicture';
 import img1 from '../../img/1.jpg';
+import img2 from '../../img/2.jpg';
+import linkIcon from '../../img/icons/link.svg';
 
 const FirstScreen = styled.section`
   position: relative;
   height: 714px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: stretch;
+  align-items: stretch;
+  @media screen and (max-width: 992px) {
+    justify-content: center;
+  }
 `;
 
 const LeftColumn = styled.div`
-  width: 470px;
+  flex: 0 0 470px;
 `;
 
 const RightColumn = styled.div`
-  width: 670px;
+  flex: 0 1 670px;
+  @media screen and (max-width: 992px) {
+    display: none;
+  }
 `;
 
 const IndividualTours = styled.p`
@@ -54,7 +69,7 @@ const DirectionsTitle = styled.h4`
   font-family: 'opensans';
   font-size: 18px;
   font-weight: 900;
-  line-height: 24px;
+  line-height: 27px;
   text-transform: uppercase;
   letter-spacing: 0.1px;
   color: #474d57;
@@ -82,12 +97,29 @@ const DirectionCaption = styled.h4`
   font-family: 'opensans';
   font-weight: 900;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 20px;
   color: #474d57;
+  margin-bottom: 13px;
 `;
 
 const Link = styled.a`
-
+  display: inline-block;
+  font-family: 'opensans';
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 17px;
+  color: #ed1b24;
+  width: 90px;
+  background-image: url(${linkIcon});
+  background-repeat: no-repeat;
+  background-position: 75px 0px;
+  background-size: 16px 16px;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export default () => (
@@ -96,7 +128,11 @@ export default () => (
       <Logo />
       <IndividualTours>индивидуальные туры от экспертов</IndividualTours>
       <Title>Подбор туров в Таиланд за 2 часа</Title>
-      <Caption>С учётом всех ваших потребностей. Через<br/>проверенных Туроператоров.</Caption>
+      <Caption>
+        С учётом всех ваших потребностей. Через
+        <br />
+        проверенных Туроператоров.
+      </Caption>
       <Button width={158} text="подобрать" />
 
       <Directions>
@@ -107,11 +143,20 @@ export default () => (
             <Img src={img1} />
           </ImgWrap>
           <DirectionCaption>Доминикана</DirectionCaption>
+          <Link href="/">Подробнее</Link>
+        </Direction>
+
+        <Direction>
+          <ImgWrap>
+            <Img src={img2} />
+          </ImgWrap>
+          <DirectionCaption>Турция</DirectionCaption>
+          <Link href="/">Подробнее</Link>
         </Direction>
       </Directions>
     </LeftColumn>
     <RightColumn>
-
+      <SquarePicture width="100%" height="700px" img={img1} />
     </RightColumn>
   </FirstScreen>
 );

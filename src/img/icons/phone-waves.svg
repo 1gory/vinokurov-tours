@@ -1,0 +1,12 @@
+<svg id="outline-phone_in_talk-24px" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <g id="Bounding_Boxes">
+    <path id="Path_3396" data-name="Path 3396" d="M0,0H48V48H0Z" fill="none"/>
+  </g>
+  <g id="Outline" transform="translate(6 6)">
+    <g id="Group_357" data-name="Group 357">
+      <path id="Path_3397" data-name="Path 3397" d="M18,17h4A10,10,0,0,0,12,7v4A5.992,5.992,0,0,1,18,17Z" transform="translate(6 1)" fill="#474d57"/>
+      <path id="Path_3398" data-name="Path 3398" d="M26,21h4A18,18,0,0,0,12,3V7A13.99,13.99,0,0,1,26,21Z" transform="translate(6 -3)" fill="#474d57"/>
+      <path id="Path_3399" data-name="Path 3399" d="M37,28a22.721,22.721,0,0,1-7.14-1.14,2.23,2.23,0,0,0-.62-.1,2.049,2.049,0,0,0-1.42.58l-4.4,4.4A30.091,30.091,0,0,1,10.24,18.56l4.4-4.42a1.92,1.92,0,0,0,.5-2A22.721,22.721,0,0,1,14,5a2.006,2.006,0,0,0-2-2H5A2.006,2.006,0,0,0,3,5,34,34,0,0,0,37,39a2.006,2.006,0,0,0,2-2V30A2.006,2.006,0,0,0,37,28ZM7.06,7h3a27.572,27.572,0,0,0,.9,5.16l-2.4,2.42A30.7,30.7,0,0,1,7.06,7ZM35,34.94a29.8,29.8,0,0,1-7.6-1.52l2.4-2.4a25.505,25.505,0,0,0,5.2.9Z" transform="translate(-3 -3)" fill="#ed1b24"/>
+    </g>
+  </g>
+</svg>

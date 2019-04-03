@@ -17,7 +17,7 @@ const FirstScreen = styled.section`
   align-content: stretch;
   align-items: stretch;
   @media screen and (max-width: 992px) {
-    justify-content: center;
+    justify-content: flex-start;
   }
 `;
 

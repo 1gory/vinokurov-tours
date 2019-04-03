@@ -4,7 +4,21 @@ import WhatYouGetItem from '../WhatYouGetItem';
 import WhatYouGetData from './data';
 
 const WhatYouGet = styled.div`
-  height: 478px;
+  padding-top: 58px;
+  position: relative;
+  &:after {
+    position: absolute;
+    content: '';
+    display: block;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    height: 20px;
+    background-color: #ffffff;
+  }
+  @media screen and (max-width: 768px) {
+    padding-top: 13px;
+  }
 `;
 
 const Title = styled.h2`
@@ -13,18 +27,31 @@ const Title = styled.h2`
   line-height: 46px;
   color: #474d57;
   position: relative;
+  margin-bottom: 32px;
   &:after {
     position: absolute;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 28px;
+    line-height: 33px;
   }
 `;
 
 const Wrap = styled.div`
+  overflow-x: scroll;
+  
+`;
+
+const ItemsInner = styled.div`
+  width: 1170px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-content: stretch;
   align-items: stretch;
+  padding-left: 3px;
+  padding-right: 3px;
 `;
 
 export default () => {
@@ -38,7 +65,9 @@ export default () => {
     <WhatYouGet>
       <Title>Что вы получите</Title>
       <Wrap>
-        {ItemsTemplate}
+        <ItemsInner>
+          {ItemsTemplate}
+        </ItemsInner>
       </Wrap>
     </WhatYouGet>
   );

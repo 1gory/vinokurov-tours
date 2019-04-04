@@ -20,6 +20,21 @@ const Wrap = styled.div`
   border-bottom-right-radius: 3px;
   cursor: pointer;
   margin-bottom: 10px;
+${
+  (props) => {
+    if (props.theme === 'transparent') {
+      return (
+        `
+        padding-left: 0px;
+        border-left: 1px solid #ffffff;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        background: transparent;
+        `
+      )
+    }
+  }
+}
   &:hover {
     border-top: 1px solid #aeaeae;
     border-right: 1px solid #aeaeae;
@@ -122,6 +137,17 @@ const InputElem = styled.input`
   &:hover {
     color: #aeaeae;
   }
+${(props) => {
+    if (props.theme === 'transparent') {
+      return (
+        `color: #ffffff;
+        background: transparent;
+        &:hover {
+        color: #aeaeae;
+      }`);
+    }
+  }
+}
 `;
 
 const DatePickerIcon = styled.div`
@@ -273,6 +299,7 @@ export default class extends Component {
       type,
       placeholder,
       error,
+      theme,
     } = this.props;
     const {
       inputData,
@@ -333,8 +360,9 @@ export default class extends Component {
         inputType = (
           <InputElem
             placeholder={placeholder}
-            onChange={this.handleMailChange}
+            theme={theme}
             value={inputData}
+            onChange={this.handleMailChange}
             onFocus={this.handleInputFocus}
             onBlur={this.handleInputBlur}
           />
@@ -351,7 +379,7 @@ export default class extends Component {
 
     return (
       <OutterWrap>
-        <Wrap ref={this.inputWrap}>
+        <Wrap theme={theme} ref={this.inputWrap}>
           {
             hasIcon ? (
               <IconBlock>

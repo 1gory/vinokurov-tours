@@ -55,6 +55,7 @@ const Items = styled.div`
     & > div:nth-child(2n) {
       margin-right: 0px;
     }
+    margin-bottom: 0px;
   }
 `;
 
@@ -91,7 +92,7 @@ export default () => {
         </Items>
       </LeftColumn>
       <RightColumn>
-        <SquarePicture width={'100%'} height={'1170px'} img={numbersPicture} />
+        <SquarePicture width="100%" height="1170px" img={numbersPicture} />
       </RightColumn>
     </Numbers>
   );

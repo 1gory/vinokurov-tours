@@ -7,7 +7,12 @@ export default class MailContainer extends Container {
 
   setMail = (str) => {
     const { mail } = this.state;
-    console.log(mail);
     this.setState({ mail: str });
+  }
+
+  sendMail = () => {
+    const { mail } = this.state;
+    /* post запрос на отправку */
+    console.log(`Email ${mail} отправлен`);
   }
 }

@@ -8,6 +8,7 @@ import StepsImageContainer from '../../state/StepsImageState';
 
 const StepsSection = styled.div`
   padding-top: 113px;
+  padding-bottom: 44px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -15,6 +16,12 @@ const StepsSection = styled.div`
   justify-content: space-between;
   align-content: stretch;
   align-items: flex-start;
+  @media screen and (max-width: 1366px) {
+    display: block;
+  }
+  @media screen and (max-width: 768px) {
+    padding-top: 26px;
+  }
 `;
 
 const Title = styled.h3`
@@ -27,11 +34,21 @@ const Title = styled.h3`
   letter-spacing: normal;
   margin-bottom: 35px;
   width: 470px;
+  @media screen and (max-width: 768px) {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 25px;
+  }
 `;
 
 const LeftColumn = styled.div`
   display: inline-block;
   width: 470px;
+  @media screen and (max-width: 1366px) {
+    display: block;
+    width: auto;
+  }
 `;
 
 const RightColumn = styled.div`
@@ -39,6 +56,15 @@ const RightColumn = styled.div`
   width: 670px;
   position: relative;
   right: -31px;
+  @media screen and (max-width: 1366px) {
+    display: block;
+    position: static;
+    right: 0px;
+    width: auto;
+  }
+  @media screen and (max-width: 992px) {
+    display: none;
+  }
 `;
 
 export default () => (

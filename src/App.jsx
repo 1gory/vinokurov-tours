@@ -5,8 +5,10 @@ import WhatYouGet from './components/WhatYouGet';
 import Numbers from './components/Numbers';
 import About from './components/About';
 import DontKnow from './components/DontKnow';
+import AboutAs from './components/AboutUs';
+import Why from './components/Why';
+import LeftRequest from './components/LeftRequest';
 import QuizSection from './components/QuizSection';
-import Steps from './components/QuizSection';
 
 export default () => (
   <PageWrapper>
@@ -15,7 +17,9 @@ export default () => (
     <Numbers />
     <About />
     <DontKnow />
+    <AboutAs />
+    <Why />
+    <LeftRequest />
     <QuizSection />
-    <Steps />
   </PageWrapper>
 );

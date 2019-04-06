@@ -17,37 +17,67 @@ const Wrap = styled.div`
   @media screen and (max-width: 768px) {
     margin-left: -17px;
     margin-right: -17px;
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+  @media screen and (max-width: 576px) {
+    padding-top: 24px;
   }
 `;
 
 const LeftColumn = styled.div`
   width: 570px;
+  @media screen and (max-width: 576px) {
+    width: auto;
+  }
 `;
 
 const Title = styled.h2`
   font-family: 'GothamPro';
+  font-weight: 500;
   font-size: 36px;
   line-height: 44.5px;
   color: #ffffff;
   margin-bottom: 24px;
+  @media screen and (max-width: 576px) {
+    font-family: 'opensans';
+    font-weight: 100;
+    font-size: 28px;
+    line-height: 35.6px;
+    font-weight: 500;
+    margin-bottom: 33px;
+  }
 `;
 
 const Caption = styled.p`
   font-family: 'opensans';
+  font-weight: 500;
   font-size: 14px;
   line-height: 21px;
-  width: 370px;
+  max-width: 370px;
   color: #ffffff;
   margin-bottom: 32px;
+  @media screen and (max-width: 576px) {
+    font-size: 12px;
+    line-height: 21.3px;
+    margin-bottom: 29px;
+  }
 `;
 
 const CaptionSmall = styled.p`
   font-family: 'opensans';
+  font-weight: 500;
   font-size: 12px;
   line-height: 16.5px;
   color: #ffffff;
-  padding-top: 32px;
+  padding-top: 16px;
   margin-bottom: 24px;
+  max-width: 370px;
+  @media screen and (max-width: 576px) {
+    font-size: 12px;
+    line-height: 16px;
+    padding-top: 18px;
+  }
 `;
 
 export default () => (
@@ -81,10 +111,21 @@ export default () => (
         {`Нажимая на кнопку "ПОЛУЧИТЬ ПАМЯТКУ",
         вы даете согласие на обработку своих персональных данных.`}
       </CaptionSmall>
-      <Button
-        text="получить"
-        width={193}
-      />
+      <Subscribe to={[MailContainer]}>
+        {(mallContainer) => {
+          const {
+            sendMail,
+          } = mallContainer;
+
+          return (
+            <Button
+              text="получить"
+              width={193}
+              handleClick={sendMail}
+            />
+          );
+        }}
+      </Subscribe>
     </LeftColumn>
   </Wrap>
 );

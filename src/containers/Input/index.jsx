@@ -20,21 +20,6 @@ const Wrap = styled.div`
   border-bottom-right-radius: 3px;
   cursor: pointer;
   margin-bottom: 10px;
-${
-  (props) => {
-    if (props.theme === 'transparent') {
-      return (
-        `
-        padding-left: 0px;
-        border-left: 1px solid #ffffff;
-        border-top-left-radius: 3px;
-        border-bottom-left-radius: 3px;
-        background: transparent;
-        `
-      )
-    }
-  }
-}
   &:hover {
     border-top: 1px solid #aeaeae;
     border-right: 1px solid #aeaeae;
@@ -105,6 +90,64 @@ ${
   &.input-wrap_choose-date-hidden .input-wrap__choose-date {
     display: none;
   }
+ ${(props) => {
+    if (props.theme === 'transparent') {
+      return (
+        `
+        padding-left: 0px;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        background: transparent;
+        border-top: 1px solid #ffffff;
+        border-right: 1px solid #ffffff;
+        border-bottom: 1px solid #ffffff;
+        border-left: 1px solid #ffffff;
+        
+        &:hover,
+        &.input-wrap_focused {
+          border-top: 2px solid #ffffff;
+          border-right: 2px solid #ffffff;
+          border-bottom: 2px solid #ffffff;
+          border-left: 2px solid #ffffff;
+        }
+        & input,
+        &:hover input,
+        &.input-wrap_focused input {
+          color: #ffffff;
+          background: transparent;
+        }
+        &.input-wrap_focused input::-webkit-input-placeholder,
+        &:hover input::-webkit-input-placeholder,
+        & input::-webkit-input-placeholder {
+          color: #ffffff;
+          opacity: 0.7;
+        }
+        &.input-wrap_focused input::-moz-placeholder,
+        &:hover input::-moz-placeholder,
+        & input::-moz-placeholder {
+          color: #ffffff;
+          opacity: 0.7;
+        }
+        &.input-wrap_focused input:-moz-placeholder,
+        &:hover input:-moz-placeholder,
+        & input:-moz-placeholder {
+          color: #ffffff;
+          opacity: 0.7;
+        }
+        &.input-wrap_focused input:-ms-input-placeholder,
+        &:hover input:-ms-input-placeholder,
+        & input:-ms-input-placeholder {
+          color: #ffffff;
+          opacity: 0.7;
+        }
+        `);
+    }
+  }
+}
+  @media screen and (max-width: 576px) {
+    width: 324px;
+    height: 54px;
+  }
 `;
 
 const IconBlock = styled.div`
@@ -137,17 +180,6 @@ const InputElem = styled.input`
   &:hover {
     color: #aeaeae;
   }
-${(props) => {
-    if (props.theme === 'transparent') {
-      return (
-        `color: #ffffff;
-        background: transparent;
-        &:hover {
-        color: #aeaeae;
-      }`);
-    }
-  }
-}
 `;
 
 const DatePickerIcon = styled.div`

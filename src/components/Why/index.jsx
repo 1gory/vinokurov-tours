@@ -12,6 +12,10 @@ const Why = styled.div`
   padding-right: 98px;
   @media screen and (max-width: 576px) {
     padding-top: 14px;
+    margin-left: -17px;
+    margin-right: -17px;
+    padding-left: 17px;
+    padding-right: 17px;
   }
 `;
 

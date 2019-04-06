@@ -8,6 +8,7 @@ import DontKnow from './components/DontKnow';
 import AboutAs from './components/AboutUs';
 import Why from './components/Why';
 import LeftRequest from './components/LeftRequest';
+import TouristsPhoto from './components/TouristsPhoto';
 import QuizSection from './components/QuizSection';
 
 export default () => (
@@ -19,7 +20,8 @@ export default () => (
     <DontKnow />
     <AboutAs />
     <Why />
-    <LeftRequest />
     <QuizSection />
+    <LeftRequest />
+    <TouristsPhoto />
   </PageWrapper>
 );

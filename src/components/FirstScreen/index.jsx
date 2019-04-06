@@ -23,6 +23,11 @@ const FirstScreen = styled.section`
 
 const LeftColumn = styled.div`
   flex: 0 0 470px;
+  @media screen and (max-width: 576px) {
+    display: block;
+    width: auto;
+    flex: 0 1 auto;
+  }
 `;
 
 const RightColumn = styled.div`
@@ -51,6 +56,10 @@ const Title = styled.h3`
   line-height: 57px;
   color: #474d57;
   margin-bottom: 26px;
+  @media screen and (max-width: 576px) {
+    font-size: 32px;
+    line-height: 44.16px;
+  }
 `;
 
 const Caption = styled.p`

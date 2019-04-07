@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import scrollToComponent from 'react-scroll-to-component';
-import PageWrapper from './components/PageWrapper';
 import FirstScreen from './components/FirstScreen';
 import WhatYouGet from './components/WhatYouGet';
 import Numbers from './components/Numbers';
@@ -30,7 +29,7 @@ export default class extends Component {
 
   render() {
     return (
-      <PageWrapper>
+      <>
         <FirstScreen scrollToMyRef={this.scrollToMyRef} />
         <WhatYouGet />
         <Numbers />
@@ -43,7 +42,7 @@ export default class extends Component {
         <TouristsPhoto />
         <Contacts />
         <Footer />
-      </PageWrapper>
+      </>
     );
   }
 }

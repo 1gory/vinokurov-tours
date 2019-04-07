@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import SquarePicture from '../SquarePicture';
+import PageWrapper from '../SectionWrap';
 import sp1 from '../../img/tourists1.jpg';
 import sp2 from '../../img/tourists2.jpg';
 import sp3 from '../../img/tourists3.jpg';
@@ -120,55 +121,57 @@ const SPC6 = styled(SquarePictureContainer)`
 `;
 
 export default () => (
-  <Wrap>
-    <Column>
-      <Title>Фото туристов, отдыхающих с нами</Title>
-      <Caption>
-        {`Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты.
-        Вдали от всех живут они в буквенных домах на берегу Семантика большого языкового океана.`}
-      </Caption>
-    </Column>
-    <SPC1>
-      <SquarePicture
-        width="100%"
-        height="100%"
-        img={sp1}
-      />
-    </SPC1>
-    <SPC2>
-      <SquarePicture
-        width="100%"
-        height="100%"
-        img={sp2}
-      />
-    </SPC2>
-    <SPC3>
-      <SquarePicture
-        width="100%"
-        height="100%"
-        img={sp3}
-      />
-    </SPC3>
-    <SPC4>
-      <SquarePicture
-        width="100%"
-        height="100%"
-        img={sp4}
-      />
-    </SPC4>
-    <SPC5>
-      <SquarePicture
-        width="100%"
-        height="100%"
-        img={sp5}
-      />
-    </SPC5>
-    <SPC6>
-      <SquarePicture
-        width="100%"
-        height="100%"
-        img={sp6}
-      />
-    </SPC6>
-  </Wrap>
+  <PageWrapper>
+    <Wrap>
+      <Column>
+        <Title>Фото туристов, отдыхающих с нами</Title>
+        <Caption>
+          {`Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты.
+          Вдали от всех живут они в буквенных домах на берегу Семантика большого языкового океана.`}
+        </Caption>
+      </Column>
+      <SPC1>
+        <SquarePicture
+          width="100%"
+          height="100%"
+          img={sp1}
+        />
+      </SPC1>
+      <SPC2>
+        <SquarePicture
+          width="100%"
+          height="100%"
+          img={sp2}
+        />
+      </SPC2>
+      <SPC3>
+        <SquarePicture
+          width="100%"
+          height="100%"
+          img={sp3}
+        />
+      </SPC3>
+      <SPC4>
+        <SquarePicture
+          width="100%"
+          height="100%"
+          img={sp4}
+        />
+      </SPC4>
+      <SPC5>
+        <SquarePicture
+          width="100%"
+          height="100%"
+          img={sp5}
+        />
+      </SPC5>
+      <SPC6>
+        <SquarePicture
+          width="100%"
+          height="100%"
+          img={sp6}
+        />
+      </SPC6>
+    </Wrap>
+  </PageWrapper>
 );

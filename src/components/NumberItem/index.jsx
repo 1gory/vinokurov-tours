@@ -77,7 +77,9 @@ export default ({
 }) => (
   <Wrap big={big}>
     <Number>{number}</Number>
-    <Subnumber>{subnumber}</Subnumber>
+    {
+      subnumber ? (<Subnumber>{subnumber}</Subnumber>) : ('')
+    }
     {
       big ? (
         <Title>{title}</Title>

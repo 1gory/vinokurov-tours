@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Logo from '../Logo';
 import Button from '../Button';
+import SectionWrap from '../SectionWrap';
 import SquarePicture from '../SquarePicture';
 import img1 from '../../img/1.jpg';
 import img2 from '../../img/2.jpg';
@@ -141,44 +142,46 @@ const Link = styled.a`
 `;
 
 export default ({ scrollToMyRef }) => (
-  <FirstScreen>
-    <LeftColumn>
-      <Logo />
-      <IndividualTours>индивидуальные туры от экспертов</IndividualTours>
-      <Title>Подбор туров в Таиланд за 2 часа</Title>
-      <Caption>
-        С учётом всех ваших потребностей. Через
-        <br />
-        проверенных Туроператоров.
-      </Caption>
-      <Button
-        width={158}
-        text="подобрать"
-        handleClick={scrollToMyRef}
-      />
+  <SectionWrap>
+    <FirstScreen>
+      <LeftColumn>
+        <Logo />
+        <IndividualTours>индивидуальные туры от экспертов</IndividualTours>
+        <Title>Подбор туров в Таиланд за 2 часа</Title>
+        <Caption>
+          С учётом всех ваших потребностей. Через
+          <br />
+          проверенных Туроператоров.
+        </Caption>
+        <Button
+          width={158}
+          text="подобрать"
+          handleClick={scrollToMyRef}
+        />
 
-      <Directions>
-        <DirectionsTitle>другие направления</DirectionsTitle>
+        <Directions>
+          <DirectionsTitle>другие направления</DirectionsTitle>
 
-        <Direction>
-          <ImgWrap>
-            <Img src={img1} />
-          </ImgWrap>
-          <DirectionCaption>Доминикана</DirectionCaption>
-          <Link href="/">Подробнее</Link>
-        </Direction>
+          <Direction>
+            <ImgWrap>
+              <Img src={img1} />
+            </ImgWrap>
+            <DirectionCaption>Доминикана</DirectionCaption>
+            <Link href="/">Подробнее</Link>
+          </Direction>
 
-        <Direction>
-          <ImgWrap>
-            <Img src={img2} />
-          </ImgWrap>
-          <DirectionCaption>Турция</DirectionCaption>
-          <Link href="/">Подробнее</Link>
-        </Direction>
-      </Directions>
-    </LeftColumn>
-    <RightColumn>
-      <SquarePicture width="100%" height="700px" img={img1} />
-    </RightColumn>
-  </FirstScreen>
+          <Direction>
+            <ImgWrap>
+              <Img src={img2} />
+            </ImgWrap>
+            <DirectionCaption>Турция</DirectionCaption>
+            <Link href="/">Подробнее</Link>
+          </Direction>
+        </Directions>
+      </LeftColumn>
+      <RightColumn>
+        <SquarePicture width="100%" height="700px" img={img1} />
+      </RightColumn>
+    </FirstScreen>
+  </SectionWrap>
 );

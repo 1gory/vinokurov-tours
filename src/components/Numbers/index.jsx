@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import SectionWrap from '../SectionWrap';
 import SquarePicture from '../SquarePicture';
 import NumberItem from '../NumberItem';
 import { dataBig, dataSmall } from './data';
@@ -83,28 +84,30 @@ export default () => {
   ));
 
   return (
-    <Numbers>
-      <LeftColumn>
-        <Title>
-          Как мы создаем
-          <br />
-          идеальный отдых
-        </Title>
-        <Items>
-          {numbersBigTemplate}
-        </Items>
-        <Title>
-          Наши результаты
-          <br />
-          в цифрах
-        </Title>
-        <Items>
-          {numbersSmallTemplate}
-        </Items>
-      </LeftColumn>
-      <RightColumn>
-        <SquarePicture width="100%" height="1170px" img={numbersPicture} />
-      </RightColumn>
-    </Numbers>
+    <SectionWrap>
+      <Numbers>
+        <LeftColumn>
+          <Title>
+            Как мы создаем
+            <br />
+            идеальный отдых
+          </Title>
+          <Items>
+            {numbersBigTemplate}
+          </Items>
+          <Title>
+            Наши результаты
+            <br />
+            в цифрах
+          </Title>
+          <Items>
+            {numbersSmallTemplate}
+          </Items>
+        </LeftColumn>
+        <RightColumn>
+          <SquarePicture width="100%" height="1170px" img={numbersPicture} />
+        </RightColumn>
+      </Numbers>
+    </SectionWrap>
   );
 };

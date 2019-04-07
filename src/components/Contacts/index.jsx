@@ -5,8 +5,8 @@ import {
   Map as YandexMap,
   Placemark,
   GeolocationControl,
-  RoutePanel,
 } from 'react-yandex-maps';
+import PageWrapper from '../SectionWrap';
 import SquarePicture from '../SquarePicture';
 import location from '../../img/icons/contacts-location.svg';
 import phone from '../../img/icons/contacts-phone.svg';
@@ -171,58 +171,60 @@ export default () => {
   };
 
   return (
-    <Wrap>
-      <LeftColumn>
-        <Title>Контакты</Title>
-        <div>
-          <Info>
-            <InfoTitleLocation>Адрес:</InfoTitleLocation>
-            <InfoCaption>109044, Москва, ул. Мельникова, дом 7, строение 1</InfoCaption>
-          </Info>
-          <Info>
-            <InfoTitlePhone>Телефон:</InfoTitlePhone>
-            <InfoCaption>+7 (499) 116-33-74</InfoCaption>
-          </Info>
-          <Info>
-            <InfoTitleMail>Эл. почта:</InfoTitleMail>
-            <InfoCaption>info@vinokurov-tour.ru</InfoCaption>
-          </Info>
-          <Info>
-            <InfoTitleClock>График работы:</InfoTitleClock>
-            <InfoCaption>
-              Пн–Пт: 10:00 – 18:00
-              <br />
-              Сб: 10:00 – 14:00
-              <br />
-              Вс: выходной
-            </InfoCaption>
-          </Info>
-        </div>
-        <SquarePicture
-          width="100%"
-          height="200px"
-          img={banner}
-        />
-      </LeftColumn>
-      <RightColumn>
-        <YMaps>
-          <YandexMap
-            state={mapState}
-            style={mapStyle}
-          >
-            <Placemark
-              defaultGeometry={mapState.center}
-              options={
-                {
-                  preset: 'islands#circleIcon',
-                  iconColor: '#ed1b24',
+    <PageWrapper>
+      <Wrap>
+        <LeftColumn>
+          <Title>Контакты</Title>
+          <div>
+            <Info>
+              <InfoTitleLocation>Адрес:</InfoTitleLocation>
+              <InfoCaption>109044, Москва, ул. Мельникова, дом 7, строение 1</InfoCaption>
+            </Info>
+            <Info>
+              <InfoTitlePhone>Телефон:</InfoTitlePhone>
+              <InfoCaption>+7 (499) 116-33-74</InfoCaption>
+            </Info>
+            <Info>
+              <InfoTitleMail>Эл. почта:</InfoTitleMail>
+              <InfoCaption>info@vinokurov-tour.ru</InfoCaption>
+            </Info>
+            <Info>
+              <InfoTitleClock>График:</InfoTitleClock>
+              <InfoCaption>
+                Пн–Пт: 10:00 – 18:00
+                <br />
+                Сб: 10:00 – 14:00
+                <br />
+                Вс: выходной
+              </InfoCaption>
+            </Info>
+          </div>
+          <SquarePicture
+            width="100%"
+            height="200px"
+            img={banner}
+          />
+        </LeftColumn>
+        <RightColumn>
+          <YMaps>
+            <YandexMap
+              state={mapState}
+              style={mapStyle}
+            >
+              <Placemark
+                defaultGeometry={mapState.center}
+                options={
+                  {
+                    preset: 'islands#circleIcon',
+                    iconColor: '#ed1b24',
+                  }
                 }
-              }
-            />
-            <GeolocationControl options={{ float: 'left' }} />
-          </YandexMap>
-        </YMaps>
-      </RightColumn>
-    </Wrap>
+              />
+              <GeolocationControl options={{ float: 'left' }} />
+            </YandexMap>
+          </YMaps>
+        </RightColumn>
+      </Wrap>
+    </PageWrapper>
   );
 };

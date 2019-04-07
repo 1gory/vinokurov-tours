@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import WhatYouGetItem from '../WhatYouGetItem';
 import WhatYouGetData from './data';
+import SectionWrap from '../SectionWrap';
 
 const WhatYouGet = styled.div`
   padding-top: 58px;
@@ -50,6 +51,7 @@ const ItemsInner = styled.div`
   justify-content: space-between;
   align-content: stretch;
   align-items: stretch;
+  padding-top: 3px;
   padding-left: 3px;
   padding-right: 3px;
 `;
@@ -67,13 +69,15 @@ export default () => {
   ));
 
   return (
-    <WhatYouGet>
-      <Title>Что вы получите</Title>
-      <Wrap>
-        <ItemsInner>
-          {ItemsTemplate}
-        </ItemsInner>
-      </Wrap>
-    </WhatYouGet>
+    <SectionWrap>
+      <WhatYouGet>
+        <Title>Что вы получите</Title>
+        <Wrap>
+          <ItemsInner>
+            {ItemsTemplate}
+          </ItemsInner>
+        </Wrap>
+      </WhatYouGet>
+    </SectionWrap>
   );
 };

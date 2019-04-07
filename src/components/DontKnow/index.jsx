@@ -4,6 +4,7 @@ import { Subscribe } from 'unstated';
 import Input from '../../containers/Input';
 import Button from '../Button';
 import MailContainer from '../../state/MailState';
+import request from '../../img/request-bg.jpg';
 
 const Wrap = styled.div`
   height: 496px;
@@ -12,11 +13,11 @@ const Wrap = styled.div`
   padding-left: 98px;
   padding-right: 98px;
   background-color: #474d57;
-  margin-left: -98px;
-  margin-right: -98px;
+  background-image: url(${request});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
   @media screen and (max-width: 768px) {
-    margin-left: -17px;
-    margin-right: -17px;
     padding-left: 17px;
     padding-right: 17px;
   }
@@ -27,7 +28,7 @@ const Wrap = styled.div`
 
 const LeftColumn = styled.div`
   width: 570px;
-  @media screen and (max-width: 576px) {
+  @media screen and (max-width: 768px) {
     width: auto;
   }
 `;

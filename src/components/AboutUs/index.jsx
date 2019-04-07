@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Masonry from 'react-masonry-component';
 import InstagramEmbed from 'react-instagram-embed';
+import SectionWrap from '../SectionWrap';
 import Button from '../Button';
 import feedbacksLinks from './data';
 
@@ -164,26 +165,28 @@ export default class extends Component {
     });
 
     return (
-      <AboutUs>
-        <Title>Отзывы о нас</Title>
-        <Wrap ref={this.setWrapRef}>
-          <Masonry
-            className="aboutus__posts"
-            elementType="ul" // default 'div'
-            options={masonryOptions} // default {}
-            onLayoutComplete={this.setFeedBackLoaded}
-          >
-            {feedbacksTemplate}
-          </Masonry>
-        </Wrap>
-        <Look>
-          <Button
-            text={buttonText}
-            width="172"
-            handleClick={this.toggleWrap}
-          />
-        </Look>
-      </AboutUs>
+      <SectionWrap>
+        <AboutUs>
+          <Title>Отзывы о нас</Title>
+          <Wrap ref={this.setWrapRef}>
+            <Masonry
+              className="aboutus__posts"
+              elementType="ul" // default 'div'
+              options={masonryOptions} // default {}
+              onLayoutComplete={this.setFeedBackLoaded}
+            >
+              {feedbacksTemplate}
+            </Masonry>
+          </Wrap>
+          <Look>
+            <Button
+              text={buttonText}
+              width="172"
+              handleClick={this.toggleWrap}
+            />
+          </Look>
+        </AboutUs>
+      </SectionWrap>
     );
   }
 }

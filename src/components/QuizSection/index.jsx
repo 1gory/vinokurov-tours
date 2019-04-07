@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Subscribe } from 'unstated';
+import SectionWrap from '../SectionWrap';
 import SquarePicture from '../SquarePicture';
 import QuizOptions from '../../containers/QuizOptions';
 import StepsContainer from '../../state/StepsState';
@@ -70,35 +71,37 @@ const RightColumn = styled.div`
 export default class extends Component {
   render() {
     return (
-      <StepsSection>
-        <LeftColumn>
-          <Title>
-            Пройдите небольшой тест-опрос
-            <br />
-            и мы предложим тур,
-            <br />
-            подобранный специально для вас
-          </Title>
-          <Subscribe to={[StepsContainer]}>
-            {container => (
-              <QuizOptions container={container} />
-            )}
-          </Subscribe>
-        </LeftColumn>
-        <RightColumn>
-          <Subscribe to={[StepsImageContainer]}>
-            {(container) => {
-              const {
-                state: {
-                  imgSrc,
-                },
-              } = container;
+      <SectionWrap>
+        <StepsSection>
+          <LeftColumn>
+            <Title>
+              Пройдите небольшой тест-опрос
+              <br />
+              и мы предложим тур,
+              <br />
+              подобранный специально для вас
+            </Title>
+            <Subscribe to={[StepsContainer]}>
+              {container => (
+                <QuizOptions container={container} />
+              )}
+            </Subscribe>
+          </LeftColumn>
+          <RightColumn>
+            <Subscribe to={[StepsImageContainer]}>
+              {(container) => {
+                const {
+                  state: {
+                    imgSrc,
+                  },
+                } = container;
 
-              return (<SquarePicture width="670px" height="633px" img={imgSrc} />);
-            }}
-          </Subscribe>
-        </RightColumn>
-      </StepsSection>
+                return (<SquarePicture width="670px" height="633px" img={imgSrc} />);
+              }}
+            </Subscribe>
+          </RightColumn>
+        </StepsSection>
+      </SectionWrap>
     );
   }
 }

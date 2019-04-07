@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const PageWrapper = styled.div`
+const SectionWrap = styled.div`
   max-width: 1366px;
   min-width: 360px;
   padding-left: 98px;
@@ -13,4 +13,4 @@ const PageWrapper = styled.div`
   }
 `;
 
-export default PageWrapper;
+export default SectionWrap;

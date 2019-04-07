@@ -6,8 +6,6 @@ const Wrap = styled.section`
   height: 100px;
   padding-left: 98px;
   padding-right: 98px;
-  margin-left: -98px;
-  margin-right: -98px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -17,8 +15,6 @@ const Wrap = styled.section`
   background-color: #474d57;
   padding-top: 21px;
   @media screen and (max-width: 768px) {
-    margin-left: -17px;
-    margin-right: -17px;
     padding-left: 17px;
     padding-right: 17px;
     padding-bottom: 48px;

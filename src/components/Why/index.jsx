@@ -6,14 +6,10 @@ const Why = styled.div`
   padding-top: 72px;
   padding-bottom: 56px;
   background-color: #f3f3f3;
-  margin-left: -98px;
-  margin-right: -98px;
   padding-left: 98px;
   padding-right: 98px;
   @media screen and (max-width: 576px) {
     padding-top: 14px;
-    margin-left: -17px;
-    margin-right: -17px;
     padding-left: 17px;
     padding-right: 17px;
   }
@@ -79,14 +75,12 @@ const Button = styled.div`
   color: #474d57;
   margin-bottom: 17px;
   width: 100%;
-  border-bottom: 1px solid #474d57;
   padding: 12px 16px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   &.active {
     color: #ffffff;
     background-color: #ed1b24;
-    border-bottom: 1px solid #ed1b24;
     border-radius: 5px;
   }
 `;

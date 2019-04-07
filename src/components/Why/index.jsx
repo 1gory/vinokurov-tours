@@ -158,6 +158,7 @@ export default class extends Component {
 
       return (
         <ButtonElem
+          key={curItem.buttonText}
           handler={setActiveSlideWithIndex}
           text={`${curItem.number}. ${curItem.buttonText}`}
           index={index}

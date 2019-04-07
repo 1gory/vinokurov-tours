@@ -64,11 +64,22 @@ export default () => {
   let numbersSmallTemplate = [];
 
   numbersBigTemplate = dataBig.map(curItem => (
-    <NumberItem big number={curItem.number} title={curItem.title} caption={curItem.caption} />
+    <NumberItem
+      key={curItem.caption}
+      big
+      number={curItem.number}
+      title={curItem.title}
+      caption={curItem.caption}
+    />
   ));
 
   numbersSmallTemplate = dataSmall.map(curItem => (
-    <NumberItem number={curItem.number} subnumber={curItem.subnumber} caption={curItem.caption} />
+    <NumberItem
+      key={curItem.caption}
+      number={curItem.number}
+      subnumber={curItem.subnumber}
+      caption={curItem.caption}
+    />
   ));
 
   return (

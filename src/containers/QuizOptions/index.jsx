@@ -148,6 +148,7 @@ export default class extends Component {
 
         questionsOptionsTemplate.push(
           <Input
+            key={Math.random()}
             type="datepicker"
             hasIcon
             icon={calender}

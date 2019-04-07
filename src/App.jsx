@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import scrollToComponent from 'react-scroll-to-component';
 import PageWrapper from './components/PageWrapper';
 import FirstScreen from './components/FirstScreen';
 import WhatYouGet from './components/WhatYouGet';
@@ -14,18 +15,17 @@ import Contacts from './components/Contacts';
 import Footer from './components/Footer';
 
 export default class extends Component {
-  constructor(props) {
-    super(props);
-
-    this.QuizSection = React.createRef();
-  }
-
   setSectionRef = (element) => {
     this.QuizSection = element;
   };
 
   scrollToMyRef = () => {
-    window.scrollTo(0, this.QuizSection.getBoundingClientRect().top);
+    scrollToComponent(this.QuizSection, {
+      offset: 0,
+      align: 'top',
+      duration: 500,
+      ease: 'inCirc',
+    });
   };
 
   render() {

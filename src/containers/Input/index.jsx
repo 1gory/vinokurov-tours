@@ -142,11 +142,11 @@ const Wrap = styled.div`
         }
         `);
     }
+    return true;
   }
-}
+};
   @media screen and (max-width: 576px) {
     width: 324px;
-    height: 54px;
   }
 `;
 

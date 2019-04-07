@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="baseline-airplanemode_active-24px" transform="translate(32) rotate(90)">
+    <path id="Path_1017" data-name="Path 1017" d="M10.18,9" transform="translate(3.393 3)" fill="#ed1b24"/>
+    <path id="Path_1018" data-name="Path 1018" d="M27.13,20.553V17.9L16.549,11.276V3.988a1.984,1.984,0,1,0-3.968,0v7.289L2,17.9v2.65L12.581,17.24v7.289L9.936,26.516V28.5l4.629-1.325L19.194,28.5V26.516l-2.645-1.988V17.24Z" transform="translate(0.748 0.748)" fill="#ed1b24"/>
+    <path id="Path_1019" data-name="Path 1019" d="M0,0H32V32H0Z" fill="none"/>
+  </g>
+</svg>

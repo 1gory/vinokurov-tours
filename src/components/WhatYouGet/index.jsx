@@ -55,10 +55,15 @@ const ItemsInner = styled.div`
 `;
 
 export default () => {
-  let ItemsTemplate =[];
+  let ItemsTemplate = [];
 
   ItemsTemplate = WhatYouGetData.map(curItem => (
-    <WhatYouGetItem key={curItem.title} icon={curItem.icon} title={curItem.title} text={curItem.text} />
+    <WhatYouGetItem
+      key={curItem.title}
+      icon={curItem.icon}
+      title={curItem.title}
+      text={curItem.text}
+    />
   ));
 
   return (

@@ -11,7 +11,7 @@ const Item = styled.div`
 const Icon = styled.div`
   width: 48px;
   height: 48px;
-  background-image: url(${(props) => (props.icon)});
+  background-image: url(${props => (props.icon)});
   background-size: cover;
   background-repeat: no-repeat;
   margin-bottom: 24px;

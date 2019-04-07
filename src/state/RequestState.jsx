@@ -9,12 +9,10 @@ export default class RequestContainer extends Container {
   };
 
   setName = (str) => {
-    const { name } = this.state;
     this.setState({ name: str });
   }
 
   setPhone = (str) => {
-    const { phone } = this.state;
     this.setState({ phone: str });
   }
 

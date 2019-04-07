@@ -123,14 +123,16 @@ const Text = styled.p`
   }
 `;
 
-const ButtonElem = ({text, handler, index, numberOfActiveSlide}) => {
+const ButtonElem = ({
+  text,
+  handler,
+  index,
+  numberOfActiveSlide,
+}) => {
   let active = false;
   if (numberOfActiveSlide === index) {
     active = true;
   }
-  console.log("index кнопки " + index);
-  console.log("numberOfActiveSlide " + index);
-  console.log(active);
   return (<Button className={(active ? 'active' : '')} active={active} onClick={handler} onMouseEnter={handler}>{text}</Button>);
 };
 
@@ -179,6 +181,6 @@ export default class extends Component {
           </RightColumn>
         </Wrap>
       </Why>
-    )
-  };
-};
+    );
+  }
+}

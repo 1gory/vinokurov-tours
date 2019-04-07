@@ -14,6 +14,9 @@ import StepsImageContainer from '../../state/StepsImageState';
 const Wrap = styled.div`
   display: inline-block;
   width: 370px;
+  @media screen and (max-width: 450px) {
+    width: auto;
+  }
 `;
 
 const GoBack = styled.button`

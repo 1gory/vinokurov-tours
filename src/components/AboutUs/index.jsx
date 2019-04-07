@@ -121,8 +121,7 @@ export default class extends Component {
     if (!isAllFeedbacksLoaded && feedbacksMassReady.length === this.feedbacksLinksLength) {
       setTimeout(() => {
         this.setState({ isAllFeedbacksLoaded: true });
-      }, 2000)
-
+      }, 2000);
     }
   }
 
@@ -187,4 +186,4 @@ export default class extends Component {
       </AboutUs>
     );
   }
-};
+}

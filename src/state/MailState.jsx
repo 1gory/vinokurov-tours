@@ -6,7 +6,6 @@ export default class MailContainer extends Container {
   };
 
   setMail = (str) => {
-    const { mail } = this.state;
     this.setState({ mail: str });
   }
 

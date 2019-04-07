@@ -19,14 +19,20 @@ const FirstScreen = styled.section`
   @media screen and (max-width: 992px) {
     justify-content: flex-start;
   }
+  @media screen and (max-width: 576px) {
+    height: auto;
+    padding-bottom: 20px;
+  }
 `;
 
 const LeftColumn = styled.div`
   flex: 0 0 470px;
+  padding-top: 17px;
   @media screen and (max-width: 576px) {
     display: block;
     width: auto;
     flex: 0 1 auto;
+    padding-top: 13px;
   }
 `;
 
@@ -89,6 +95,9 @@ const Direction = styled.div`
   display: inline-block;
   width: 170px;
   margin-right: 30px;
+  @media screen and (max-width: 576px) {
+    margin-right: 10px;
+  }
 `;
 
 const ImgWrap = styled.div`
@@ -131,7 +140,7 @@ const Link = styled.a`
   }
 `;
 
-export default () => (
+export default ({ scrollToMyRef }) => (
   <FirstScreen>
     <LeftColumn>
       <Logo />
@@ -142,7 +151,11 @@ export default () => (
         <br />
         проверенных Туроператоров.
       </Caption>
-      <Button width={158} text="подобрать" />
+      <Button
+        width={158}
+        text="подобрать"
+        handleClick={scrollToMyRef}
+      />
 
       <Directions>
         <DirectionsTitle>другие направления</DirectionsTitle>

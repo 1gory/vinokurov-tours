@@ -68,19 +68,21 @@ const Caption = styled.p`
   }
 `;
 
-export default ({ big, number, subnumber, title, caption }) => {
-  let ItemsTemplate =[];
-
-  return (
-    <Wrap big={big}>
-      <Number>{number}</Number>
-      <Subnumber>{subnumber}</Subnumber>
-      {
-        big ? (
-          <Title>{title}</Title>
-        ) : ('')
-      }
-      <Caption big={big}>{caption}</Caption>
-    </Wrap>
-  );
-};
+export default ({
+  big,
+  number,
+  subnumber,
+  title,
+  caption,
+}) => (
+  <Wrap big={big}>
+    <Number>{number}</Number>
+    <Subnumber>{subnumber}</Subnumber>
+    {
+      big ? (
+        <Title>{title}</Title>
+      ) : ('')
+    }
+    <Caption big={big}>{caption}</Caption>
+  </Wrap>
+);

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import airplane from '../../img/icons/airplane.svg';
+import airplaneRed from '../../img/icons/airplane-red.svg';
 
 const Logo = styled.div`
   position: relative;
@@ -11,7 +12,7 @@ const Img = styled.img`
   position: absolute;
   width: 32px;
   height: 32px;
-  top: 17px;
+  top: 0px;
   left: 3px;
   display: inline-block;
 `;
@@ -21,15 +22,14 @@ const Title = styled.div`
   font-weight: 900;
   font-size: 14px;
   line-height: 14px;
-  color: #272525;
+  color: ${props => (props.theme === 'white' ? '#ffffff' : '#272525')};
   margin-left: 10px;
-  padding-top: 18px;
   letter-spacing: normal;
 `;
 
-export default () => (
+export default ({ theme }) => (
   <Logo>
-    <Img src={airplane} />
-    <Title>Турагенство Дмитрия Винокурова</Title>
+    <Img src={theme === 'white' ? airplane : airplaneRed} />
+    <Title theme={theme}>Турагенство Дмитрия Винокурова</Title>
   </Logo>
 );

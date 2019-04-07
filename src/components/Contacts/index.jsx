@@ -220,11 +220,6 @@ export default () => {
               }
             />
             <GeolocationControl options={{ float: 'left' }} />
-            <RoutePanel
-              options={{
-                title: 'Построить маршрут',
-              }}
-            />
           </YandexMap>
         </YMaps>
       </RightColumn>

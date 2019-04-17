@@ -4,6 +4,7 @@ export default class extends Container {
   state = {
     stepsData: [],
     stepsCollected: false,
+    isThanksStep: false,
   };
 
   addAnswer = (question, number, value, description) => {
@@ -15,8 +16,11 @@ export default class extends Container {
     tempObj.value = value;
     tempObj.description = description;
     newTestQuestionData[number] = tempObj;
-    this.setState({ stepsData: newTestQuestionData });
-  }
+    this.setState({
+      stepsData: newTestQuestionData,
+      isThanksStep: false,
+    });
+  };
 
   addFormData = (formObj) => {
     const { stepsData, stepsCollected } = this.state;
@@ -32,6 +36,7 @@ export default class extends Container {
     this.setState({
       stepsData: newTestQuestionData,
       stepsCollected: true,
+      isThanksStep: true,
     });
 
     return true;

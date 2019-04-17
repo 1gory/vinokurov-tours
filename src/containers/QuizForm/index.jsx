@@ -117,6 +117,7 @@ export default class extends Component {
 
     inputsTemplate = inputsData.map(curItem => (
       <Input
+        key={`${curItem.type}${curItem.placeholder}`}
         type={curItem.type}
         hasIcon
         icon={curItem.icon}

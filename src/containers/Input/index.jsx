@@ -90,6 +90,64 @@ const Wrap = styled.div`
   &.input-wrap_choose-date-hidden .input-wrap__choose-date {
     display: none;
   }
+ ${(props) => {
+    if (props.theme === 'transparent') {
+      return (
+        `
+        padding-left: 0px;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        background: transparent;
+        border-top: 1px solid #ffffff;
+        border-right: 1px solid #ffffff;
+        border-bottom: 1px solid #ffffff;
+        border-left: 1px solid #ffffff;
+        
+        &:hover,
+        &.input-wrap_focused {
+          border-top: 2px solid #ffffff;
+          border-right: 2px solid #ffffff;
+          border-bottom: 2px solid #ffffff;
+          border-left: 2px solid #ffffff;
+        }
+        & input,
+        &:hover input,
+        &.input-wrap_focused input {
+          color: #ffffff;
+          background: transparent;
+        }
+        &.input-wrap_focused input::-webkit-input-placeholder,
+        &:hover input::-webkit-input-placeholder,
+        & input::-webkit-input-placeholder {
+          color: #ffffff;
+          opacity: 0.7;
+        }
+        &.input-wrap_focused input::-moz-placeholder,
+        &:hover input::-moz-placeholder,
+        & input::-moz-placeholder {
+          color: #ffffff;
+          opacity: 0.7;
+        }
+        &.input-wrap_focused input:-moz-placeholder,
+        &:hover input:-moz-placeholder,
+        & input:-moz-placeholder {
+          color: #ffffff;
+          opacity: 0.7;
+        }
+        &.input-wrap_focused input:-ms-input-placeholder,
+        &:hover input:-ms-input-placeholder,
+        & input:-ms-input-placeholder {
+          color: #ffffff;
+          opacity: 0.7;
+        }
+        `);
+    }
+    return true;
+  }
+};
+  @media screen and (max-width: 576px) {
+    width: 324px;
+  }
 `;
 
 const IconBlock = styled.div`
@@ -273,6 +331,7 @@ export default class extends Component {
       type,
       placeholder,
       error,
+      theme,
     } = this.props;
     const {
       inputData,
@@ -333,8 +392,9 @@ export default class extends Component {
         inputType = (
           <InputElem
             placeholder={placeholder}
-            onChange={this.handleMailChange}
+            theme={theme}
             value={inputData}
+            onChange={this.handleMailChange}
             onFocus={this.handleInputFocus}
             onBlur={this.handleInputBlur}
           />
@@ -351,7 +411,7 @@ export default class extends Component {
 
     return (
       <OutterWrap>
-        <Wrap ref={this.inputWrap}>
+        <Wrap theme={theme} ref={this.inputWrap}>
           {
             hasIcon ? (
               <IconBlock>

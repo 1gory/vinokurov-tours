@@ -14,6 +14,9 @@ import StepsImageContainer from '../../state/StepsImageState';
 const Wrap = styled.div`
   display: inline-block;
   width: 370px;
+  @media screen and (max-width: 450px) {
+    width: auto;
+  }
 `;
 
 const GoBack = styled.button`
@@ -31,9 +34,14 @@ const GoBack = styled.button`
   line-height: 24px;
   color: #474d57;
   cursor: pointer;
+  margin-bottom: 10px;
   &:hover {
     opacity: 0.7;
   }
+`;
+
+const Step = styled.div`
+  ${({ isFirstStep }) => !isFirstStep && 'height: 520px;'}
 `;
 
 export default class extends Component {
@@ -75,7 +83,7 @@ export default class extends Component {
         addAnswer,
         addFormData,
         state: {
-          stepsCollected,
+          isThanksStep,
         },
       },
     } = this.props;
@@ -87,7 +95,7 @@ export default class extends Component {
     let isVisibleGoBack = numberOfActiveStep !== 0;
 
     /* Если все ответы получены и это последний слайд, скрываем кнопку возврата назад */
-    if (stepsCollected && isLastStep) {
+    if (numberOfActiveStep === 0 || isThanksStep) {
       isVisibleGoBack = false;
     }
 
@@ -145,6 +153,7 @@ export default class extends Component {
 
         questionsOptionsTemplate.push(
           <Input
+            key={Math.random()}
             type="datepicker"
             hasIcon
             icon={calender}
@@ -167,14 +176,16 @@ export default class extends Component {
 
     return (
       <Wrap>
-        {stepsTemplate}
-        {
+        <Step isFirstStep={numberOfActiveStep === 0}>
+          {stepsTemplate}
+          {
           isLastStep ? (
             <QuizForm submitHandler={addFormData} goToFirstStepHandler={this.goToFirstStep} />
           ) : (
             ''
           )
         }
+        </Step>
         {
           isVisibleGoBack ? (<GoBack onClick={this.handleGoBack}>Назад</GoBack>) : ''
         }

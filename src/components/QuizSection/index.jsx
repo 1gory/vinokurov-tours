@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Subscribe } from 'unstated';
+import { Element } from 'react-scroll';
+import SectionWrap from '../SectionWrap';
 import SquarePicture from '../SquarePicture';
 import QuizOptions from '../../containers/QuizOptions';
 import StepsContainer from '../../state/StepsState';
@@ -8,6 +10,7 @@ import StepsImageContainer from '../../state/StepsImageState';
 
 const StepsSection = styled.div`
   padding-top: 113px;
+  padding-bottom: 44px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -15,6 +18,12 @@ const StepsSection = styled.div`
   justify-content: space-between;
   align-content: stretch;
   align-items: flex-start;
+  @media screen and (max-width: 1366px) {
+    display: block;
+  }
+  @media screen and (max-width: 768px) {
+    padding-top: 26px;
+  }
 `;
 
 const Title = styled.h3`
@@ -27,11 +36,21 @@ const Title = styled.h3`
   letter-spacing: normal;
   margin-bottom: 35px;
   width: 470px;
+  @media screen and (max-width: 768px) {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 25px;
+  }
 `;
 
 const LeftColumn = styled.div`
   display: inline-block;
   width: 470px;
+  @media screen and (max-width: 1366px) {
+    display: block;
+    width: auto;
+  }
 `;
 
 const RightColumn = styled.div`
@@ -39,36 +58,48 @@ const RightColumn = styled.div`
   width: 670px;
   position: relative;
   right: -31px;
+  @media screen and (max-width: 1366px) {
+    display: block;
+    position: static;
+    right: 0px;
+    width: auto;
+  }
+  @media screen and (max-width: 992px) {
+    display: none;
+  }
 `;
 
 export default () => (
-  <StepsSection>
-    <LeftColumn>
-      <Title>
-        Пройдите небольшой тест-опрос
-        <br />
-        и мы предложим тур,
-        <br />
-        подобранный специально для вас
-      </Title>
-      <Subscribe to={[StepsContainer]}>
-        {container => (
-          <QuizOptions container={container} />
-        )}
-      </Subscribe>
-    </LeftColumn>
-    <RightColumn>
-      <Subscribe to={[StepsImageContainer]}>
-        {(container) => {
-          const {
-            state: {
-              imgSrc,
-            },
-          } = container;
+  <SectionWrap>
+    <Element name="QuizSection" />
+    <StepsSection>
+      <LeftColumn>
+        <Title>
+          Пройдите небольшой тест-опрос
+          <br />
+          и мы предложим тур,
+          <br />
+          подобранный специально для вас
+        </Title>
+        <Subscribe to={[StepsContainer]}>
+          {container => (
+            <QuizOptions container={container} />
+          )}
+        </Subscribe>
+      </LeftColumn>
+      <RightColumn>
+        <Subscribe to={[StepsImageContainer]}>
+          {(container) => {
+            const {
+              state: {
+                imgSrc,
+              },
+            } = container;
 
-          return (<SquarePicture width={670} height={633} img={imgSrc} />);
-        }}
-      </Subscribe>
-    </RightColumn>
-  </StepsSection>
+            return (<SquarePicture width="670px" height="633px" img={imgSrc} />);
+          }}
+        </Subscribe>
+      </RightColumn>
+    </StepsSection>
+  </SectionWrap>
 );

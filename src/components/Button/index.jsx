@@ -12,11 +12,13 @@ const ButtonElem = styled.button`
   font-weight: 500;
   font-size: 14px;
   line-height: 48px;
+  letter-spacing: 0px;
   color: #ffffff;
   cursor: pointer;
   text-transform: uppercase;
   border: 0px;
   margin-bottom: 25px;
+  transition: all 0.2s ease-in-out;
   &:hover {
     background-color: #c82027;
   }

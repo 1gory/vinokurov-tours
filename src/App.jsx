@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import scrollToComponent from 'react-scroll-to-component';
+import React from 'react';
+import Scroll from 'react-scroll';
 import FirstScreen from './components/FirstScreen';
 import WhatYouGet from './components/WhatYouGet';
 import Numbers from './components/Numbers';
@@ -13,36 +13,30 @@ import QuizSection from './components/QuizSection';
 import Contacts from './components/Contacts';
 import Footer from './components/Footer';
 
-export default class extends Component {
-  setSectionRef = (element) => {
-    this.QuizSection = element;
-  };
+const { scroller } = Scroll;
 
-  scrollToMyRef = () => {
-    scrollToComponent(this.QuizSection, {
-      offset: 0,
-      align: 'top',
-      duration: 500,
-      ease: 'inCirc',
-    });
-  };
+const scrollToMyRef = () => {
+  scroller.scrollTo('QuizSection', {
+    duration: 300,
+    delay: 100,
+    smooth: true,
+    offset: 100,
+  });
+};
 
-  render() {
-    return (
-      <>
-        <FirstScreen scrollToMyRef={this.scrollToMyRef} />
-        <WhatYouGet />
-        <Numbers />
-        <About />
-        <DontKnow />
-        <AboutAs />
-        <Why />
-        <QuizSection ref={this.setSectionRef} />
-        <LeftRequest />
-        <TouristsPhoto />
-        <Contacts />
-        <Footer />
-      </>
-    );
-  }
-}
+export default () => (
+  <>
+    <FirstScreen scrollToMyRef={scrollToMyRef} />
+    <QuizSection />
+    <WhatYouGet />
+    <Numbers />
+    <About />
+    <DontKnow />
+    <AboutAs />
+    <Why />
+    <LeftRequest />
+    <TouristsPhoto />
+    <Contacts />
+    <Footer />
+  </>
+);

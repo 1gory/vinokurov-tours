@@ -4,8 +4,9 @@ import Logo from '../Logo';
 import Button from '../Button';
 import SectionWrap from '../SectionWrap';
 import SquarePicture from '../SquarePicture';
-import img1 from '../../img/1.jpg';
-import img2 from '../../img/2.jpg';
+import mainImage from '../../img/main.jpg';
+import direction1 from '../../img/d1.jpg';
+import direction2 from '../../img/d2.jpg';
 import linkIcon from '../../img/icons/link.svg';
 
 const FirstScreen = styled.section`
@@ -79,6 +80,9 @@ const Caption = styled.p`
 
 const Directions = styled.div`
   padding-top: 62px;
+  @media screen and (max-width: 576px) {
+    padding-top: 30px;
+  }
 `;
 
 const DirectionsTitle = styled.h4`
@@ -94,7 +98,8 @@ const DirectionsTitle = styled.h4`
 
 const Direction = styled.div`
   display: inline-block;
-  width: 170px;
+  width: 45%;
+  max-width: 170px;
   margin-right: 30px;
   @media screen and (max-width: 576px) {
     margin-right: 10px;
@@ -158,21 +163,18 @@ export default ({ scrollToMyRef }) => (
           text="подобрать"
           handleClick={scrollToMyRef}
         />
-
         <Directions>
           <DirectionsTitle>другие направления</DirectionsTitle>
-
           <Direction>
             <ImgWrap>
-              <Img src={img1} />
+              <Img src={direction1} />
             </ImgWrap>
             <DirectionCaption>Доминикана</DirectionCaption>
             <Link href="/">Подробнее</Link>
           </Direction>
-
           <Direction>
             <ImgWrap>
-              <Img src={img2} />
+              <Img src={direction2} />
             </ImgWrap>
             <DirectionCaption>Турция</DirectionCaption>
             <Link href="/">Подробнее</Link>
@@ -180,7 +182,7 @@ export default ({ scrollToMyRef }) => (
         </Directions>
       </LeftColumn>
       <RightColumn>
-        <SquarePicture width="100%" height="700px" img={img1} />
+        <SquarePicture width="100%" height="700px" img={mainImage} />
       </RightColumn>
     </FirstScreen>
   </SectionWrap>

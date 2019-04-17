@@ -28,7 +28,7 @@ const Wrap = styled.div`
 `;
 
 const Column = styled.div`
-  width: 370px;
+  max-width: 370px;
 `;
 
 const Title = styled.h2`

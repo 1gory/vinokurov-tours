@@ -57,29 +57,29 @@ const Phone = styled.a`
   outline: none;
   @media screen and (max-width: 768px) {
     display: inline-block;
-    padding-top: 37px;
+    // padding-top: 37px;
   }
 `;
 
-const Link = styled.a`
-  display: inline-block;
-  font-family: 'opensans';
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 21px;
-  color: #ffffff;
-  border-bottom: 1px dashed #ffffff;
-  cursor: pointer;
-  text-decoration: none;
-  outline: none;
-  &:hover {
-    border-bottom: 0px;
-    border-bottom: 1px dashed #474d57;
-  }
-  @media screen and (max-width: 768px) {
-    display: inline-block;
-  }
-`;
+// const Link = styled.a`
+//   display: inline-block;
+//   font-family: 'opensans';
+//   font-weight: 500;
+//   font-size: 14px;
+//   line-height: 21px;
+//   color: #ffffff;
+//   border-bottom: 1px dashed #ffffff;
+//   cursor: pointer;
+//   text-decoration: none;
+//   outline: none;
+//   &:hover {
+//     border-bottom: 0px;
+//     border-bottom: 1px dashed #474d57;
+//   }
+//   @media screen and (max-width: 768px) {
+//     display: inline-block;
+//   }
+// `;
 
 export default () => (
   <Wrap>
@@ -92,7 +92,7 @@ export default () => (
       <div>
         <Phone href="tel:+78007005522">8(800) 700-55-22</Phone>
       </div>
-      <Link href="/">Заказать обратный звонок</Link>
+      {/* <Link href="/">Заказать обратный звонок</Link> */}
     </RightColumn>
   </Wrap>
 );

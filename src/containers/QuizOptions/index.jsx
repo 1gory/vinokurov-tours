@@ -41,7 +41,7 @@ const GoBack = styled.button`
 `;
 
 const Step = styled.div`
-  height: 520px;
+  ${({ isFirstStep }) => !isFirstStep && 'height: 520px;'}
 `;
 
 export default class extends Component {
@@ -176,7 +176,7 @@ export default class extends Component {
 
     return (
       <Wrap>
-        <Step>
+        <Step isFirstStep={numberOfActiveStep === 0}>
           {stepsTemplate}
           {
           isLastStep ? (

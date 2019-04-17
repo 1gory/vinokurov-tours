@@ -15,6 +15,7 @@ const Option = styled.div`
   background-color: #ffffff;
   cursor: pointer;
   margin-bottom: 16px;
+  transition: .2s;
   &:hover {
     background-color: #ed1b24;
     color: #ffffff;

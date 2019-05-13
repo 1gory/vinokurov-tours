@@ -24,9 +24,9 @@ const scrollToMyRef = () => {
   });
 };
 
-export default () => (
+export default ({ data }) => (
   <>
-    <FirstScreen scrollToMyRef={scrollToMyRef} />
+    <FirstScreen scrollToMyRef={scrollToMyRef} offer={data.offer} />
     <QuizSection />
     <WhatYouGet />
     <Numbers />

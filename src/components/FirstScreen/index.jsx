@@ -110,7 +110,7 @@ const Offer = styled.div`
   }
 `;
 
-export default ({ scrollToMyRef }) => (
+export default ({ scrollToMyRef, offer }) => (
   <Wrap>
     <FirstScreen>
       <LeftColumn>
@@ -118,7 +118,7 @@ export default ({ scrollToMyRef }) => (
         <Offer>
           <IndividualTours>индивидуальные туры от экспертов</IndividualTours>
           <Title>
-            Подбор туров в Таиланд за 2 часа
+            {offer}
           </Title>
           <Caption>
             С учётом всех ваших потребностей. Через

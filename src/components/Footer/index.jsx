@@ -37,7 +37,7 @@ const LeftColumn = styled.div`
 
 const RightColumn = styled.div`
   display: inline-block;
-  width: 200px;
+  width: 250px;
   text-align: right;
   @media screen and (max-width: 768px) {
     display: block;
@@ -90,7 +90,7 @@ export default () => (
     </LeftColumn>
     <RightColumn>
       <div>
-        <Phone href="tel:+78007005522">8(800) 700-55-22</Phone>
+        <Phone href="tel:+79031679008">+7 (903) 167-90-08</Phone>
       </div>
       {/* <Link href="/">Заказать обратный звонок</Link> */}
     </RightColumn>

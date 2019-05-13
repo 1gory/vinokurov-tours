@@ -2,12 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 import Logo from '../Logo';
 import Button from '../Button';
-import SectionWrap from '../SectionWrap';
+import Directions from './Directions';
 import SquarePicture from '../SquarePicture';
 import mainImage from '../../img/main.jpg';
-import direction1 from '../../img/d1.jpg';
-import direction2 from '../../img/d2.jpg';
-import linkIcon from '../../img/icons/link.svg';
+import mainImageMob from '../../img/main_m.jpg';
+
+const Wrap = styled.div`
+  max-width: 1366px;
+  min-width: 360px;
+  padding-left: 98px;
+  padding-right: 98px;
+  margin: auto;
+  overflow: hidden;
+  @media screen and (max-width: 768px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+`;
 
 const FirstScreen = styled.section`
   position: relative;
@@ -30,7 +41,7 @@ const FirstScreen = styled.section`
 const LeftColumn = styled.div`
   flex: 0 0 470px;
   padding-top: 17px;
-  @media screen and (max-width: 576px) {
+  @media screen and (max-width: 768px) {
     display: block;
     width: auto;
     flex: 0 1 auto;
@@ -53,8 +64,10 @@ const IndividualTours = styled.p`
   letter-spacing: 0.6px;
   color: #b4b4b4;
   text-transform: uppercase;
-  padding-top: 88px;
   margin-bottom: 16px;
+  @media screen and (max-width: 768px) {
+    color: #fff;
+  }
 `;
 
 const Title = styled.h3`
@@ -67,6 +80,9 @@ const Title = styled.h3`
   @media screen and (max-width: 576px) {
     font-size: 32px;
     line-height: 44.16px;
+  } 
+  @media screen and (max-width: 768px) {
+    color: #fff;
   }
 `;
 
@@ -75,115 +91,51 @@ const Caption = styled.p`
   font-size: 14px;
   line-height: 21px;
   color: #474d57;
-  margin-bottom: 38px;
-`;
-
-const Directions = styled.div`
-  padding-top: 62px;
-  @media screen and (max-width: 576px) {
-    padding-top: 30px;
+  margin-bottom: 38px;  
+  @media screen and (max-width: 768px) {
+    color: #fff;
   }
 `;
 
-const DirectionsTitle = styled.h4`
-  font-family: 'opensans';
-  font-size: 18px;
-  font-weight: 900;
-  line-height: 27px;
-  text-transform: uppercase;
-  letter-spacing: 0.1px;
-  color: #474d57;
-  margin-bottom: 16px;
-`;
-
-const Direction = styled.div`
-  display: inline-block;
-  width: 45%;
-  max-width: 170px;
-  margin-right: 30px;
-  @media screen and (max-width: 576px) {
-    margin-right: 10px;
-  }
-`;
-
-const ImgWrap = styled.div`
-  height: 96px;
-  overflow: hidden;
-  margin-bottom: 12px;
-`;
-
-const Img = styled.img`
-  width: 100%;
-  height: 100%;
-`;
-
-const DirectionCaption = styled.h4`
-  font-family: 'opensans';
-  font-weight: 900;
-  font-size: 16px;
-  line-height: 20px;
-  color: #474d57;
-  margin-bottom: 13px;
-`;
-
-const Link = styled.a`
-  display: inline-block;
-  font-family: 'opensans';
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 17px;
-  color: #ed1b24;
-  width: 90px;
-  background-image: url(${linkIcon});
-  background-repeat: no-repeat;
-  background-position: 75px 0px;
-  background-size: 16px 16px;
-  outline: none;
-  cursor: pointer;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
+const Offer = styled.div`
+  padding-bottom: 25px;
+  margin-top: 88px;
+  @media screen and (max-width: 768px) {
+    margin-top: 25px;
+    padding-top: 45px;
+    padding-left: 17px;
+    padding-right: 17px;
+    background: url(${mainImageMob});
+    background-size: cover;
   }
 `;
 
 export default ({ scrollToMyRef }) => (
-  <SectionWrap>
+  <Wrap>
     <FirstScreen>
       <LeftColumn>
         <Logo />
-        <IndividualTours>индивидуальные туры от экспертов</IndividualTours>
-        <Title>Подбор туров в Таиланд за 2 часа</Title>
-        <Caption>
-          С учётом всех ваших потребностей. Через
-          <br />
-          проверенных Туроператоров.
-        </Caption>
-        <Button
-          width={158}
-          text="подобрать"
-          handleClick={scrollToMyRef}
-        />
-        <Directions>
-          <DirectionsTitle>другие направления</DirectionsTitle>
-          <Direction>
-            <ImgWrap>
-              <Img src={direction1} />
-            </ImgWrap>
-            <DirectionCaption>Доминикана</DirectionCaption>
-            <Link href="/">Подробнее</Link>
-          </Direction>
-          <Direction>
-            <ImgWrap>
-              <Img src={direction2} />
-            </ImgWrap>
-            <DirectionCaption>Турция</DirectionCaption>
-            <Link href="/">Подробнее</Link>
-          </Direction>
-        </Directions>
+        <Offer>
+          <IndividualTours>индивидуальные туры от экспертов</IndividualTours>
+          <Title>
+            Подбор туров в Таиланд за 2 часа
+          </Title>
+          <Caption>
+            С учётом всех ваших потребностей. Через
+            <br />
+            проверенных Туроператоров.
+          </Caption>
+          <Button
+            width={158}
+            text="подобрать"
+            handleClick={scrollToMyRef}
+          />
+        </Offer>
+        <Directions />
       </LeftColumn>
       <RightColumn>
         <SquarePicture width="100%" height="700px" img={mainImage} />
       </RightColumn>
     </FirstScreen>
-  </SectionWrap>
+  </Wrap>
 );

@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import Lightbox from 'react-images';
 import SectionWrap from '../SectionWrap';
-import about1 from '../../img/about1.jpg';
-import about2 from '../../img/about2.jpg';
+import certThumb1 from '../../img/certificates/thumbs/1.jpg';
+import certThumb2 from '../../img/certificates/thumbs/2.jpg';
+import cert1 from '../../img/certificates/1.jpg';
+import cert2 from '../../img/certificates/2.jpg';
+import cert3 from '../../img/certificates/3.jpg';
+import cert4 from '../../img/certificates/4.jpg';
+import cert5 from '../../img/certificates/5.jpg';
+import cert6 from '../../img/certificates/6.jpg';
 import aboutPortret from '../../img/about-portret.png';
 
 const About = styled.section`
@@ -80,6 +87,7 @@ const Sertificate = styled.img`
   margin-right: 40px;
   vertical-align: top;
   margin-bottom: 32px;
+  cursor: pointer;
   @media screen and (max-width: 450px) {
     margin-right: 0px;
     width: 150.5px;
@@ -89,13 +97,14 @@ const Sertificate = styled.img`
 
 const Dop = styled.div`
   display: inline-block;
-  width: 202px;
+  width: 163px;
   height: 203.2px;
   border: 1px solid #e9e9e9;
   background-color: #ffffff;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
   padding: 16px;
   vertical-align: top;
+  cursor: pointer;
   @media screen and (max-width: 1366px) {
     width: 328px;
   }
@@ -186,40 +195,96 @@ const Founder = styled.p`
   color: #474d57;
 `;
 
-export default () => (
-  <SectionWrap>
-    <About>
-      <LeftColumn>
-        <Title>О агенстве</Title>
-        <Text>
-          {`Я сооснователь туристического агентства, в 2010 году вместе с женой я открыл свой первый офис по франшизе.
+const images = [
+  { src: cert1 },
+  { src: cert2 },
+  { src: cert3 },
+  { src: cert4 },
+  { src: cert5 },
+  { src: cert6 },
+];
+
+export default class extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentImage: null,
+      lightboxIsOpen: false,
+    };
+  }
+
+  gotoPrevious = () => {
+    this.setState(prevState => ({
+      currentImage: prevState.currentImage - 1,
+    }));
+  };
+
+  gotoNext = () => {
+    this.setState(prevState => ({
+      currentImage: prevState.currentImage + 1,
+    }));
+  };
+
+  openLightbox = (index) => {
+    this.setState({
+      lightboxIsOpen: true,
+      currentImage: index,
+    });
+  };
+
+  closeLightbox = () => {
+    this.setState({
+      lightboxIsOpen: false,
+      currentImage: null,
+    });
+  };
+
+  render() {
+    const { currentImage, lightboxIsOpen } = this.state;
+    return (
+      <SectionWrap>
+        <About>
+          <LeftColumn>
+            <Title>О агенстве</Title>
+            <Text>
+              {`Я сооснователь туристического агентства, в 2010 году вместе с женой я открыл свой первый офис по франшизе.
           Работал качественно, с душой, если ко мне обращались, то я старался найти именно то что подходило человеку.
           Информацию обо мне передавали из рук в руки. После мне перестали нравится принципы работы моего бывшего партнёра,
           и его бухгалтерия, поэтому я отделился и судьба подарила мне нового партнёра и друга с которой мы уже вот 3 года идём
           вместе и строим Качественную компанию.`}
-        </Text>
-        <Text>
-          {`Недавно мы стали частью такой крупной франшизы туроператора "САН МАР",
+            </Text>
+            <Text>
+              {`Недавно мы стали частью такой крупной франшизы туроператора "САН МАР",
           что позволило нам заключить более выгодные договора с туроператорами и предоставлять людям туры на лучших условиях.
           Я никогда не прятался за брэнд, за свои услуги отвечаю лично, каждый знает где меня искать и что я отвечаю за свои дела.
           Я больше, чем просто менеджер. Благодаря этому люди ко мне тянутся и за эти 8 лет у меня более 300 постоянных клиентов,
           которые меня советуют всем своим знакомым и друзьям.`}
-        </Text>
-        <Sertificate src={about1} />
-        <Sertificate src={about2} />
-        <Dop>
-          <DopNumber>+6</DopNumber>
-          <DopText>Дополнительных материала</DopText>
-        </Dop>
-      </LeftColumn>
-      <RightColumn>
-        <AboutImgWrap>
-          <Img src={aboutPortret} />
-          <ImgCircle />
-        </AboutImgWrap>
-        <Name>Дмитрий Винокуров</Name>
-        <Founder>Основатель агенства</Founder>
-      </RightColumn>
-    </About>
-  </SectionWrap>
-);
+            </Text>
+            <Sertificate src={certThumb1} onClick={() => (this.openLightbox(0))} />
+            <Sertificate src={certThumb2} onClick={() => (this.openLightbox(1))} />
+            <Dop onClick={() => (this.openLightbox(2))}>
+              <DopNumber>+4</DopNumber>
+              <DopText>Дополнительных фото</DopText>
+            </Dop>
+          </LeftColumn>
+          <RightColumn>
+            <AboutImgWrap>
+              <Img src={aboutPortret} />
+              <ImgCircle />
+            </AboutImgWrap>
+            <Name>Дмитрий Винокуров</Name>
+            <Founder>Основатель агенства</Founder>
+          </RightColumn>
+        </About>
+        <Lightbox
+          images={images}
+          isOpen={lightboxIsOpen}
+          currentImage={currentImage}
+          onClickPrev={this.gotoPrevious}
+          onClickNext={this.gotoNext}
+          onClose={this.closeLightbox}
+        />
+      </SectionWrap>
+    );
+  }
+}

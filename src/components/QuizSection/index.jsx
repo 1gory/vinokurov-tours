@@ -35,7 +35,6 @@ const Title = styled.h3`
   color: #343434;
   letter-spacing: normal;
   margin-bottom: 35px;
-  width: 470px;
   @media screen and (max-width: 768px) {
     font-weight: 500;
     font-size: 20px;
@@ -75,11 +74,7 @@ export default () => (
     <StepsSection>
       <LeftColumn>
         <Title>
-          Пройдите небольшой тест-опрос
-          <br />
-          и мы предложим тур,
-          <br />
-          подобранный специально для вас
+          Пройдите небольшой тест-опрос и мы предложим тур, подобранный специально для Вас
         </Title>
         <Subscribe to={[StepsContainer]}>
           {container => (

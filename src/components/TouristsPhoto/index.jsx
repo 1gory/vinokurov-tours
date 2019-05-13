@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
-import SquarePicture from '../SquarePicture';
+import Lightbox from 'react-images';
 import PageWrapper from '../SectionWrap';
-import sp1 from '../../img/tourists1.jpg';
-import sp2 from '../../img/tourists2.jpg';
-import sp3 from '../../img/tourists3.jpg';
-import sp4 from '../../img/tourists4.jpg';
-import sp5 from '../../img/tourists5.jpg';
-import sp6 from '../../img/tourists6.jpg';
+import images from './images';
+import sp1 from '../../img/tourists/1.jpg';
+import sp2 from '../../img/tourists/2.jpg';
+import sp3 from '../../img/tourists/3.jpg';
+import sp4 from '../../img/tourists/4.jpg';
+import sp5 from '../../img/tourists/5.jpg';
+import sp6 from '../../img/tourists/6.jpg';
 
 const Wrap = styled.div`
   position: relative;
@@ -120,58 +121,111 @@ const SPC6 = styled(SquarePictureContainer)`
   }
 `;
 
-export default () => (
-  <PageWrapper>
-    <Wrap>
-      <Column>
-        <Title>Фото туристов, отдыхающих с нами</Title>
-        <Caption>
-          {`Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты.
+
+const SquarePicture = styled.div`
+  width: 100%;
+  height: 100%;
+  background-image: url(${props => (props.src)});
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+`;
+
+export default class extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentImage: null,
+      lightboxIsOpen: false,
+    };
+  }
+
+  gotoPrevious = () => {
+    this.setState(prevState => ({
+      currentImage: prevState.currentImage - 1,
+    }));
+  };
+
+  gotoNext = () => {
+    this.setState(prevState => ({
+      currentImage: prevState.currentImage + 1,
+    }));
+  };
+
+  openLightbox = (index) => {
+    this.setState({
+      lightboxIsOpen: true,
+      currentImage: index,
+    });
+  };
+
+  closeLightbox = () => {
+    this.setState({
+      lightboxIsOpen: false,
+      currentImage: null,
+    });
+  };
+
+  render() {
+    const { lightboxIsOpen, currentImage } = this.state;
+
+    return (
+      <PageWrapper>
+        <Wrap>
+          <Column>
+            <Title>Фото туристов, отдыхающих с нами</Title>
+            <Caption>
+              {`Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты.
           Вдали от всех живут они в буквенных домах на берегу Семантика большого языкового океана.`}
-        </Caption>
-      </Column>
-      <SPC1>
-        <SquarePicture
-          width="100%"
-          height="100%"
-          img={sp1}
+            </Caption>
+          </Column>
+          <SPC1>
+            <SquarePicture
+              onClick={() => (this.openLightbox(0))}
+              src={sp1}
+            />
+          </SPC1>
+          <SPC2>
+            <SquarePicture
+              onClick={() => (this.openLightbox(1))}
+              src={sp2}
+            />
+          </SPC2>
+          <SPC3>
+            <SquarePicture
+              onClick={() => (this.openLightbox(2))}
+              src={sp3}
+            />
+          </SPC3>
+          <SPC4>
+            <SquarePicture
+              onClick={() => (this.openLightbox(3))}
+              src={sp4}
+            />
+          </SPC4>
+          <SPC5>
+            <SquarePicture
+              onClick={() => (this.openLightbox(4))}
+              src={sp5}
+            />
+          </SPC5>
+          <SPC6>
+            <SquarePicture
+              onClick={() => (this.openLightbox(5))}
+              src={sp6}
+            />
+          </SPC6>
+        </Wrap>
+        <Lightbox
+          images={images}
+          isOpen={lightboxIsOpen}
+          currentImage={currentImage}
+          onClickPrev={this.gotoPrevious}
+          onClickNext={this.gotoNext}
+          onClose={this.closeLightbox}
         />
-      </SPC1>
-      <SPC2>
-        <SquarePicture
-          width="100%"
-          height="100%"
-          img={sp2}
-        />
-      </SPC2>
-      <SPC3>
-        <SquarePicture
-          width="100%"
-          height="100%"
-          img={sp3}
-        />
-      </SPC3>
-      <SPC4>
-        <SquarePicture
-          width="100%"
-          height="100%"
-          img={sp4}
-        />
-      </SPC4>
-      <SPC5>
-        <SquarePicture
-          width="100%"
-          height="100%"
-          img={sp5}
-        />
-      </SPC5>
-      <SPC6>
-        <SquarePicture
-          width="100%"
-          height="100%"
-          img={sp6}
-        />
-      </SPC6>
-    </Wrap>
-  </PageWrapper>
-);
+      </PageWrapper>
+    );
+  }
+}

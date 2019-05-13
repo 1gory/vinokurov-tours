@@ -5,7 +5,9 @@ import airplaneRed from '../../img/icons/airplane-red.svg';
 
 const Logo = styled.div`
   position: relative;
-  padding-left: 35px;
+  @media screen and (max-width: 768px) {
+    margin-left: 17px;
+  }
 `;
 
 const Img = styled.img`
@@ -18,12 +20,12 @@ const Img = styled.img`
 `;
 
 const Title = styled.div`
+  padding-left: 45px;
   font-family: 'GothamPro';
   font-weight: 900;
   font-size: 14px;
   line-height: 14px;
   color: ${props => (props.theme === 'white' ? '#ffffff' : '#272525')};
-  margin-left: 10px;
   letter-spacing: normal;
 `;
 

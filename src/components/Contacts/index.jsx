@@ -7,12 +7,10 @@ import {
   GeolocationControl,
 } from 'react-yandex-maps';
 import PageWrapper from '../SectionWrap';
-import SquarePicture from '../SquarePicture';
 import location from '../../img/icons/contacts-location.svg';
 import phone from '../../img/icons/contacts-phone.svg';
 import mail from '../../img/icons/contacts-mail.svg';
 import clock from '../../img/icons/contacts-clock.svg';
-import banner from '../../img/contacts-banner.jpg';
 
 const Wrap = styled.section`
   padding-left: 98px;
@@ -151,8 +149,16 @@ const InfoCaption = styled.p`
   line-height: 21px;
   color: #474d57;
   @media screen and (max-width: 576px) {
-    width: 157.7px;
+    width: 170px;
   }
+`;
+
+export const Phone = styled(InfoCaption)`
+  text-decoration: none;
+`;
+
+const VKwidget = styled.div`
+  padding-top: 25px;
 `;
 
 export default () => {
@@ -166,7 +172,7 @@ export default () => {
   };
 
   const mapState = {
-    center: [55.7261006, 37.6733323],
+    center: [55.912408, 37.746960],
     zoom: 16,
   };
 
@@ -178,32 +184,28 @@ export default () => {
           <div>
             <Info>
               <InfoTitleLocation>Адрес:</InfoTitleLocation>
-              <InfoCaption>109044, Москва, ул. Мельникова, дом 7, строение 1</InfoCaption>
+              <InfoCaption>141008, г. Мытищи, улица Колпакова, дом 2</InfoCaption>
             </Info>
             <Info>
               <InfoTitlePhone>Телефон:</InfoTitlePhone>
-              <InfoCaption>+7 (499) 116-33-74</InfoCaption>
+              <Phone as={styled.a``} href="tel:+79031679008">+7 (903) 167-90-08</Phone>
             </Info>
             <Info>
               <InfoTitleMail>Эл. почта:</InfoTitleMail>
-              <InfoCaption>info@vinokurov-tour.ru</InfoCaption>
+              <InfoCaption>info@vinokurov-tours.ru</InfoCaption>
             </Info>
             <Info>
               <InfoTitleClock>График:</InfoTitleClock>
               <InfoCaption>
-                Пн–Пт: 10:00 – 18:00
+                Пн–Пт: 9:00 – 17:00
                 <br />
-                Сб: 10:00 – 14:00
-                <br />
-                Вс: выходной
+                Сб-Вс: выходной
               </InfoCaption>
             </Info>
           </div>
-          <SquarePicture
-            width="100%"
-            height="200px"
-            img={banner}
-          />
+          <VKwidget>
+            <div id="vk_groups" />
+          </VKwidget>
         </LeftColumn>
         <RightColumn>
           <YMaps>

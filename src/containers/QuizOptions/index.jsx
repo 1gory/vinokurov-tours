@@ -179,12 +179,12 @@ export default class extends Component {
         <Step isFirstStep={numberOfActiveStep === 0}>
           {stepsTemplate}
           {
-          isLastStep ? (
-            <QuizForm submitHandler={addFormData} goToFirstStepHandler={this.goToFirstStep} />
-          ) : (
-            ''
-          )
-        }
+            isLastStep ? (
+              <QuizForm submitHandler={addFormData} goToFirstStepHandler={this.goToFirstStep} />
+            ) : (
+              ''
+            )
+          }
         </Step>
         {
           isVisibleGoBack ? (<GoBack onClick={this.handleGoBack}>Назад</GoBack>) : ''

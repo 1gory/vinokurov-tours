@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.get('/*', (req, res) => {
-  const filePath = path.resolve(__dirname, '..', 'build', 'index.html');
+  const filePath = path.resolve(__dirname, '..', 'build', 'main.html');
   fs.readFile(filePath, 'utf8', (err, htmlData) => {
     if (err) {
       // logger.error('read err', err);

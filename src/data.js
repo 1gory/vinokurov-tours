@@ -5,7 +5,7 @@ import turkey from './img/directions/turkey.jpg';
 const directions = {
   thailand: {
     name: 'Тайланд',
-    link: '/thailand',
+    link: '/',
     src: thailand,
   },
   dominican: {

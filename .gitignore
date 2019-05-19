@@ -2,3 +2,4 @@ build
 node_modules
 package-lock.json
 server/encryption/*
+/server/config.js

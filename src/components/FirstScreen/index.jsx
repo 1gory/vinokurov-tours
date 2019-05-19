@@ -99,6 +99,7 @@ const Caption = styled.p`
 
 const Offer = styled.div`
   padding-bottom: 25px;
+  height: 376px;
   margin-top: 88px;
   @media screen and (max-width: 768px) {
     margin-top: 25px;
@@ -110,7 +111,7 @@ const Offer = styled.div`
   }
 `;
 
-export default ({ scrollToMyRef, offer }) => (
+export default ({ scrollToMyRef, offer, directions }) => (
   <Wrap>
     <FirstScreen>
       <LeftColumn>
@@ -131,7 +132,7 @@ export default ({ scrollToMyRef, offer }) => (
             handleClick={scrollToMyRef}
           />
         </Offer>
-        <Directions />
+        <Directions directions={directions} />
       </LeftColumn>
       <RightColumn>
         <SquarePicture width="100%" height="700px" img={mainImage} />

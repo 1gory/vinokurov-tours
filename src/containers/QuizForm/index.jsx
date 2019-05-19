@@ -59,13 +59,13 @@ export default class extends Component {
         {
           icon: mailImg,
           placeholder: 'Эл. почта',
-          type: 'mail',
+          type: 'email',
           handler: this.setMail,
         },
       ],
       name: '',
       phone: '',
-      mail: '',
+      email: '',
       dataSended: false,
     };
   }
@@ -79,7 +79,7 @@ export default class extends Component {
   }
 
   setMail = (mailString) => {
-    this.setState({ mail: mailString });
+    this.setState({ email: mailString });
   }
 
   validateUserData = (e) => {
@@ -89,7 +89,7 @@ export default class extends Component {
       inputsData,
       name,
       phone,
-      mail,
+      email,
     } = this.state;
     const newInputsData = inputsData;
     const formDataObj = {};
@@ -100,7 +100,7 @@ export default class extends Component {
     } else {
       formDataObj.name = name;
       formDataObj.phone = phone;
-      formDataObj.mail = mail;
+      formDataObj.email = email;
       newInputsData[1].error = false;
       submitHandler(formDataObj);
       this.setState({

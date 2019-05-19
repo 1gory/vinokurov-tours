@@ -1,12 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import direction1 from '../../img/d1.jpg';
-import direction2 from '../../img/d2.jpg';
 import linkIcon from '../../img/icons/link.svg';
 
-const Directions = styled.div`
-  padding-top: 62px;
+const Wrapper = styled.div`
   @media screen and (max-width: 768px) {
     padding-left: 17px;
     padding-right: 17px;
@@ -77,22 +74,17 @@ const DirectionLink = styled(Link)`
   }
 `;
 
-export default () => (
-  <Directions>
+export default ({ directions }) => (
+  <Wrapper>
     <DirectionsTitle>другие направления</DirectionsTitle>
-    <Direction>
-      <ImgWrap>
-        <Img src={direction1} />
-      </ImgWrap>
-      <DirectionCaption>Доминикана</DirectionCaption>
-      <DirectionLink to="/dominican">Подробнее</DirectionLink>
-    </Direction>
-    <Direction>
-      <ImgWrap>
-        <Img src={direction2} />
-      </ImgWrap>
-      <DirectionCaption>Турция</DirectionCaption>
-      <DirectionLink to="/turkey">Подробнее</DirectionLink>
-    </Direction>
-  </Directions>
+    {directions.map(direction => (
+      <Direction>
+        <ImgWrap>
+          <Img src={direction.src} />
+        </ImgWrap>
+        <DirectionCaption>{direction.name}</DirectionCaption>
+        <DirectionLink to={direction.link}>Подробнее</DirectionLink>
+      </Direction>
+    ))}
+  </Wrapper>
 );

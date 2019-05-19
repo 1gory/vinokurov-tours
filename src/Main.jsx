@@ -26,12 +26,12 @@ const scrollToMyRef = () => {
 
 export default ({ data }) => (
   <>
-    <FirstScreen scrollToMyRef={scrollToMyRef} offer={data.offer} />
+    <FirstScreen scrollToMyRef={scrollToMyRef} offer={data.offer} directions={data.directions} />
     <QuizSection />
     <WhatYouGet />
     <Numbers />
     <About />
-    <Booklet />
+    <Booklet bookletDirection={data.booklet} />
     <InstagramFeedback />
     <Why />
     <LeftRequest />

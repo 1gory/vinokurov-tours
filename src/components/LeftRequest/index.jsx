@@ -4,7 +4,7 @@ import { Subscribe } from 'unstated';
 import Input from '../../containers/Input';
 import RequestContainer from '../../state/RequestState';
 import Button from '../Button';
-import request from '../../img/request-bg.jpg';
+import request from '../../img/order.jpg';
 
 const Wrap = styled.div`
   height: 496px;
@@ -28,7 +28,7 @@ const Wrap = styled.div`
 `;
 
 const Column = styled.div`
-  max-width: 370px;
+  
 `;
 
 const Title = styled.h2`
@@ -50,6 +50,7 @@ const Title = styled.h2`
 `;
 
 const TopCaption = styled.p`
+  max-width: 370px;
   font-family: 'opensans';
   font-size: 14px;
   line-height: 22.5px;
@@ -64,6 +65,7 @@ const TopCaption = styled.p`
 `;
 
 const BottomCaption = styled.p`
+  max-width: 370px;
   font-family: 'opensans';
   font-weight: 500;
   font-size: 12px;
@@ -74,6 +76,13 @@ const BottomCaption = styled.p`
     margin-bottom: 26px;
     padding-top: 9px;
   }
+`;
+
+const Success = styled.div`
+  font-size: 20px;
+  line-height: 1.5em;
+  font-family: 'GothamPro';
+  color: #fff;
 `;
 
 export default () => (
@@ -89,12 +98,19 @@ export default () => (
           const {
             state: {
               error,
+              dataSended,
             },
             setName,
             setPhone,
             sendRequest,
           } = requestContainer;
-          return (
+          return dataSended ? (
+            <Success>
+              Спасибо!
+              <br />
+              Мы свяжемся с Вами в ближайшее время
+            </Success>
+          ) : (
             <div>
               <Input
                 theme="transparent"

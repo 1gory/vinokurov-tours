@@ -301,12 +301,12 @@ export default class extends Component {
   handleMailChange = (e) => {
     const { inputHandler } = this.props;
     const input = e.target;
-    const mail = input.value;
+    const email = input.value;
 
-    inputHandler(mail);
+    inputHandler(email);
 
     this.setState({
-      inputData: mail,
+      inputData: email,
     });
   }
 
@@ -388,7 +388,7 @@ export default class extends Component {
           />
         );
         break;
-      case 'mail':
+      case 'email':
         inputType = (
           <InputElem
             placeholder={placeholder}

@@ -1,18 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Main from './Main';
-
-const data = [
-  {
-    offer: 'Подбор туров в Таиланд за 2 часа',
-  },
-  {
-    offer: 'Подбор туров в Турцию за 2 часа',
-  },
-  {
-    offer: 'Подбор туров в Доминикану за 2 часа',
-  },
-];
+import data from './data';
 
 export default () => (
   <Switch>

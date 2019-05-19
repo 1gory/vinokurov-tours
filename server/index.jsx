@@ -15,13 +15,15 @@ const app = express();
 
 app.use(compression());
 
-app.use(express.static(path.join(__dirname, '..', 'build')));
+app.use(express.static(path.join(__dirname, '..', 'build'), { index: false }));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use('/api', require('./api/order').default);
+
 app.get('/*', (req, res) => {
-  const filePath = path.resolve(__dirname, '..', 'build', 'main.html');
+  const filePath = path.resolve(__dirname, '..', 'build', 'index.html');
   fs.readFile(filePath, 'utf8', (err, htmlData) => {
     if (err) {
       // logger.error('read err', err);

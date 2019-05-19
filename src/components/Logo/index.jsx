@@ -1,10 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import airplane from '../../img/icons/airplane.svg';
 import airplaneRed from '../../img/icons/airplane-red.svg';
 
-const Logo = styled.div`
+const Logo = styled(Link)`
+  display: block;
   position: relative;
+  text-decoration: none;
   @media screen and (max-width: 768px) {
     margin-left: 17px;
   }
@@ -30,7 +33,7 @@ const Title = styled.div`
 `;
 
 export default ({ theme }) => (
-  <Logo>
+  <Logo to="/">
     <Img src={theme === 'white' ? airplane : airplaneRed} />
     <Title theme={theme}>Турагенство Дмитрия Винокурова</Title>
   </Logo>

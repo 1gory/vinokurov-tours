@@ -81,52 +81,67 @@ const CaptionSmall = styled.p`
   }
 `;
 
-export default () => (
-  <Wrap>
-    <LeftColumn>
-      <Title>Не знаете, что может понадобиться в Таиланде?</Title>
-      <Caption>
-        {
-          `Вышлем вам на почту памятку для туриста,
-           необходимые документы, нужные контакты,
-           информация и множество других советов.`
-        }
-      </Caption>
-      <Subscribe to={[MailContainer]}>
-        {(mallContainer) => {
-          const {
-            setMail,
-          } = mallContainer;
+const Success = styled.div`
+  font-size: 20px;
+  line-height: 1.5em;
+  font-family: 'GothamPro';
+  color: #fff;
+`;
 
-          return (
-            <Input
-              type="mail"
-              theme="transparent"
-              placeholder="Эл. почта"
-              inputHandler={setMail}
-            />
-          );
-        }}
-      </Subscribe>
-      <CaptionSmall>
-        {`Нажимая на кнопку "ПОЛУЧИТЬ ПАМЯТКУ",
-        вы даете согласие на обработку своих персональных данных.`}
-      </CaptionSmall>
-      <Subscribe to={[MailContainer]}>
-        {(mallContainer) => {
-          const {
-            sendMail,
-          } = mallContainer;
+export default ({ bookletDirection }) => (
+  <Subscribe to={[MailContainer]}>
+    {(mallContainer) => {
+      const {
+        sendMail,
+        setMail,
+        state: {
+          dataSended,
+        },
+      } = mallContainer;
 
-          return (
-            <Button
-              text="получить"
-              width={193}
-              handleClick={sendMail}
-            />
-          );
-        }}
-      </Subscribe>
-    </LeftColumn>
-  </Wrap>
+      return (
+        <Wrap>
+          <LeftColumn>
+            <Title>
+              {'Не знаете, что может понадобиться в  '}
+              {bookletDirection}
+              ?
+            </Title>
+            <Caption>
+              {`Вышлем вам на почту памятку для туриста,
+                необходимые документы, нужные контакты,
+                информация и множество других советов.`
+              }
+            </Caption>
+            {dataSended
+              ? (
+                <Success>
+                  {'Спасибо! '}
+                  <br />
+                  {'Мы свяжемся с Вами в ближайшее время'}
+                </Success>
+              ) : (
+                <>
+                  <Input
+                    type="email"
+                    theme="transparent"
+                    placeholder="Эл. почта"
+                    inputHandler={setMail}
+                  />
+                  <CaptionSmall>
+                    {`Нажимая на кнопку "ПОЛУЧИТЬ ПАМЯТКУ",
+                      вы даете согласие на обработку своих персональных данных.`}
+                  </CaptionSmall>
+                  <Button
+                    text="получить"
+                    width={193}
+                    handleClick={sendMail}
+                  />
+                </>
+              )}
+          </LeftColumn>
+        </Wrap>
+      );
+    }}
+  </Subscribe>
 );

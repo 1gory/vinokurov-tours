@@ -6,7 +6,6 @@ import SectionWrap from '../SectionWrap';
 import SquarePicture from '../SquarePicture';
 import QuizOptions from '../../containers/QuizOptions';
 import StepsContainer from '../../state/StepsState';
-import StepsImageContainer from '../../state/StepsImageState';
 
 const StepsSection = styled.div`
   padding-top: 113px;
@@ -83,7 +82,7 @@ export default () => (
         </Subscribe>
       </LeftColumn>
       <RightColumn>
-        <Subscribe to={[StepsImageContainer]}>
+        <Subscribe to={[StepsContainer]}>
           {(container) => {
             const {
               state: {

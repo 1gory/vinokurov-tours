@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Subscribe } from 'unstated';
+import dateformat from 'dateformat';
 import QuizOption from '../../components/QuizOption';
 import Input from '../Input';
 import QuizForm from '../QuizForm';
@@ -9,7 +9,6 @@ import QuizStep from '../../components/QuizStep';
 import backlink from '../../img/icons/back-link.svg';
 import calender from '../../img/icons/calendar.svg';
 import img1 from '../../img/1.jpg';
-import StepsImageContainer from '../../state/StepsImageState';
 
 const Wrap = styled.div`
   display: inline-block;
@@ -54,10 +53,21 @@ export default class extends Component {
     };
   }
 
+  setStepImage = () => {
+    const {
+      container: {
+        setImage,
+      },
+    } = this.props;
+
+    const { data, numberOfActiveStep } = this.state;
+    setImage(data[numberOfActiveStep].imgSrc);
+  }
+
   handleGoNextQuestion = () => {
     let { numberOfActiveStep } = this.state;
     numberOfActiveStep += 1;
-    this.setState({ numberOfActiveStep });
+    this.setState({ numberOfActiveStep }, () => this.setStepImage());
   }
 
   handleGoBack = (e) => {
@@ -65,7 +75,7 @@ export default class extends Component {
     let { numberOfActiveStep } = this.state;
 
     if (numberOfActiveStep !== 0) {
-      this.setState({ numberOfActiveStep: numberOfActiveStep -= 1 });
+      this.setState({ numberOfActiveStep: numberOfActiveStep -= 1 }, () => this.setStepImage());
     } else {
       return false;
     }
@@ -73,8 +83,13 @@ export default class extends Component {
   }
 
   goToFirstStep = (e) => {
+    const {
+      container: {
+        resetQuiz,
+      },
+    } = this.props;
     e.preventDefault();
-    this.setState({ numberOfActiveStep: 0 });
+    this.setState({ numberOfActiveStep: 0 }, () => resetQuiz());
   }
 
   render() {
@@ -82,6 +97,7 @@ export default class extends Component {
       container: {
         addAnswer,
         addFormData,
+        setImage,
         state: {
           isThanksStep,
         },
@@ -108,29 +124,19 @@ export default class extends Component {
 
       /* Формирование шаблона Опций Вопроса */
       questionsOptionsTemplate = options.map(curItem => (
-        <Subscribe to={[StepsImageContainer]}>
-          {(imageContainer) => {
-            const {
-              setImage,
-            } = imageContainer;
-
-            return (
-              <QuizOption
-                key={curItem.content}
-                type={curItem.type}
-                question={question}
-                content={curItem.content}
-                hoverContent={curItem.hoverContent}
-                value={curItem.value}
-                numberOfQuestion={numberOfActiveStep}
-                imgSrc={curItem.imgSrc || img1}
-                handleOptionClick={addAnswer}
-                handleGoNextQuestion={this.handleGoNextQuestion}
-                handleOptionHover={setImage}
-              />
-            );
-          }}
-        </Subscribe>
+        <QuizOption
+          key={curItem.content}
+          type={curItem.type}
+          question={question}
+          content={curItem.content}
+          hoverContent={curItem.hoverContent}
+          value={curItem.value}
+          numberOfQuestion={numberOfActiveStep}
+          imgSrc={curItem.imgSrc || img1}
+          handleOptionClick={addAnswer}
+          handleGoNextQuestion={this.handleGoNextQuestion}
+          handleOptionHover={setImage}
+        />
       ));
 
       if (numberOfActiveStep === index) {
@@ -148,7 +154,7 @@ export default class extends Component {
           const description = 'Выбранная дата';
           /* Когда выбирается дата, происходит переход на следующий слайд */
           this.handleGoNextQuestion();
-          return addAnswer(inputQuestion, number, value, description);
+          return addAnswer(inputQuestion, number, dateformat(value, 'dd.mm.yyyy'), description);
         };
 
         questionsOptionsTemplate.push(

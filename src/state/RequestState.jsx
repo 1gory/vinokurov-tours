@@ -17,8 +17,25 @@ export default class RequestContainer extends Container {
   }
 
   sendRequest = () => {
-    const { phone } = this.state;
+    const { phone, name } = this.state;
     if (phone.length === 17) {
+      fetch('/api/order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({ phone, name }),
+      })
+        .then(async (
+        // data
+        ) => {
+          // const response = await data.json();
+        })
+        .catch((/* error */) => {
+
+        });
       /* Post запрос на отправление данных */
       this.setState({ error: false, dataSended: true });
     } else {

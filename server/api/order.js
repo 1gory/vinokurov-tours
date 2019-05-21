@@ -11,8 +11,8 @@ const getMailBody = (data) => {
   output += data.name ? `Имя: ${data.name} <br />` : '';
   output += data.phone ? `Телефон: ${data.phone} <br />` : '';
   output += data.email ? `Почта: ${data.email} <br />` : '';
-  output += `<br />`;
-  data.stepsData && data.stepsData.map(step => {
+  output += '<br />';
+  data.stepsData && data.stepsData.map((step) => {
     output += `${step.question}: ${step.value}  <br />`;
   });
   return output;
@@ -32,12 +32,12 @@ router.post('/order', async (req, res, next) => {
       email,
       phone,
       name,
-      stepsData
+      stepsData,
     });
 
     let subject = 'Заявака';
 
-    if(isBookletRequest){
+    if (isBookletRequest) {
       subject = 'Запрос буклета';
     }
 
@@ -48,19 +48,19 @@ router.post('/order', async (req, res, next) => {
     );
 
     // Отправка буклета
-    // if(isBookletRequest) {
-    //   const body = await new Promise(resolve => {
-    //     fs.readFile(path.join(__dirname, 'order.html'), "utf8", (err, contents) => (
-    //       resolve(contents)
-    //     ));
-    //   });
-    //
-    //   mailer(
-    //     'Материалы vinokurov-tours.ru',
-    //     body,
-    //     email,
-    //   );
-    // }
+    if (isBookletRequest) {
+      const body = await new Promise((resolve) => {
+        fs.readFile(path.join(__dirname, 'order.html'), 'utf8', (err, contents) => (
+          resolve(contents)
+        ));
+      });
+
+      mailer(
+        'Памятка туристу | vinokurov-tours.ru',
+        body,
+        email,
+      );
+    }
 
     res.json({
       status: 'success',

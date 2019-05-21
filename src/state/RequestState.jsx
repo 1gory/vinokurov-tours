@@ -1,3 +1,4 @@
+/* eslint no-undef: 0 */
 import { Container } from 'unstated';
 
 export default class RequestContainer extends Container {
@@ -19,6 +20,7 @@ export default class RequestContainer extends Container {
   sendRequest = () => {
     const { phone, name } = this.state;
     if (phone.length === 17) {
+      ym(53328166, 'reachGoal', 'lead');
       fetch('/api/order', {
         method: 'POST',
         headers: {

@@ -1,3 +1,4 @@
+/* eslint no-undef: 0 */
 import { Container } from 'unstated';
 import img from '../img/quiz/food.jpg';
 
@@ -43,6 +44,7 @@ export default class StepsContainer extends Container {
       return false;
     }
 
+    ym(53328166, 'reachGoal', 'quiz');
     const testQuestionsDataLength = stepsData.length;
     const newTestQuestionData = JSON.parse(JSON.stringify(stepsData));
     newTestQuestionData[testQuestionsDataLength] = formObj;

@@ -6,7 +6,15 @@ import NumberItem from '../NumberItem';
 import { dataBig, dataSmall } from './data';
 import numbersPicture from '../../img/numbers.jpg';
 
+const Wrapper = styled(SectionWrap)`
+  padding-top: 50px;
+  max-width: inherit;
+  background: #f3f3f3;
+`;
+
 const Numbers = styled.section`
+  max-width: 1170px
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -84,7 +92,7 @@ export default () => {
   ));
 
   return (
-    <SectionWrap>
+    <Wrapper>
       <Numbers>
         <LeftColumn>
           <Title>
@@ -108,6 +116,6 @@ export default () => {
           <SquarePicture width="100%" height="1170px" img={numbersPicture} />
         </RightColumn>
       </Numbers>
-    </SectionWrap>
+    </Wrapper>
   );
 };

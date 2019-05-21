@@ -1,3 +1,4 @@
+/* eslint no-undef: 0 */
 import { Container } from 'unstated';
 
 export default class MailContainer extends Container {
@@ -12,6 +13,7 @@ export default class MailContainer extends Container {
 
   sendMail = () => {
     const { email } = this.state;
+    ym(53328166, 'reachGoal', 'booklet');
     fetch('/api/order', {
       method: 'POST',
       headers: {

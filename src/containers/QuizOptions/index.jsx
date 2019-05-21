@@ -1,3 +1,4 @@
+/* eslint no-undef: 0 */
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import dateformat from 'dateformat';
@@ -67,6 +68,7 @@ export default class extends Component {
   handleGoNextQuestion = () => {
     let { numberOfActiveStep } = this.state;
     numberOfActiveStep += 1;
+    ym(53328166, 'reachGoal', `step${numberOfActiveStep}`);
     this.setState({ numberOfActiveStep }, () => this.setStepImage());
   }
 

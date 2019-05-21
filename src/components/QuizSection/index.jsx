@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Subscribe } from 'unstated';
 import { Element } from 'react-scroll';
 import SectionWrap from '../SectionWrap';
-import SquarePicture from '../SquarePicture';
+import QuizPicture from './QuizPicture';
 import QuizOptions from '../../containers/QuizOptions';
 import StepsContainer from '../../state/StepsState';
 
@@ -18,7 +18,7 @@ const StepsSection = styled.div`
   align-content: stretch;
   align-items: flex-start;
   @media screen and (max-width: 1366px) {
-    display: block;
+    // display: block;
   }
   @media screen and (max-width: 768px) {
     padding-top: 26px;
@@ -90,7 +90,7 @@ export default () => (
               },
             } = container;
 
-            return (<SquarePicture width="670px" height="633px" img={imgSrc} />);
+            return (<QuizPicture img={imgSrc} />);
           }}
         </Subscribe>
       </RightColumn>

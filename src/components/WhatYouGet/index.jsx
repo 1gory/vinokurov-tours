@@ -4,6 +4,17 @@ import WhatYouGetItem from '../WhatYouGetItem';
 import WhatYouGetData from './data';
 import SectionWrap from '../SectionWrap';
 
+const Wrapper = styled(SectionWrap)`
+  // max-width: 1170px;
+  // margin: inherit;
+  // padding-left: 0;
+  // padding-right: 0;
+    
+  @media screen and (max-width: 1366px) {
+    padding-right: 0;
+  }
+`;
+
 const WhatYouGet = styled.div`
   padding-top: 58px;
   position: relative;
@@ -40,7 +51,6 @@ const Title = styled.h2`
 
 const Wrap = styled.div`
   overflow-x: scroll;
-  
 `;
 
 const ItemsInner = styled.div`
@@ -69,7 +79,7 @@ export default () => {
   ));
 
   return (
-    <SectionWrap>
+    <Wrapper>
       <WhatYouGet>
         <Title>Что вы получите</Title>
         <Wrap>
@@ -78,6 +88,6 @@ export default () => {
           </ItemsInner>
         </Wrap>
       </WhatYouGet>
-    </SectionWrap>
+    </Wrapper>
   );
 };

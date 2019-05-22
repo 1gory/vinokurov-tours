@@ -1,0 +1,3 @@
+User-Agent: *
+Host: https://vinokurov-tours.ru/
+Sitemap: https://vinokurov-tours.ru/sitemap.xml

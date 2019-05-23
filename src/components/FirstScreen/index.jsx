@@ -20,11 +20,13 @@ const PhoneIcon = styled.img`
 `;
 
 const Phone = styled.a`
-  display: inline-block;
-  color: #fff;
-  font-size: 12px;
-  font-family: 'GothamPro';
-  // text-decoration: none;
+  display: none; 
+  @media screen and (max-width: 768px) {
+    display: inline-block;
+    color: #fff;
+    font-size: 12px;
+    font-family: 'GothamPro';
+  }
 `;
 
 const Wrap = styled.div`

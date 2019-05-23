@@ -6,6 +6,26 @@ import Directions from './Directions';
 import SquarePicture from '../SquarePicture';
 import mainImage from '../../img/main.jpg';
 import mainImageMob from '../../img/main_m.jpg';
+import phoneIcon from './phone-icon.svg';
+
+const PhoneWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+`;
+
+const PhoneIcon = styled.img`
+  width: 20px;
+  margin-right: 10px;
+`;
+
+const Phone = styled.a`
+  display: inline-block;
+  color: #fff;
+  font-size: 12px;
+  font-family: 'GothamPro';
+  // text-decoration: none;
+`;
 
 const Wrap = styled.div`
   max-width: 1366px;
@@ -103,7 +123,7 @@ const Offer = styled.div`
   margin-top: 88px;
   @media screen and (max-width: 768px) {
     margin-top: 25px;
-    padding-top: 45px;
+    padding-top: 35px;
     padding-left: 17px;
     padding-right: 17px;
     background: url(${mainImageMob});
@@ -117,6 +137,10 @@ export default ({ scrollToMyRef, offer, directions }) => (
       <LeftColumn>
         <Logo />
         <Offer>
+          <PhoneWrapper>
+            <PhoneIcon src={phoneIcon} />
+            <Phone href="tel:+79031679008">+7 (903) 167-90-08</Phone>
+          </PhoneWrapper>
           <IndividualTours>индивидуальные туры от экспертов</IndividualTours>
           <Title>
             {offer}

@@ -27,7 +27,7 @@ export const dataSmall = [
     caption: 'Лет работы в туристической отрасли',
   },
   {
-    number: '250',
+    number: '300',
     caption: 'Постоянных клиентов',
   },
   {

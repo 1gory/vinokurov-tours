@@ -1,14 +1,14 @@
 /* eslint no-undef: 0 */
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import dateformat from 'dateformat';
+// import dateformat from 'dateformat';
 import QuizOption from '../../components/QuizOption';
-import Input from '../Input';
+// import Input from '../Input';
 import QuizForm from '../QuizForm';
 import stepsData from './stepsData';
 import QuizStep from '../../components/QuizStep';
 import backlink from '../../img/icons/back-link.svg';
-import calender from '../../img/icons/calendar.svg';
+// import calender from '../../img/icons/calendar.svg';
 import img1 from '../../img/1.jpg';
 
 const Wrap = styled.div`
@@ -145,30 +145,30 @@ export default class extends Component {
         visible = true;
       }
 
-      /* Если это 4-й вопрос, кладем туда Input с DatePicker */
-      if (numberOfQuestion === 4) {
-        /* Обертка для функции записывания
-        в стейт ответа с дефолтными аргументами,
-        из инпута приходит только дата */
-        const addAnswerWithArguments = (value) => {
-          const inputQuestion = question;
-          const number = numberOfActiveStep;
-          const description = 'Выбранная дата';
-          /* Когда выбирается дата, происходит переход на следующий слайд */
-          this.handleGoNextQuestion();
-          return addAnswer(inputQuestion, number, dateformat(value, 'dd.mm.yyyy'), description);
-        };
-
-        questionsOptionsTemplate.push(
-          <Input
-            key={Math.random()}
-            type="datepicker"
-            hasIcon
-            icon={calender}
-            inputHandler={addAnswerWithArguments}
-          />,
-        );
-      }
+      // /* Если это 4-й вопрос, кладем туда Input с DatePicker */
+      // if (numberOfQuestion === 4) {
+      //   /* Обертка для функции записывания
+      //   в стейт ответа с дефолтными аргументами,
+      //   из инпута приходит только дата */
+      //   const addAnswerWithArguments = (value) => {
+      //     const inputQuestion = question;
+      //     const number = numberOfActiveStep;
+      //     const description = 'Выбранная дата';
+      //     /* Когда выбирается дата, происходит переход на следующий слайд */
+      //     this.handleGoNextQuestion();
+      //     return addAnswer(inputQuestion, number, dateformat(value, 'dd.mm.yyyy'), description);
+      //   };
+      //
+      //   questionsOptionsTemplate.push(
+      //     <Input
+      //       key={Math.random()}
+      //       type="datepicker"
+      //       hasIcon
+      //       icon={calender}
+      //       inputHandler={addAnswerWithArguments}
+      //     />,
+      //   );
+      // }
 
       return (
         <QuizStep

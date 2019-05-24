@@ -9,9 +9,12 @@ import mainImageMob from '../../img/main_m.jpg';
 import phoneIcon from './phone-icon.svg';
 
 const PhoneWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  padding-bottom: 10px;
+  display: none; 
+  @media screen and (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+  }
 `;
 
 const PhoneIcon = styled.img`
@@ -20,13 +23,10 @@ const PhoneIcon = styled.img`
 `;
 
 const Phone = styled.a`
-  display: none; 
-  @media screen and (max-width: 768px) {
-    display: inline-block;
-    color: #fff;
-    font-size: 12px;
-    font-family: 'GothamPro';
-  }
+  display: inline-block;
+  color: #fff;
+  font-size: 12px;
+  font-family: 'GothamPro';
 `;
 
 const Wrap = styled.div`

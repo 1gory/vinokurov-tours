@@ -94,9 +94,33 @@ const stepsDate = [
     ],
   },
   {
-    question: 'С какого числа планируете начинать',
-    options: [],
-    imgSrc: s41,
+    question: 'Через сколько планируется отпуск?',
+    options: [
+      {
+        content: 'Несколько дней',
+        value: 'Несколько дней',
+        type: 'text',
+        imgSrc: s41,
+      },
+      {
+        content: 'Пару недель',
+        value: 'Пара недель',
+        type: 'text',
+        imgSrc: s41,
+      },
+      {
+        content: 'Пару месяцев',
+        value: 'Пару месяцев',
+        type: 'text',
+        imgSrc: s41,
+      },
+      {
+        content: 'Пол года',
+        value: 'Пол года',
+        type: 'text',
+        imgSrc: s41,
+      },
+    ],
   },
   {
     question: 'Отправьте данные по опросу нам',

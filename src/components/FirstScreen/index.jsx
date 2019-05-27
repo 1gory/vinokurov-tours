@@ -7,27 +7,7 @@ import SquarePicture from '../SquarePicture';
 import mainImage from '../../img/main.jpg';
 import mainImageMob from '../../img/main_m.jpg';
 import phoneIcon from './phone-icon.svg';
-
-const PhoneWrapper = styled.div`
-  display: none; 
-  @media screen and (max-width: 768px) {
-    display: flex;
-    align-items: center;
-    padding-bottom: 10px;
-  }
-`;
-
-const PhoneIcon = styled.img`
-  width: 20px;
-  margin-right: 10px;
-`;
-
-const Phone = styled.a`
-  display: inline-block;
-  color: #fff;
-  font-size: 12px;
-  font-family: 'GothamPro';
-`;
+import phoneIconBlack from './phone-icon-black.svg';
 
 const Wrap = styled.div`
   max-width: 1366px;
@@ -133,16 +113,53 @@ const Offer = styled.div`
   }
 `;
 
+const Phone = () => (
+  <PhoneWrapper>
+    <PhoneIcon src={phoneIcon} />
+    <PhoneIconBlack src={phoneIconBlack} />
+    <PhoneNumber href="tel:+79031679008">+7 (903) 167-90-08</PhoneNumber>
+  </PhoneWrapper>
+);
+
+const PhoneWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+`;
+
+const PhoneIcon = styled.img`
+  width: 20px;
+  margin-right: 10px;
+  display: none;
+  @media screen and (max-width: 768px) {
+    display: inline-block;
+  }
+`;
+
+const PhoneIconBlack = styled(PhoneIcon)`
+  display: inline-block;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const PhoneNumber = styled.a`
+  display: inline-block;
+  font-family: 'GothamPro';
+  color: #000;
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+    color: #fff;
+  }
+`;
+
 export default ({ scrollToMyRef, offer, directions }) => (
   <Wrap>
     <FirstScreen>
       <LeftColumn>
         <Logo />
         <Offer>
-          <PhoneWrapper>
-            <PhoneIcon src={phoneIcon} />
-            <Phone href="tel:+79031679008">+7 (903) 167-90-08</Phone>
-          </PhoneWrapper>
+          <Phone />
           <IndividualTours>индивидуальные туры от экспертов</IndividualTours>
           <Title>
             {offer}

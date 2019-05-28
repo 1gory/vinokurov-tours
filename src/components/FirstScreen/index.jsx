@@ -101,9 +101,8 @@ const Caption = styled.p`
 
 const Offer = styled.div`
   padding-bottom: 25px;
-  height: 376px;
-  margin-top: 88px;
-  @media screen and (max-width: 768px) {
+  margin-top: 75px;
+  @media screen and (max-width: 768px) {   
     margin-top: 25px;
     padding-top: 35px;
     padding-left: 17px;

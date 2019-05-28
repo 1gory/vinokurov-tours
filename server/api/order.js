@@ -11,6 +11,7 @@ const getMailBody = (data) => {
   output += data.name ? `Имя: ${data.name} <br />` : '';
   output += data.phone ? `Телефон: ${data.phone} <br />` : '';
   output += data.email ? `Почта: ${data.email} <br />` : '';
+  output += data.referer ? `Страница: ${data.referer} <br />` : '';
   output += '<br />';
   data.stepsData && data.stepsData.map((step) => {
     output += `${step.question}: ${step.value}  <br />`;
@@ -28,11 +29,14 @@ router.post('/order', async (req, res, next) => {
       isBookletRequest,
     } = req.body;
 
+    const { referer } = req.headers;
+
     const mailBody = getMailBody({
       email,
       phone,
       name,
       stepsData,
+      referer,
     });
 
     let subject = 'Заявака';

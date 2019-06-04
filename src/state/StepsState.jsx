@@ -1,5 +1,6 @@
 /* eslint no-undef: 0 */
 import { Container } from 'unstated';
+import ReactPixel from 'react-facebook-pixel';
 import img from '../img/quiz/food.jpg';
 
 export default class StepsContainer extends Container {
@@ -45,6 +46,7 @@ export default class StepsContainer extends Container {
     }
 
     ym(53328166, 'reachGoal', 'quiz');
+    ReactPixel.track('Lead');
     const testQuestionsDataLength = stepsData.length;
     const newTestQuestionData = JSON.parse(JSON.stringify(stepsData));
     newTestQuestionData[testQuestionsDataLength] = formObj;

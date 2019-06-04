@@ -1,5 +1,6 @@
 /* eslint no-undef: 0 */
 import { Container } from 'unstated';
+import ReactPixel from 'react-facebook-pixel';
 
 export default class RequestContainer extends Container {
   state = {
@@ -21,6 +22,7 @@ export default class RequestContainer extends Container {
     const { phone, name } = this.state;
     if (phone.length === 17) {
       ym(53328166, 'reachGoal', 'lead');
+      ReactPixel.track('Lead');
       fetch('/api/order', {
         method: 'POST',
         headers: {

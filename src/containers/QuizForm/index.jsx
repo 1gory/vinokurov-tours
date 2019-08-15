@@ -43,12 +43,12 @@ export default class extends Component {
 
     this.state = {
       inputsData: [
-        {
-          icon: userImg,
-          placeholder: 'Имя',
-          type: 'name',
-          handler: this.setName,
-        },
+        // {
+        //   icon: userImg,
+        //   placeholder: 'Имя',
+        //   type: 'name',
+        //   handler: this.setName,
+        // },
         {
           icon: phoneImg,
           placeholder: 'Телефон',
@@ -56,12 +56,12 @@ export default class extends Component {
           error: false,
           handler: this.setPhone,
         },
-        {
-          icon: mailImg,
-          placeholder: 'Эл. почта',
-          type: 'email',
-          handler: this.setMail,
-        },
+        // {
+        //   icon: mailImg,
+        //   placeholder: 'Эл. почта',
+        //   type: 'email',
+        //   handler: this.setMail,
+        // },
       ],
       name: '',
       phone: '',
@@ -98,10 +98,10 @@ export default class extends Component {
       newInputsData[1].error = true;
       this.setState({ inputsData: newInputsData });
     } else {
-      formDataObj.name = name;
+      // formDataObj.name = name;
       formDataObj.phone = phone;
-      formDataObj.email = email;
-      newInputsData[1].error = false;
+      // formDataObj.email = email;
+      // newInputsData[1].error = false;
       submitHandler(formDataObj);
       this.setState({
         inputsData: newInputsData,

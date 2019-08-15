@@ -22,7 +22,7 @@ const directions = {
 
 export default [
   {
-    offer: 'Подбор туров в Таиланд за 2 часа',
+    offer: 'Подбор туров в Таиланд за 10 минут',
     booklet: 'Тайланде',
     directions: [
       directions.dominican,
@@ -30,7 +30,7 @@ export default [
     ],
   },
   {
-    offer: 'Подбор туров в Турцию за 2 часа',
+    offer: 'Подбор Туров в Турцию за 10 минут',
     booklet: 'Турции',
     directions: [
       directions.dominican,
@@ -38,7 +38,7 @@ export default [
     ],
   },
   {
-    offer: 'Подбор туров в Доминикану за 2 часа',
+    offer: 'Подбор туров в Доминикану за 10 минут',
     booklet: 'Доминикане',
     directions: [
       directions.thailand,

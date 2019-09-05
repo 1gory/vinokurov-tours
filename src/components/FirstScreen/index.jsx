@@ -24,7 +24,7 @@ const Wrap = styled.div`
 
 const FirstScreen = styled.section`
   position: relative;
-  height: 714px;
+  // height: 714px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -75,7 +75,7 @@ const IndividualTours = styled.p`
 const Title = styled.h3`
   font-family: 'GothamPro';
   font-weight: 500;
-  font-size: 48px;
+  font-size: 40px;
   line-height: 57px;
   color: #474d57;
   margin-bottom: 26px;

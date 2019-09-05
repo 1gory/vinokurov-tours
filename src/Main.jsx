@@ -26,7 +26,7 @@ const scrollToMyRef = () => {
     duration: 300,
     delay: 100,
     smooth: true,
-    offset: 100,
+    offset: 0,
   });
 };
 

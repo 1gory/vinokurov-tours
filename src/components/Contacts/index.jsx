@@ -16,6 +16,7 @@ const Wrap = styled.section`
   padding-left: 98px;
   margin-left: -98px;
   margin-right: -98px;
+  padding-top: 80px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;

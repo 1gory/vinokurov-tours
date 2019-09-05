@@ -7,9 +7,9 @@ import Numbers from './components/Numbers';
 import About from './components/About';
 import Booklet from './components/Booklet';
 import InstagramFeedback from './components/InstagramFeedback';
-import Why from './components/Why';
+// import Why from './components/Why';
 import LeftRequest from './components/LeftRequest';
-import TouristsPhoto from './components/TouristsPhoto';
+// import TouristsPhoto from './components/TouristsPhoto';
 import QuizSection from './components/QuizSection';
 import Contacts from './components/Contacts';
 import Footer from './components/Footer';
@@ -34,14 +34,14 @@ export default ({ data }) => (
   <>
     <FirstScreen scrollToMyRef={scrollToMyRef} offer={data.offer} directions={data.directions} />
     <QuizSection />
-    <WhatYouGet />
+    <WhatYouGet direction={data.booklet} />
     <Numbers />
     <About />
     <Booklet bookletDirection={data.booklet} />
     <InstagramFeedback />
-    <Why />
+    {/* <Why /> */}
     <LeftRequest />
-    <TouristsPhoto />
+    {/* <TouristsPhoto /> */}
     <Contacts />
     <Footer />
   </>

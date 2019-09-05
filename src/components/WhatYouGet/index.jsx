@@ -66,14 +66,14 @@ const ItemsInner = styled.div`
   padding-right: 3px;
 `;
 
-export default () => {
+export default ({ direction }) => {
   let ItemsTemplate = [];
 
   ItemsTemplate = WhatYouGetData.map(curItem => (
     <WhatYouGetItem
       key={curItem.title}
       icon={curItem.icon}
-      title={curItem.title}
+      title={curItem.title === 'Идеальный отдых' ? `${curItem.title} в ${direction}` : curItem.title}
       text={curItem.text}
     />
   ));

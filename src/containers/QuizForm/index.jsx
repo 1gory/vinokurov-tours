@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Input from '../Input';
 import Button from '../../components/Button';
-import userImg from '../../img/icons/user.svg';
+// import userImg from '../../img/icons/user.svg';
 import phoneImg from '../../img/icons/phone.svg';
-import mailImg from '../../img/icons/mail.svg';
+// import mailImg from '../../img/icons/mail.svg';
 import accept from '../../img/icons/accept.svg';
 
 const Disclaimer = styled.div`
@@ -63,33 +63,33 @@ export default class extends Component {
         //   handler: this.setMail,
         // },
       ],
-      name: '',
+      // name: '',
       phone: '',
-      email: '',
+      // email: '',
       dataSended: false,
     };
   }
 
-  setName = (nameString) => {
-    this.setState({ name: nameString });
-  }
+  // setName = (nameString) => {
+  //   this.setState({ name: nameString });
+  // }
 
   setPhone = (phoneString) => {
     this.setState({ phone: phoneString });
   }
 
-  setMail = (mailString) => {
-    this.setState({ email: mailString });
-  }
+  // setMail = (mailString) => {
+  //   this.setState({ email: mailString });
+  // }
 
   validateUserData = (e) => {
     e.preventDefault();
     const { submitHandler } = this.props;
     const {
       inputsData,
-      name,
+      // name,
       phone,
-      email,
+      // email,
     } = this.state;
     const newInputsData = inputsData;
     const formDataObj = {};

@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 import React from 'react';
 import styled from 'styled-components';
 import Logo from '../Logo';
@@ -89,8 +90,8 @@ const Title = styled.h3`
 `;
 
 const Caption = styled.p`
-  font-family: 'opensans';
-  font-size: 14px;
+  font-family: 'GothamPro';
+  font-size: 20px;
   line-height: 21px;
   color: #474d57;
   margin-bottom: 38px;  
@@ -152,7 +153,7 @@ const PhoneNumber = styled.a`
   }
 `;
 
-export default ({ scrollToMyRef, offer, directions }) => (
+export default ({ scrollToMyRef, offer, subOffer, directions }) => (
   <Wrap>
     <FirstScreen>
       <LeftColumn>
@@ -164,9 +165,7 @@ export default ({ scrollToMyRef, offer, directions }) => (
             {offer}
           </Title>
           <Caption>
-            С учётом всех ваших потребностей. Через
-            <br />
-            проверенных Туроператоров.
+            {subOffer}
           </Caption>
           <Button
             width={158}

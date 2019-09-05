@@ -4,8 +4,8 @@ import starfive from '../../img/icons/stars-5.svg';
 import starthreew from '../../img/icons/stars-3-white.svg';
 import starfourw from '../../img/icons/stars-4-white.svg';
 import starfivew from '../../img/icons/stars-5-white.svg';
-import s11 from '../../img/quiz/views.jpg';
-import s12 from '../../img/quiz/beach.jpg';
+import s11 from '../../img/quiz/aqua.jpg';
+import s12 from '../../img/quiz/sea.jpg';
 import s13 from '../../img/quiz/food.jpg';
 import s21 from '../../img/quiz/3stars.jpg';
 import s22 from '../../img/quiz/4srtars.jpg';
@@ -16,27 +16,26 @@ import s33 from '../../img/quiz/3week.jpg';
 import s41 from '../../img/quiz/date.jpg';
 import s51 from '../../img/quiz/post.jpg';
 
-
 const stepsDate = [
   {
-    question: 'Что для вас отдых?',
+    question: 'что для вас отдых с детьми?',
     imgSrc: s13,
     options: [
       {
-        content: 'Знакомство с местной культурой и живописные пейзажи',
-        value: 'Знакомство с местной культурой и живописные пейзажи',
+        content: 'Наличие аквапарка',
+        value: 'Наличие аквапарка',
         type: 'text',
         imgSrc: s11,
       },
       {
-        content: 'Райский пляж недалеко от отеля',
-        value: 'Райский пляж недалеко от отеля',
+        content: 'Идеальный вход в море',
+        value: 'Идеальный вход в море',
         type: 'text',
         imgSrc: s12,
       },
       {
-        content: 'Экзотические фрукты и морепродукты',
-        value: 'Экзотические фрукты и морепродукты',
+        content: 'Хорошее детское питание',
+        value: 'Хорошее детское питание',
         type: 'text',
         imgSrc: s13,
       },

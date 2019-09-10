@@ -245,7 +245,7 @@ export default class extends Component {
       <SectionWrap>
         <About>
           <LeftColumn>
-            <Title>Об агенстве</Title>
+            <Title>Об агентстве</Title>
             <Text>
               {'Меня зовут Дмитрий и я являюсь сооснователем туристического агентства✈'}
             </Text>

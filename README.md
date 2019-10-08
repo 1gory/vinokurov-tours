@@ -1,6 +1,7 @@
 # vinokurov-tours
 * npm install
 * npm run build
+* /server/config.js.default -> /server/config.js
 
 # pm2
 NODE_ENV=production PORT=1111 pm2 start server/index.jsx --name vt --interpreter ./node_modules/.bin/babel-node

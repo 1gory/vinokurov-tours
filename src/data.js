@@ -1,5 +1,5 @@
 import thailand from './img/directions/thailand.jpg';
-import dominican from './img/directions/dominican.jpg';
+import russia from './img/directions/russia.jpg';
 import turkey from './img/directions/turkey.jpg';
 
 const directions = {
@@ -8,10 +8,10 @@ const directions = {
     link: '/',
     src: thailand,
   },
-  dominican: {
-    name: 'Доминикана',
-    link: '/dominican',
-    src: dominican,
+  russia: {
+    name: 'Россия',
+    link: '/russia',
+    src: russia,
   },
   turkey: {
     name: 'Турция',
@@ -22,27 +22,27 @@ const directions = {
 
 export default [
   {
-    offer: 'Подбор туров в Таиланд за 10 минут',
-    subOffer: 'С учётом всех ваших потребностей. Через \r\n проверенных Туроператоров.',
+    offer: 'Подберем для вас тур в Таиланд за 10 минут',
+    subOffer: 'Страховка от невыезда в подарок',
     booklet: 'Тайланде',
     directions: [
-      directions.dominican,
+      directions.russia,
       directions.turkey,
     ],
   },
   {
-    offer: 'Подберём вам тур в Турцию для семейного отдыха за 10 минут',
-    subOffer: 'Страховка от невыезда в подарок.',
+    offer: 'Подберем для вас тур в Турцию за 10 минут',
+    subOffer: 'Страховка от невыезда в подарок',
     booklet: 'Турции',
     directions: [
-      directions.dominican,
       directions.thailand,
+      directions.russia,
     ],
   },
   {
-    offer: 'Подбор туров в Доминикану за 10 минут',
-    subOffer: 'С учётом всех ваших потребностей. Через \r\n проверенных Туроператоров.',
-    booklet: 'Доминикане',
+    offer: 'Подберем для вас тур в Россию за 10 минут',
+    subOffer: 'Страховка от невыезда в подарок',
+    booklet: 'России',
     directions: [
       directions.thailand,
       directions.turkey,

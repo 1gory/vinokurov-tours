@@ -1,3 +1,7 @@
+# данные 
+* Вопросов квиза - src/containers/QuizOptions/stepsData.js
+* Изменение заголовков - src/data.js
+
 # vinokurov-tours
 * npm install
 * npm run build

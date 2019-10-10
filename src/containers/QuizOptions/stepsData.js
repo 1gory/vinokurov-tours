@@ -4,9 +4,9 @@ import starfive from '../../img/icons/stars-5.svg';
 import starthreew from '../../img/icons/stars-3-white.svg';
 import starfourw from '../../img/icons/stars-4-white.svg';
 import starfivew from '../../img/icons/stars-5-white.svg';
-import s11 from '../../img/quiz/aqua.jpg';
-import s12 from '../../img/quiz/sea.jpg';
-import s13 from '../../img/quiz/food.jpg';
+import s11 from '../../img/quiz/sea.jpg';
+import s12 from '../../img/quiz/excursions.jpg';
+import s13 from '../../img/quiz/spa.jpg';
 import s21 from '../../img/quiz/3stars.jpg';
 import s22 from '../../img/quiz/4srtars.jpg';
 import s23 from '../../img/quiz/5stars.jpg';
@@ -22,20 +22,20 @@ const stepsDate = [
     imgSrc: s13,
     options: [
       {
-        content: 'Наличие аквапарка',
-        value: 'Наличие аквапарка',
+        content: 'Идеальный вход в море',
+        value: 'Идеальный вход в море',
         type: 'text',
         imgSrc: s11,
       },
       {
-        content: 'Идеальный вход в море',
-        value: 'Идеальный вход в море',
+        content: 'Интересные экскурсии',
+        value: 'Интересные экскурсии',
         type: 'text',
         imgSrc: s12,
       },
       {
-        content: 'Хорошее детское питание',
-        value: 'Хорошее детское питание',
+        content: 'Наличие SPA-комплекса',
+        value: 'Наличие SPA-комплекса',
         type: 'text',
         imgSrc: s13,
       },

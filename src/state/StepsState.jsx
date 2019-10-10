@@ -1,7 +1,7 @@
 /* eslint no-undef: 0 */
 import { Container } from 'unstated';
 import ReactPixel from 'react-facebook-pixel';
-import img from '../img/quiz/food.jpg';
+import img from '../img/quiz/sea.jpg';
 
 export default class StepsContainer extends Container {
   state = {

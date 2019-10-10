@@ -20,7 +20,7 @@ export default () => (
     <Route
       key="1"
       exact
-      path="/dominican"
+      path="/russia"
       render={props => <Main {...props} data={data[2]} />}
     />
   </Switch>

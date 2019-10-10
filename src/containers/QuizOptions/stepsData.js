@@ -18,7 +18,7 @@ import s51 from '../../img/quiz/post.jpg';
 
 const stepsDate = [
   {
-    question: 'Что для вас отдых с детьми?',
+    question: 'Что для вас отдых?',
     imgSrc: s13,
     options: [
       {

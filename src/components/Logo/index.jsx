@@ -5,7 +5,8 @@ import airplane from '../../img/icons/airplane.svg';
 import airplaneRed from '../../img/icons/airplane-red.svg';
 
 const Logo = styled(Link)`
-  display: block;
+  display: flex;
+  align-items: center;
   position: relative;
   text-decoration: none;
   @media screen and (max-width: 768px) {
@@ -14,7 +15,6 @@ const Logo = styled(Link)`
 `;
 
 const Img = styled.img`
-  position: absolute;
   width: 32px;
   height: 32px;
   top: 0px;

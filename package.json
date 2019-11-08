@@ -23,6 +23,7 @@
     "react-images": "^0.5.19",
     "react-instagram-embed": "^1.5.0",
     "react-masonry-component": "^6.2.1",
+    "react-modal": "^3.11.1",
     "react-router-dom": "^5.0.0",
     "react-scroll": "^1.7.11",
     "react-text-mask": "^5.4.3",
@@ -60,6 +61,6 @@
     "start:server": "NODE_ENV=production babel-node server/index.jsx",
     "wpdev": "webpack-dev-server --mode development",
     "build": "webpack -p",
-    "lint": "eslint src --ext=js,jsx"
+    "lint": "eslint src --ext=js,jsx --fix"
   }
 }

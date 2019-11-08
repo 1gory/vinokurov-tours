@@ -9,6 +9,7 @@ import mainImage from '../../img/main.jpg';
 import mainImageMob from '../../img/main_m.jpg';
 import phoneIcon from './phone-icon.svg';
 import phoneIconBlack from './phone-icon-black.svg';
+import Modal from '../Modal';
 
 const Wrap = styled.div`
   max-width: 1366px;
@@ -83,7 +84,7 @@ const Title = styled.h3`
   @media screen and (max-width: 576px) {
     font-size: 32px;
     line-height: 44.16px;
-  } 
+  }
   @media screen and (max-width: 768px) {
     color: #fff;
   }
@@ -94,7 +95,7 @@ const Caption = styled.p`
   font-size: 20px;
   line-height: 21px;
   color: #474d57;
-  margin-bottom: 38px;  
+  margin-bottom: 38px;
   @media screen and (max-width: 768px) {
     color: #fff;
   }
@@ -103,7 +104,7 @@ const Caption = styled.p`
 const Offer = styled.div`
   padding-bottom: 25px;
   margin-top: 75px;
-  @media screen and (max-width: 768px) {   
+  @media screen and (max-width: 768px) {
     margin-top: 25px;
     padding-top: 35px;
     padding-left: 17px;
@@ -172,6 +173,8 @@ export default ({ scrollToMyRef, offer, subOffer, directions }) => (
             text="подобрать"
             handleClick={scrollToMyRef}
           />
+          <Modal />
+
         </Offer>
         <Directions directions={directions} />
       </LeftColumn>

@@ -8,7 +8,7 @@ const Wrap = styled.section`
   padding-right: 98px;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-content: stretch;
   align-items: flex-start;
@@ -57,10 +57,17 @@ const Phone = styled.a`
   outline: none;
   @media screen and (max-width: 768px) {
     display: inline-block;
-    // padding-top: 37px;
   }
 `;
 
+// const NavElement = styled.div`
+//   display: block;
+//   width: 100%;
+//   @media screen and (max-width: 768px) {
+//     padding-top: 29px;
+//     text-align: center;
+//   }
+// `;
 // const Link = styled.a`
 //   display: inline-block;
 //   font-family: 'opensans';

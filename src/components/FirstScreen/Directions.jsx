@@ -34,10 +34,12 @@ const Direction = styled.div`
   }
 `;
 
-const ImgWrap = styled.div`
+const ImgWrap = styled.a`
   height: 96px;
   overflow: hidden;
   margin-bottom: 12px;
+  display: block;
+  border: 0;
 `;
 
 const Img = styled.img`
@@ -79,7 +81,7 @@ export default ({ directions }) => (
     <DirectionsTitle>другие направления</DirectionsTitle>
     {directions.map(direction => (
       <Direction>
-        <ImgWrap>
+        <ImgWrap href={direction.link}>
           <Img src={direction.src} />
         </ImgWrap>
         <DirectionCaption>{direction.name}</DirectionCaption>
